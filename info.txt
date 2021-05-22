@@ -1,0 +1,6 @@
+product interface:
+Id
+Name
+Stock
+Price
+Image
