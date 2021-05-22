@@ -12,12 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
+import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: '', component: HomeComponent },
-  { path: 'product/:id' ,component:ProductCardComponent},
+  { path: 'product-detail/:id' ,component:ProductDetailComponent},
   { path: '**', component:HomeComponent}
 ];
 
@@ -34,7 +35,8 @@ const routes: Routes = [
     HomeComponent,
     NavBarComponent,
     ProductCardComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

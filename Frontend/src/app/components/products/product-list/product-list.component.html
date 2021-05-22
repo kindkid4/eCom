@@ -1,1 +1,16 @@
-<p>product-list works!</p>
+<div class="row">
+  <div class="col">
+    <div class="left float-start ">
+      <i class="fas fa-arrow-left  "   (click)="scrollLeft()"></i>
+    </div>
+
+    <div class="scrolling-wrapper-flexbox" #widgetsContent>
+      <div *ngFor="let product of products" class="col-xl-3 col-lg-4 col-md-5 col-sm-7 ">
+        <app-product-card [product]="product"></app-product-card>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <i class="fas fa-arrow-right float-end"  (click)="scrollRight()"></i>
+  </div>
+</div>
