@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -13,7 +12,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
 import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
-
+import { HttpClientModule} from '@angular/common/http';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
@@ -23,9 +23,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-
-
-
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -41,7 +38,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxGalleryModule,
+    HttpClientModule
   ],
   exports:[RouterModule],
   providers: [],

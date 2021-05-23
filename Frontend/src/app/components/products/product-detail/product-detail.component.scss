@@ -1,0 +1,41 @@
+.ngx-gallery {
+  display      : inline-block;
+  margin-bottom: 20px;
+}
+.vl {
+  border-left: 1px solid rgb(218, 218, 218);
+  height: 6vh;
+  position: absolute;
+  left: 12vw;
+  top: -10px;
+}
+
+.price{
+  color: rgb(206, 0, 0);
+  font-weight: 600;
+  font-size: 3.2vh;
+}
+
+.btn-primary{
+  background-color: green;
+}
+
+.tab{
+  tab-size:8;
+}
+
+.row-cols-lg-1 {
+  width: 15vw;
+  margin-left: 2.5vw;
+}
+
+.garantie{
+  font-size: 1.93vh;
+  border-style: dotted;
+  border-width: 1.5px;
+  padding: 2px;
+}
+
+.table td{
+  width: 20vw;
+}

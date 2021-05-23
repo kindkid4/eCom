@@ -1,5 +1,5 @@
-<div class="card shadow-sm p-3 " style="width: 16rem;">
-  <img style="height: 210px;" src="../../../../assets/Images/products/prop1.jpg">
+<div class="card shadow-sm p-3 img-wrapper" style="width: 16rem;">
+  <img style="height: 210px;"  src="../../../../assets/Images/products/prop1.jpg">
   <hr class="mt-0 ">
   <div class="card-body">
     <div class="card-title text-center">
@@ -8,7 +8,7 @@
       </h6>
     </div>
     <h6 class="card-title text-center">
-      Pret: <span class="font-hl">{{product.Price}}</span>Ron&nbsp;|
+      Pret: <span class="font-hl">{{product.Price}}</span> Ron&nbsp;|
       <span *ngIf="product.Stock===1" style="color: green;">In stock</span>
       <span *ngIf="product.Stock===0" style="color: red;">In stock</span>
     </h6>
