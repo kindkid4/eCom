@@ -60,6 +60,6 @@ const routes: Routes = [
   ],
   exports:[RouterModule],
   providers: [UserServiceService,LoginAuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
