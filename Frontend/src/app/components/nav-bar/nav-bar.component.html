@@ -1,17 +1,23 @@
 <div id="mySidenav" class="sidenav">
-  <a *ngIf="loggedin()" (click)="false">
-    Welcome {{loggedinUser}}
-  </a>
+  <a *ngIf="loggedin()" (click)="false">Welcome {{loggedinUser}}</a>
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-  <a routerLink="/">About</a>
-  <a *ngIf="!loggedin()" (click)="closeNav()" routerLink="user/register" routerLinkActive="active">Register</a>
-  <a *ngIf="!loggedin()" (click)="closeNav()" routerLink="user/login" routerLinkActive="active">Login</a>
-  <a *ngIf="loggedin()"  (click)="onLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
-
+  <a routerLink="/" class="dropdown-item">About</a>
+  <a *ngIf="!loggedin()" (click)="closeNav()" class="dropdown-item" routerLink="user/register"
+    routerLinkActive="active">Register</a>
+  <a *ngIf="!loggedin()" (click)="closeNav()" class="dropdown-item" routerLink="user/login"
+    routerLinkActive="active">Login</a>
+  <a *ngIf="loggedin()" (click)="closeNav()" routerLink="/" class="dropdown-item"><i class="fas fa-tachometer-alt"></i>
+    View Dashbord</a>
+  <a *ngIf="loggedin()" (click)="closeNav()" routerLink="/" class="dropdown-item"><i class="fas fa-user-circle"></i> My
+    Profile</a>
+  <a *ngIf="loggedin()" (click)="closeNav()" routerLink="/" class="dropdown-item"><i class="fas fa-key"></i> Change
+    Password</a>
+  <a *ngIf="loggedin()" (click)="onLogout()" routerLink="/" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>
+    Logout</a>
 </div>
 
-<nav class="navbar navbar-expand-lg  bg-dark">
-  <button (click)="openNav()" class="navbar-toggler btn-close-white" type="button" data-toggle="collapse"
+<nav class="navbar navbar-expand-lg bg-dark">
+  <button (click)="openNav()" class="navbar-toggler  btn-close-white" type="button" data-toggle="collapse"
     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
     aria-label="Toggle navigation">
     <span><i class="fas fa-bars"></i></span>
@@ -25,34 +31,40 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+
     </ul>
     <div>
+
       <ul class="nav navbar-nav">
-        <li *ngIf="!loggedin()" class="nav-item">
+        <li>
+          <div *ngIf="!loggedin()" class="btn-group " dropdown #dropdown="bs-dropdown" [autoClose]="false">
+            <button dropdownToggle type="button" class="btn btn-dark dropdown-toggle">
+              Login <span class="caret"></span>
+            </button>
+            <ul *dropdownMenu class="dropdown-menu " role="menu">
+              <form #loginForm='ngForm' (ngSubmit)="inLogin(loginForm)">
+                <li role="menuitem"><input required ngModel name="userName" class="m-3 form-control"></li>
+                <li role="menuitem"><input required type="password" ngModel name="password" class="m-3 form-control">
+                </li>
+                <li role="menuitem" >
+                  <button [disabled]="!loginForm.valid" type="submit" class="btn btn-dark col-5 ml-4 mr-2">Login</button>
+                  <button (click)="dropdown.isOpen = !dropdown.isOpen" routerLink="user/register"
+                    class=" btn btn-outline-dark col-5">Register</button>
+                </li>
+              </form>
+                <li role="menuitem" class="text-center"><span type="button" (click)="dropdown.isOpen = !dropdown.isOpen"
+                    routerLink="/">Recuperare parola</span></li>
+            </ul>
+          </div>
+        </li>
+
+        <li *ngIf="!loggedin()" class="nav-item ml-5 mr-5">
           <a class="nav-link" routerLink="user/register" routerLinkActive="active">
             Register
           </a>
         </li>
-        <li *ngIf="!loggedin()" class="nav-item">
-          <a class="nav-link" routerLink="user/login" routerLinkActive="active">
-            Login
-          </a>
-        </li>
+
+
 
         <div *ngIf="loggedin()" class="dropdown mr-5" dropdown>
           <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
