@@ -14,12 +14,21 @@ import { ProductListComponent } from './components/products/product-list/product
 import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
 import { HttpClientModule} from '@angular/common/http';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { UserLoginComponent } from './components/user/user-login/user-login.component';
+import { UserRegisterComponent } from './components/user/user-register/user-register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserServiceService } from './services/user-service.service';
+import { LoginAuthService } from './services/login-auth.service';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: '', component: HomeComponent },
   { path: 'product-detail/:id' ,component:ProductDetailComponent},
-  { path: '**', component:HomeComponent}
+  { path: 'user/login',component:UserLoginComponent},
+  { path: 'user/register',component:UserRegisterComponent},
+
+  { path: '**', component:HomeComponent},
 ];
 
 @NgModule({
@@ -33,17 +42,22 @@ const routes: Routes = [
     NavBarComponent,
     ProductCardComponent,
     ProductListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    UserLoginComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     NgxGalleryModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BsDropdownModule.forRoot()
   ],
   exports:[RouterModule],
-  providers: [],
+  providers: [UserServiceService,LoginAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
