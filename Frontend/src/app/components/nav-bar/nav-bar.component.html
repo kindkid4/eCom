@@ -1,6 +1,19 @@
+<div id="mySidenav" class="sidenav">
+  <a *ngIf="loggedin()" (click)="false">
+    Welcome {{loggedinUser}}
+  </a>
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <a routerLink="/">About</a>
+  <a *ngIf="!loggedin()" (click)="closeNav()" routerLink="user/register" routerLinkActive="active">Register</a>
+  <a *ngIf="!loggedin()" (click)="closeNav()" routerLink="user/login" routerLinkActive="active">Login</a>
+  <a *ngIf="loggedin()"  (click)="onLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+</div>
+
 <nav class="navbar navbar-expand-lg  bg-dark">
-  <button class="navbar-toggler btn-close-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button (click)="openNav()" class="navbar-toggler btn-close-white" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+    aria-label="Toggle navigation">
     <span><i class="fas fa-bars"></i></span>
   </button>
 

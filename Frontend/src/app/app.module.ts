@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserServiceService } from './services/user-service.service';
 import { LoginAuthService } from './services/login-auth.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { MatSliderModule } from '@angular/material/slider';
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
@@ -54,7 +55,8 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    MatSliderModule,
   ],
   exports:[RouterModule],
   providers: [UserServiceService,LoginAuthService],
