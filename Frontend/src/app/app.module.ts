@@ -21,6 +21,12 @@ import { UserServiceService } from './services/user-service.service';
 import { LoginAuthService } from './services/login-auth.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MatSliderModule } from '@angular/material/slider';
+import { SearchPipe } from './pipes/search.pipe';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatInputModule} from '@angular/material/input';
+import { ProductCategoryComponent } from './components/products/product-category/product-category.component';
+
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
@@ -28,6 +34,7 @@ const routes: Routes = [
   { path: 'product-detail/:id' ,component:ProductDetailComponent},
   { path: 'user/login',component:UserLoginComponent},
   { path: 'user/register',component:UserRegisterComponent},
+  { path: 'products/:category',component:ProductCategoryComponent},
 
   { path: '**', component:HomeComponent},
 ];
@@ -45,7 +52,9 @@ const routes: Routes = [
     ProductListComponent,
     ProductDetailComponent,
     UserLoginComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    SearchPipe,
+    ProductCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +66,9 @@ const routes: Routes = [
     FormsModule,
     BsDropdownModule.forRoot(),
     MatSliderModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports:[RouterModule],
   providers: [UserServiceService,LoginAuthService],

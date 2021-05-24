@@ -46,14 +46,15 @@
                 <li role="menuitem"><input required ngModel name="userName" class="m-3 form-control"></li>
                 <li role="menuitem"><input required type="password" ngModel name="password" class="m-3 form-control">
                 </li>
-                <li role="menuitem" >
-                  <button [disabled]="!loginForm.valid" type="submit" class="btn btn-dark col-5 ml-4 mr-2">Login</button>
+                <li role="menuitem">
+                  <button [disabled]="!loginForm.valid" type="submit"
+                    class="btn btn-dark col-5 ml-4 mr-2">Login</button>
                   <button (click)="dropdown.isOpen = !dropdown.isOpen" routerLink="user/register"
                     class=" btn btn-outline-dark col-5">Register</button>
                 </li>
               </form>
-                <li role="menuitem" class="text-center"><span type="button" (click)="dropdown.isOpen = !dropdown.isOpen"
-                    routerLink="/">Recuperare parola</span></li>
+              <li role="menuitem" class="text-center"><span type="button" (click)="dropdown.isOpen = !dropdown.isOpen"
+                  routerLink="/">Recuperare parola</span></li>
             </ul>
           </div>
         </li>
@@ -71,13 +72,13 @@
             Welcome {{loggedinUser}}
           </a>
           <div class="dropdown-menu" *dropdownMenu>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-tachometer-alt"></i> View Dashbord</a>
-            <a href="#" class="dropdown-item">
+            <a href="#" class="dropdown-item" style="color: black;">
+              <i class="fas fa-tachometer-alt" style="color: black;"></i> View Dashbord</a>
+            <a href="#" class="dropdown-item" style="color: black;">
               <i class="fas fa-user-circle"></i> My Profile</a>
-            <a href="#" class="dropdown-item">
+            <a href="#" class="dropdown-item" style="color: black;">
               <i class="fas fa-key"></i> Change Password</a>
-            <a (click)="onLogout()" class="dropdown-item">
+            <a (click)="onLogout()" class="dropdown-item" style="color: black;">
               <i class="fas fa-sign-out-alt"></i> Logout</a>
           </div>
         </div>

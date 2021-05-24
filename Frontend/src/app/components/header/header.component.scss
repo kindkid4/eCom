@@ -1,123 +1,189 @@
+.xSearch {
+  position   : absolute;
+  z-index    : 0;
+  margin-top : 42px;
+  margin-left: -20px;
+}
+
 .container {
   position: relative;
 }
 
-.logo{
-  width: 100px;
-
+.logo {
+  width       : 100px;
+  margin-left : -2vw;
+  margin-right: 2vw;
 }
+
 .container>button>input>img {
   position: absolute;
   top     : 5px;
   right   : 5px;
 }
 
+.UL {
+  position : absolute;
+  /* Sit on top of the page content */
+  width    : 100%;
+  /* Full width (cover the whole page) */
+  height   : 100%;
+  /* Full height (cover the whole page) */
+  top      : 8.3vh;
+  left     : 29.3vw;
+  // right: 0;
+  // bottom: 0;
+  z-index  : 2;
+  /* Specify a stack order in case you're using a different order for other elements */
+  cursor   : pointer;
+  /* Add a pointer on hover */
+}
 
+.list-group-item {
+  border-color : black;
+  border-radius: 24px;
+  border-width : 1px;
+  margin-top   : 5px;
+}
 
 .fas>span {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
 }
+
 .btnAcc {
   margin-right: 15px;
 }
 
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {
-  .input{
+  .input {
     width: 50vw;
   }
-  .btnSearch{
-    margin-right: 3vw;
-    margin-left: 2vw;
+
+  .UL {
+    margin-left: -1vw;
   }
-  .btnAcc{
+
+  .btnSearch {
+    margin-right: 3vw;
+    margin-left : 2vw;
+  }
+
+  .btnAcc {
     margin-right: 10px;
   }
-  .btnAccText{
+
+  .btnAccText {
     font-size: 0;
   }
-  .btnBasText{
+
+  .btnBasText {
     font-size: 0;
   }
-  .btnSearchText  {
+
+  .btnSearchText {
     font-size: 0;
   }
+
   .btnAcc {
     display: none;
   }
-  .btnBas{
+
+  .btnBas {
     display: none;
   }
-  .logo{
-    margin-left: 0vw;
+
+  .logo {
+    margin-left : -2vw;
+    margin-right: 2.1vw;
   }
- }
+}
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 767.98px) {
-  .input{
-    width: 35vw;
+  .input {
+    width: 33vw;
   }
-  .btnSearch{
+
+  .UL {
+    margin-left: -4.6vw;
+  }
+
+  .btnSearch {
     margin-right: 3vw;
-    margin-left: 1vw;
+    margin-left : 1vw;
   }
-  .btnAcc{
+
+  .btnAcc {
     margin-right: 10px;
   }
-  .btnAccText{
+
+  .btnAccText {
     font-size: 0;
   }
-  .btnBasText{
+
+  .btnBasText {
     font-size: 0;
   }
-  .logo{
+
+  .logo {
     margin-left: 5vw;
   }
 
-  }
+}
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) and (max-width: 991.98px) {
-  .input{
+  .input {
     width: 20vw;
   }
-  .btnSearch{
-    margin-right: 2vw;
-    margin-left: 1vw;
+
+  .UL {
+    margin-left: -4.7vw;
   }
 
-  .logo{
+  .btnSearch {
+    margin-right: 2vw;
+    margin-left : 1vw;
+  }
+
+  .logo {
     margin-left: 10vw;
   }
- }
+}
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .btnSearch{
+  .btnSearch {
     margin-right: 3vw;
-    margin-left: 1vw;
+    margin-left : 1vw;
   }
-  .input{
+
+  .input {
     width: 30vw;
   }
-  .logo{
+
+  .UL {
+    margin-left: -5vw;
+  }
+
+  .logo {
     margin-left: 12vw;
   }
- }
+}
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .input{
+  .input {
     width: 30vw;
   }
-  .btnSearch{
+
+  .btnSearch {
     margin-right: 3vw;
-    margin-left: 1vw;
+    margin-left : 1vw;
   }
 
-  .logo{
+  .logo {
     margin-left: 20vw;
   }
- }
+}

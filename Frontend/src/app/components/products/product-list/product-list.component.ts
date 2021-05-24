@@ -13,14 +13,16 @@ export class ProductListComponent implements OnInit {
       "Title": "Televizor QLED Smart SAMSUNG 85Q950T, 8K,",
       "Stock": 1,
       "Price": 7000,
-      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg"
+      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
+      "Category":"Components"
     },
     {
       "Id": 2,
       "Title": "Televizor QLED Smart T, 8K, HDR, 214 cm",
       "Stock": 1,
       "Price": 6000,
-      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg"
+      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
+      "Category":"Components"
     },
     {
       "Id": 3,
@@ -34,49 +36,56 @@ export class ProductListComponent implements OnInit {
       "Title": "Televizor QLED Smart SAMSUNG 85Q950T, 8K, ",
       "Stock": 0,
       "Price": 4000,
-      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg"
+      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
+      "Category":"Components"
     },
     {
       "Id": 5,
       "Title": "Televizor QLED Smart SAMSUNG , 8K, HDR, 214 cm",
       "Stock": 1,
       "Price": 3000,
-      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg"
+      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
+      "Category":"Components"
     },
     {
       "Id": 6,
       "Title": "Televizor SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "Stock": 1,
       "Price": 2000,
-      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg"
+      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
+      "Category":"Components"
     },
     {
       "Id": 7,
       "Title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "Stock": 1,
       "Price": 1000,
-      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg"
+      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
+      "Category":"Components"
     },
     {
       "Id": 8,
       "Title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "Stock": 1,
       "Price": 1000,
-      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg"
+      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
+      "Category":"Components"
     },
     {
       "Id": 9,
       "Title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "Stock": 1,
       "Price": 1000,
-      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg"
+      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
+      "Category":"Components"
     },
     {
       "Id": 10,
       "Title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "Stock": 1,
       "Price": 1000,
-      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg"
+      "Image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
+      "Category":"Components"
     },
   ]
   constructor() { }
