@@ -3,19 +3,17 @@
     <div class="justify-content-center flex-relative">
 
       <img src="../../../assets/Images/logo.png" routerLink="/" type="button" class="logo">
-      <!-- searcha attempt -->
+      <!-- search filter attempt -->
       <input type="text" class=" input text-center " [(ngModel)]="searchText" placeholder="Enter text to search">
       <i type="button" *ngIf="searchText" (click)="searchText=''" class="xSearch fas fa-times"></i>
 
       <ul class="list-group  UL input alig text-center" *ngIf="searchText">
-        <!-- results of ngFor is passed to appFilter with argument searchText -->
-        <li class="list-group-item" (click)="searchText=''"
-        routerLink="/products/{{product.category}}" type="button"
+        <li class="list-group-item" (click)="searchText=''" (click)="reload()" routerLinkActive routerLink="/product-search/{{product.title}}" type="button"
           *ngFor="let product of products | search: searchText">
-          {{product.category}}
+          {{product.title}}
         </li>
       </ul>
-      <!-- searcha attempt -->
+      <!-- search filter attempt -->
 
       <label type="button" class="btn btn-dark btnSearch"><i class="fas fa-search ">
           <span class="btnSearchText"> Cauta</span></i>

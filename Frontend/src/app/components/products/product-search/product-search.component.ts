@@ -1,16 +1,15 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-product-search',
+  templateUrl: './product-search.component.html',
+  styleUrls: ['./product-search.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  loggedinUser!: string;
-  value='';
-  constructor() { }
-  public wasInside = true;
-  searchText = '';
+export class ProductSearchComponent implements OnInit {
+  public searchText!: string
+  public title!: string;
+  constructor(private route: ActivatedRoute) { }
 
   products: Array<any> = [
     {
@@ -19,7 +18,7 @@ export class HeaderComponent implements OnInit {
       "stock": 1,
       "price": 7000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Procesor"
+      "category": "Procesor"
     },
     {
       "Id": 2,
@@ -27,7 +26,7 @@ export class HeaderComponent implements OnInit {
       "stock": 1,
       "price": 6000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Placa-Video"
+      "category": "Placa-Video"
     },
     {
       "Id": 3,
@@ -35,7 +34,7 @@ export class HeaderComponent implements OnInit {
       "stock": 1,
       "price": 5000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Televizor"
+      "category": "Televizor"
     },
     {
       "Id": 4,
@@ -43,7 +42,7 @@ export class HeaderComponent implements OnInit {
       "stock": 0,
       "price": 4000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Components"
+      "category": "Components"
     },
     {
       "Id": 5,
@@ -51,7 +50,7 @@ export class HeaderComponent implements OnInit {
       "stock": 1,
       "price": 3000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Components"
+      "category": "Components"
     },
     {
       "Id": 6,
@@ -59,7 +58,7 @@ export class HeaderComponent implements OnInit {
       "stock": 1,
       "price": 2000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Card"
+      "category": "Card"
     },
     {
       "Id": 7,
@@ -67,7 +66,7 @@ export class HeaderComponent implements OnInit {
       "stock": 1,
       "price": 1000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Caster"
+      "category": "Caster"
     },
     {
       "Id": 8,
@@ -75,7 +74,7 @@ export class HeaderComponent implements OnInit {
       "stock": 1,
       "price": 1000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Card"
+      "category": "Card"
     },
     {
       "Id": 9,
@@ -83,7 +82,7 @@ export class HeaderComponent implements OnInit {
       "stock": 1,
       "price": 1000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Components"
+      "category": "Components"
     },
     {
       "Id": 10,
@@ -91,33 +90,12 @@ export class HeaderComponent implements OnInit {
       "stock": 1,
       "price": 1000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Components"
+      "category": "Components"
     },
   ]
 
-  @HostListener('click')
-  clickInside() {
+  ngOnInit() {
+    this.title = this.route.snapshot.params['title'];
 
-    this.searchText="";
-    this.wasInside = true;
-  }
-  reload() {
-    setTimeout(()=>{
-      window.location.reload();
-    }, 100);
-}
-  @HostListener('document:click')
-  clickout() {
-    if (!this.wasInside) {
-      this.searchText="";
-    }
-    this.wasInside = false;
-  }
-
-  ngOnInit(): void {
-  }
-  loggedin(){
-    this.loggedinUser = localStorage.getItem('token')!;
-    return this.loggedinUser;
   }
 }

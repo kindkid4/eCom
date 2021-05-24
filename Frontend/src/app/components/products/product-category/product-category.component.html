@@ -1,1 +1,5 @@
-<h1>{{products.category}}</h1>
+<h1 >Category-> {{category}}</h1>
+<div *ngFor="let product of products" >
+ <p *ngIf="category===product.category">{{product.title}}</p>
+ <br>
+</div>

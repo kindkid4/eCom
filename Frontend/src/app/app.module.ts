@@ -12,7 +12,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
 import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { UserLoginComponent } from './components/user/user-login/user-login.component';
 import { UserRegisterComponent } from './components/user/user-register/user-register.component';
@@ -22,21 +22,30 @@ import { LoginAuthService } from './services/login-auth.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MatSliderModule } from '@angular/material/slider';
 import { SearchPipe } from './pipes/search.pipe';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatFormFieldModule} from '@angular/material/form-field'
-import {MatInputModule} from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input';
 import { ProductCategoryComponent } from './components/products/product-category/product-category.component';
+import { GalleriaModule } from 'primeng/galleria';
+import {CarouselModule} from 'primeng/carousel';
+import { CategoryPipe } from './pipes/category.pipe';
+import { ProductSearchComponent } from './components/products/product-search/product-search.component';
 
+
+
+
+// For MDB Angular Free
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: '', component: HomeComponent },
-  { path: 'product-detail/:id' ,component:ProductDetailComponent},
-  { path: 'user/login',component:UserLoginComponent},
-  { path: 'user/register',component:UserRegisterComponent},
-  { path: 'products/:category',component:ProductCategoryComponent},
+  { path: 'product-detail/:id', component: ProductDetailComponent },
+  { path: 'user/login', component: UserLoginComponent },
+  { path: 'user/register', component: UserRegisterComponent },
+  { path: 'product-category/:category', component: ProductCategoryComponent },
+  { path: 'product-search/:title', component: ProductSearchComponent },
 
-  { path: '**', component:HomeComponent},
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
@@ -54,7 +63,9 @@ const routes: Routes = [
     UserLoginComponent,
     UserRegisterComponent,
     SearchPipe,
-    ProductCategoryComponent
+    ProductCategoryComponent,
+    CategoryPipe,
+    ProductSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -68,10 +79,12 @@ const routes: Routes = [
     MatSliderModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    GalleriaModule,
+    CarouselModule
   ],
-  exports:[RouterModule],
-  providers: [UserServiceService,LoginAuthService],
+  exports: [RouterModule],
+  providers: [UserServiceService, LoginAuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

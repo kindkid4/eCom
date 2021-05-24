@@ -1,5 +1,5 @@
 import { rendererTypeName } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {NgxGalleryOptions} from '@kolkov/ngx-gallery';
 import {NgxGalleryImage} from '@kolkov/ngx-gallery';
@@ -14,7 +14,7 @@ export class ProductDetailComponent implements OnInit {
 
   galleryOptions! : NgxGalleryOptions[];
   galleryImages! : NgxGalleryImage[];
-
+  @Input() product : any;
   constructor() { }
 
   ngOnInit(): void {
