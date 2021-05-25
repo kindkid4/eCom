@@ -1,16 +1,19 @@
-<div class="card shadow-sm p-3 img-wrapper" style="width: 16rem;">
-  <img style="height: 210px;"  src="../../../../assets/Images/products/prop1.jpg">
-  <hr class="mt-0 ">
-  <div class="card-body">
-    <div class="card-title text-center">
-      <h6 type="button" style="max-height: 37px;overflow: hidden;" routerLink="/product-detail/{{product.Id}}">
-        {{product.Title}}
+<div class="card ">
+  <div class="card-img-wrapper">
+    <img class="card-img-top" style="margin-top: -3vh;" src="../../../../assets/Images/products/prop1.jpg">
+    <hr style="margin-top: -4vh;"></div>
+
+    <div class="card-body p-1">
+      <div class="card-title text-center">
+        <h6 type="button" style="max-height: 37px;overflow: hidden;" routerLink="/product-detail/{{product.id}}">
+          {{product.title}}
+        </h6>
+
+      </div>
+      <h6 class="card-title text-center">
+        Pret: <span class="font-hl">{{product.price}}</span> Ron&nbsp;|
+        <span *ngIf="product.stock===1" style="color: green;">In stock</span>
+        <span *ngIf="product.stock===0" style="color: red;">In stock</span>
       </h6>
-    </div>
-    <h6 class="card-title text-center">
-      Pret: <span class="font-hl">{{product.Price}}</span> Ron&nbsp;|
-      <span *ngIf="product.Stock===1" style="color: green;">In stock</span>
-      <span *ngIf="product.Stock===0" style="color: red;">In stock</span>
-    </h6>
-  </div><a href="#" class="btn btn-outline-dark">Adauga in cos</a>
-</div>
+    </div><a href="#" class="btn btn-outline-dark">Adauga in cos</a>
+  </div>

@@ -6,17 +6,18 @@
       <!-- search filter attempt -->
       <input type="text" class=" input text-center " [(ngModel)]="searchText" placeholder="Enter text to search">
       <i type="button" *ngIf="searchText" (click)="searchText=''" class="xSearch fas fa-times"></i>
-
       <ul class="list-group  UL input alig text-center" *ngIf="searchText">
-        <li class="list-group-item" (click)="searchText=''" (click)="reload()" routerLinkActive routerLink="/product-search/{{product.title}}" type="button"
+        <li class="list-group-item" (click)="searchText=''" (click)="reload()" routerLinkActive
+        routerLink="/product-detail/{{product.id}}" type="button"
           *ngFor="let product of products | search: searchText">
           {{product.title}}
         </li>
       </ul>
       <!-- search filter attempt -->
 
+
       <label type="button" class="btn btn-dark btnSearch"><i class="fas fa-search ">
-          <span class="btnSearchText"> Cauta</span></i>
+          <span class="btnSearchText" routerLink="/product-search/{{searchText}}" (click)="reload()"> Cauta</span></i>
       </label>
       <label routerLink="/" *ngIf="!loggedin()" style="margin-right: 7vw;"></label>
       <label routerLink="/" *ngIf="loggedin()" type="button" class="btn btn-dark btnAcc">

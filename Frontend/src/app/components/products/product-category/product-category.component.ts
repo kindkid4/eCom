@@ -12,7 +12,7 @@ export class ProductCategoryComponent implements OnInit {
 
   products: Array<any> = [
     {
-      "Id": 1,
+      "id": 1,
       "title": "Televizor QLED Smart SAMSUNG 85Q950T, 8K,",
       "stock": 1,
       "price": 7000,
@@ -20,7 +20,7 @@ export class ProductCategoryComponent implements OnInit {
       "category":"Procesor"
     },
     {
-      "Id": 2,
+      "id": 2,
       "title": "Televizor QLED Smart T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 6000,
@@ -28,7 +28,7 @@ export class ProductCategoryComponent implements OnInit {
       "category":"Placa-Video"
     },
     {
-      "Id": 3,
+      "id": 3,
       "title": "Televizor QLED Smart SAMSUNG 85Q950T",
       "stock": 1,
       "price": 5000,
@@ -36,7 +36,7 @@ export class ProductCategoryComponent implements OnInit {
       "category":"Televizor"
     },
     {
-      "Id": 4,
+      "id": 4,
       "title": "Televizor QLED Smart SAMSUNG 85Q950T, 8K, ",
       "stock": 0,
       "price": 4000,
@@ -44,7 +44,7 @@ export class ProductCategoryComponent implements OnInit {
       "category":"Components"
     },
     {
-      "Id": 5,
+      "id": 5,
       "title": "Televizor QLED Smart SAMSUNG , 8K, HDR, 214 cm",
       "stock": 1,
       "price": 3000,
@@ -52,7 +52,7 @@ export class ProductCategoryComponent implements OnInit {
       "category":"Components"
     },
     {
-      "Id": 6,
+      "id": 6,
       "title": "Televizor SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 2000,
@@ -60,7 +60,7 @@ export class ProductCategoryComponent implements OnInit {
       "category":"Card"
     },
     {
-      "Id": 7,
+      "id": 7,
       "title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 1000,
@@ -68,7 +68,7 @@ export class ProductCategoryComponent implements OnInit {
       "category":"Caster"
     },
     {
-      "Id": 8,
+      "id": 8,
       "title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 1000,
@@ -76,7 +76,7 @@ export class ProductCategoryComponent implements OnInit {
       "category":"Card"
     },
     {
-      "Id": 9,
+      "id": 9,
       "title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 1000,
@@ -84,7 +84,7 @@ export class ProductCategoryComponent implements OnInit {
       "category":"Components"
     },
     {
-      "Id": 10,
+      "id": 10,
       "title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 1000,
@@ -95,6 +95,5 @@ export class ProductCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.category = this.route.snapshot.params['category'];
-
   }
 }

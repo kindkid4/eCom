@@ -1,4 +1,8 @@
-<div >
- <p *ngFor="let product of products | search: title" >Title->{{product.title}}</p>
- <br>
-</div>
+
+  <h1 class="m-5">Rezultatele cautarii pentru {{title}} :</h1>
+  <div class="row">
+    <div *ngFor="let product of products | search : title " class="col-sm-3">
+      <div class="mb-4">
+        <app-product-card  [product]="product"></app-product-card>
+      </div>
+    </div>

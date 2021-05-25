@@ -7,116 +7,116 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   loggedinUser!: string;
-  value='';
-  constructor() { }
+  value = '';
+
   public wasInside = true;
   searchText = '';
-
+  constructor() { }
   products: Array<any> = [
     {
-      "Id": 1,
+      "id": 1,
       "title": "Televizor QLED Smart SAMSUNG 85Q950T, 8K,",
       "stock": 1,
       "price": 7000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Procesor"
+      "category": "Procesor"
     },
     {
-      "Id": 2,
+      "id": 2,
       "title": "Televizor QLED Smart T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 6000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Placa-Video"
+      "category": "Placa-Video"
     },
     {
-      "Id": 3,
+      "id": 3,
       "title": "Televizor QLED Smart SAMSUNG 85Q950T",
       "stock": 1,
       "price": 5000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Televizor"
+      "category": "Televizor"
     },
     {
-      "Id": 4,
+      "id": 4,
       "title": "Televizor QLED Smart SAMSUNG 85Q950T, 8K, ",
       "stock": 0,
       "price": 4000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Components"
+      "category": "Components"
     },
     {
-      "Id": 5,
+      "id": 5,
       "title": "Televizor QLED Smart SAMSUNG , 8K, HDR, 214 cm",
       "stock": 1,
       "price": 3000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Components"
+      "category": "Components"
     },
     {
-      "Id": 6,
+      "id": 6,
       "title": "Televizor SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 2000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Card"
+      "category": "Card"
     },
     {
-      "Id": 7,
+      "id": 7,
       "title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 1000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Caster"
+      "category": "Caster"
     },
     {
-      "Id": 8,
+      "id": 8,
       "title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 1000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Card"
+      "category": "Card"
     },
     {
-      "Id": 9,
+      "id": 9,
       "title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 1000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Components"
+      "category": "Components"
     },
     {
-      "Id": 10,
+      "id": 10,
       "title": " QLED Smart SAMSUNG 85Q950T, 8K, HDR, 214 cm",
       "stock": 1,
       "price": 1000,
       "image": "https://s13emagst.akamaized.net/products/31164/31163465/images/res_903858feb9a59351a9b153771c650a6a.jpg",
-      "category":"Components"
+      "category": "Components"
     },
   ]
 
   @HostListener('click')
   clickInside() {
 
-    this.searchText="";
+    this.searchText = "";
     this.wasInside = true;
   }
   reload() {
-    setTimeout(()=>{
+    setTimeout(() => {
       window.location.reload();
     }, 100);
-}
+  }
   @HostListener('document:click')
   clickout() {
     if (!this.wasInside) {
-      this.searchText="";
+      this.searchText = "";
     }
     this.wasInside = false;
   }
 
   ngOnInit(): void {
   }
-  loggedin(){
+  loggedin() {
     this.loggedinUser = localStorage.getItem('token')!;
     return this.loggedinUser;
   }
