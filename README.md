@@ -16,4 +16,6 @@ The Server side:
 
 -NodeJS -> back-end
 
+-ASP.NET CORE-> back-end
+
 -REST-api
