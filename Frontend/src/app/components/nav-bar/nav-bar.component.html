@@ -41,16 +41,16 @@
             <button dropdownToggle type="button" class="btn btn-dark dropdown-toggle">
               Login <span class="caret"></span>
             </button>
-            <ul *dropdownMenu class="dropdown-menu " role="menu">
+            <ul *dropdownMenu class="dropdown-menu" role="menu">
               <form #loginForm='ngForm' (ngSubmit)="inLogin(loginForm)">
                 <li role="menuitem"><input required ngModel name="userName" class="m-3 form-control"></li>
                 <li role="menuitem"><input required type="password" ngModel name="password" class="m-3 form-control">
                 </li>
                 <li role="menuitem">
                   <button [disabled]="!loginForm.valid" type="submit"
-                    class="btn btn-dark col-5 ml-4 mr-2">Login</button>
+                    class="btn btn-dark col-5 offset-sm-1 mr-1" >Login</button>
                   <button (click)="dropdown.isOpen = !dropdown.isOpen" routerLink="user/register"
-                    class=" btn btn-outline-dark col-5">Register</button>
+                    class=" btn btn-outline-dark col-5 offset-sm-1"  >Register</button>
                 </li>
               </form>
               <li role="menuitem" class="text-center"><span type="button" (click)="dropdown.isOpen = !dropdown.isOpen"

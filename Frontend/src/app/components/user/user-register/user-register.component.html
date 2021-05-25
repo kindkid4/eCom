@@ -1,5 +1,5 @@
 <div class="row" style="margin-top:12vh;">
-  <div class="col-4 m-auto">
+  <div class="col-5">
     <div class="card m-auto">
       <div class="card-header text-center bg-light bg-dark bg-gradient">
         <h3 style="color: white;"><strong>Register</strong></h3>
@@ -7,7 +7,7 @@
       <div class="card-body">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="form-group col-12">
-            <label for="name" class="form-label">Name<p class="d-inline"style="color: red;">*</p></label>
+            <label for="name" class="form-label">Name<p class="d-inline" style="color: red;">*</p></label>
             <input type="text" class="form-control" formControlName="userName">
             <span *ngIf="!userName.valid && (userName.touched || userDidRegister)" class="error-block">
               <span *ngIf="userName.hasError('required')">
@@ -17,7 +17,7 @@
           </div>
 
           <div class="form-group col-12">
-            <label for="email" class="form-label">Email<p class="d-inline"style="color: red;">*</p></label>
+            <label for="email" class="form-label">Email<p class="d-inline" style="color: red;">*</p></label>
             <input type="text" class="form-control" formControlName="email">
             <span *ngIf="!email.valid && (email.touched || userDidRegister)" class="error-block">
               <span *ngIf="email.hasError('required')">Provide an email id!
@@ -28,7 +28,7 @@
           </div>
 
           <div class="form-group col-12">
-            <label for="password" class="form-label">Password<p class="d-inline"style="color: red;">*</p></label>
+            <label for="password" class="form-label">Password<p class="d-inline" style="color: red;">*</p></label>
             <input type="password" class="form-control" formControlName="password" />
             <span *ngIf="!password.valid && (password.touched || userDidRegister)" class="error-block">
               <span *ngIf="password.errors!['required']">
@@ -41,7 +41,8 @@
           </div>
 
           <div class="form-group col-12">
-            <label for="password" class="form-label">Confirm Password<p class="d-inline"style="color: red;">*</p></label>
+            <label for="password" class="form-label">Confirm Password<p class="d-inline" style="color: red;">*</p>
+              </label>
             <input type="password" class="form-control" formControlName="confirmPassword" />
             <span *ngIf="!confirmPassword.valid && (confirmPassword.touched || userDidRegister)" class="error-block">
               <span *ngIf="confirmPassword.hasError('required')">
@@ -54,7 +55,7 @@
           </div>
 
           <div class="form-group col-12">
-            <label for="mobile" class="form-label">Mobile<p class="d-inline"style="color: red;">*</p></label>
+            <label for="mobile" class="form-label">Mobile<p class="d-inline" style="color: red;">*</p></label>
             <input type="text" class="form-control" formControlName="mobile">
             <span *ngIf="!mobile.valid && (mobile.touched || userDidRegister)" class="error-block">
               <span *ngIf="mobile.hasError('required')">
@@ -75,19 +76,24 @@
           </div>
         </form>
       </div>
+
     </div>
+
+
   </div>
-    <div class="col-3 ">
-      <h3 class="mt-5">De ce sa iti creezi cont ?</h3>
-      <ul >
-        <li>Reduci timpul de finalizare a comenzii prin salvarea datelor de facturare, livrare si plata</li>
-        <li>Verifici situatia comenzilor tale.</li>
-        <li> Salvezi produse in wishlist si faci liste de cumparaturi</li>
-        <li> Poti seta alerte de stoc</li>
-      </ul>
+  <div class="col">
+
+    <h3>De ce sa iti creezi cont ?</h3>
+    <ul>
+      <li>Reduci timpul de finalizare a comenzii prin salvarea datelor de facturare, livrare si plata</li>
+      <li>Verifici situatia comenzilor tale.</li>
+      <li> Salvezi produse in wishlist si faci liste de cumparaturi</li>
+      <li> Poti seta alerte de stoc</li>
+    </ul>
+    <div class="col-12">
+      <h2 class="text-center">Am deja cont</h2>
+      <app-user-login></app-user-login>
     </div>
-  <div class="col-5">
-    <h2 class="text-center">Am deja cont</h2>
-    <app-user-login></app-user-login>
-  </div>
+    </div>
+
 </div>

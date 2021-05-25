@@ -28,8 +28,8 @@
   /* Full width (cover the whole page) */
   height   : 100%;
   /* Full height (cover the whole page) */
-  top      : 8.3vh;
-  left     : 29.3vw;
+  top      : 65px;
+  left     : 27.9vw;
   // right: 0;
   // bottom: 0;
   z-index  : 2;
@@ -61,7 +61,7 @@
   }
 
   .UL {
-    margin-left: -1vw;
+    margin-left: 5vw;
   }
 
   .btnSearch {
@@ -94,7 +94,7 @@
   }
 
   .logo {
-    margin-left : -2vw;
+    margin-left : 5vw;
     margin-right: 2.1vw;
   }
 }
@@ -105,7 +105,7 @@
     width: 33vw;
   }
 
-  .UL {
+  .UL >li {
     margin-left: -4.6vw;
   }
 
@@ -127,7 +127,7 @@
   }
 
   .logo {
-    margin-left: 5vw;
+    margin-left: 2vw;
   }
 
 }
@@ -148,7 +148,7 @@
   }
 
   .logo {
-    margin-left: 10vw;
+    margin-left: 5vw;
   }
 }
 
