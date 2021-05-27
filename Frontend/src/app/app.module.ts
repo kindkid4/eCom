@@ -27,7 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import { ProductCategoryComponent } from './components/products/product-category/product-category.component';
 import { GalleriaModule } from 'primeng/galleria';
-import {CarouselModule} from 'primeng/carousel';
+import { CarouselModule } from 'primeng/carousel';
 import { CategoryPipe } from './pipes/category.pipe';
 import { ProductSearchComponent } from './components/products/product-search/product-search.component';
 
@@ -44,6 +44,7 @@ const routes: Routes = [
   { path: 'user/register', component: UserRegisterComponent },
   { path: 'product-category/:category', component: ProductCategoryComponent },
   { path: 'product-search/:title', component: ProductSearchComponent },
+  { path: 'cart', component: CartComponent },
 
   { path: '**', component: HomeComponent },
 ];
@@ -65,7 +66,7 @@ const routes: Routes = [
     SearchPipe,
     ProductCategoryComponent,
     CategoryPipe,
-    ProductSearchComponent
+    ProductSearchComponent,
   ],
   imports: [
     BrowserModule,

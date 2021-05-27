@@ -6,8 +6,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public str :  string ='Placi video';
+  categoryList:Array<any>=[
+    {
+      "id":1,
+      "category":'Placa-Video'
+    },{
+      "id":2,
+      "category":'Components'
+    },
+    {
+      "id":3,
+      "category":'Televizor'
+    },
+    {
+      "id":4,
+      "category":'Card'
+    }
+
+  ]
   constructor() { }
+
 
   ngOnInit(): void {
   }

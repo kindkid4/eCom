@@ -3,9 +3,8 @@
     <div class="left float-start ">
       <i class="fas fa-arrow-left  "   (click)="scrollLeft()"></i>
     </div>
-
     <div class="scrolling-wrapper-flexbox" #widgetsContent>
-      <div *ngFor="let product of products" class="col-xl-3 col-lg-4 col-md-5 col-sm-7 ">
+      <div *ngFor="let product of products | category : category" class="col-xl-3 col-lg-4 col-md-5 col-sm-7 ">
         <app-product-card [product]="product"></app-product-card>
       </div>
     </div>
