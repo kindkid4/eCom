@@ -1,6 +1,6 @@
 .card {
   min-height: 210px;
-  max-width : 280px;
+  max-width : 250px;
 }
 .card-body h1 {
   font-family: fantasy;
@@ -44,3 +44,6 @@
   transition: all 0.3s ease-in-out;
 }
 
+h6{
+  margin: 9px;
+}

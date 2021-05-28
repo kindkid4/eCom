@@ -1,6 +1,15 @@
-<p-orderList [value]="cart" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="title"
+<div class="container-fluid">
+  <div class="row text-center">
+    <h1 style="margin-top:200px" *ngIf="totalSum==0">Cosul tau este gol</h1>
+  </div>
+  <div class="text-center">
+    <button routerLink="/" class="btn btn-outline-dark" style="margin-bottom: 200px;" *ngIf="totalSum==0">Intoarce-te in magazin</button>
+  </div>
+</div>
+
+<p-orderList *ngIf="totalSum>=1" [value]="cart" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="title"
   filterPlaceholder="Filter by name" [dragdrop]="true">
-  <button>Delete items</button>
+
   <ng-template let-item pTemplate="item">
 
     <div class="product-item">
@@ -13,15 +22,16 @@
         <h5 class="p-mb-2">{{item.title}}</h5>
         <i class="pi pi-tag product-category-icon"></i>
         <span class="product-category">{{item.category}}</span>
+
       </div>
 
-        <h6 class="p-mb-2">
-          <button (click)="removeQuant(item)" class="btn btn-outline-dark mr-3">-</button> {{item.qty}}
-          <button (click)="addQuant(item)" class="ml-3 btn btn-outline-dark">+</button>
-        </h6>
+      <h6 class="p-mb-2">
+        <button (click)="removeQuant(item)" class="btn btn-outline-dark mr-3">-</button> {{item.qty}}
+        <button (click)="addQuant(item)" class="ml-3 btn btn-outline-dark">+</button>
+      </h6>
 
       <div class="product-list-action">
-        <h6 class="p-mb-2">${{item.price*item.qty}}</h6>
+        <h6 class="p-mb-2">{{item.price*item.qty}} Ron</h6>
         <span *ngIf="item.stock==0" class="product-badge status-outofstock">NOT IN STOCK</span>
         <span *ngIf="item.stock>=7" class="product-badge status-instock">IN STOCK</span>
         <span *ngIf="item.stock<=6 && item.stock>=1" class="product-badge status-lowstock">LOWSTOCK</span>
@@ -30,3 +40,21 @@
   </ng-template>
 
 </p-orderList>
+<div class="row mt-2 mr-2" *ngIf="totalSum>=1">
+  <div class="col col-lg-8">
+
+  </div>
+
+  <form  class="card col-lg-4 ">
+    <span class="col  text-left mt-3">Subtotal: <span class="float-end fs-2" style="margin-top: -13px;">{{totalSum}} Ron</span> </span>
+    <hr>
+    <span class="col text-left mt-1">Transport: <span *ngIf="totalSum>=1" class="float-end fs-2" style="margin-top: -13px;">15 Ron</span> </span>
+    <hr>
+    <span class="col text-left mt-1">Total final: <span *ngIf="totalSum>=1&&totalSum<5000" class="float-end fs-2" style="margin-top: -13px;">{{totalSum+15}} Ron</span>
+    <span *ngIf="totalSum>=5000" class="float-end fs-2" style="margin-top: -13px;">{{totalSum}} Ron</span>
+  </span>
+    <hr>
+    <button [disabled]="!loggedin()" class="btn btn-outline-dark m-3">Comanda produsele</button>
+  </form>
+
+</div>

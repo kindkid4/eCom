@@ -18,7 +18,6 @@ import { UserLoginComponent } from './components/user/user-login/user-login.comp
 import { UserRegisterComponent } from './components/user/user-register/user-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserServiceService } from './services/user-service.service';
-import { LoginAuthService } from './services/login-auth.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MatSliderModule } from '@angular/material/slider';
 import { SearchPipe } from './pipes/search.pipe';
@@ -31,6 +30,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { CategoryPipe } from './pipes/category.pipe';
 import { ProductSearchComponent } from './components/products/product-search/product-search.component';
 import {OrderListModule} from 'primeng/orderlist';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 
 
 
@@ -45,7 +45,7 @@ const routes: Routes = [
   { path: 'product-category/:category', component: ProductCategoryComponent },
   { path: 'product-search/:title', component: ProductSearchComponent },
   { path: 'cart', component: CartComponent },
-
+  { path: 'user/profile',component:UserProfileComponent},
   { path: '**', component: HomeComponent },
 ];
 
@@ -67,6 +67,7 @@ const routes: Routes = [
     ProductCategoryComponent,
     CategoryPipe,
     ProductSearchComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +87,7 @@ const routes: Routes = [
     OrderListModule
   ],
   exports: [RouterModule],
-  providers: [UserServiceService, LoginAuthService],
+  providers: [UserServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

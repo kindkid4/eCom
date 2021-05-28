@@ -21,7 +21,7 @@
           <span class="btnSearchText" routerLink="/product-search/{{searchText}}" (click)="reload()"> Cauta</span></i>
       </label>
       <label routerLink="/" *ngIf="!loggedin()" style="margin-right: 7vw;"></label>
-      <label routerLink="/" *ngIf="loggedin()" type="button" class="btn btn-dark btnAcc">
+      <label routerLink="/user/profile" *ngIf="loggedin()" type="button" class="btn btn-dark btnAcc">
         <i class="fas fa-user-circle">
           <span class="btnAccText"> Acontul meu</span></i>
       </label>

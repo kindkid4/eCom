@@ -1,8 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as alertyfy from 'alertifyjs';
-import { LoginAuthService } from 'src/app/services/login-auth.service';
+import { UserServiceService } from 'src/app/services/user-service.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -12,7 +11,7 @@ export class NavBarComponent implements OnInit {
   public loggedinUser!: string;
   public wasInside = true;
   public text!: String;
-  constructor(private loginService: LoginAuthService,
+  constructor(public userService: UserServiceService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -37,25 +36,14 @@ export class NavBarComponent implements OnInit {
 
 
   inLogin(loginForm: NgForm) {
-    console.log(loginForm.value);
-    const token = this.loginService.authUser(loginForm.value);
-    if (token) {
-      localStorage.setItem('token', token.userName);
-      alertyfy.success("Login reusit!");
-      this.router.navigate(['/register']);
-    } else {
-      alertyfy.error('User sau parola gresita!')
-    }
+    this.userService.authUser(loginForm.value);
   }
 
   loggedin() {
-    this.loggedinUser = localStorage.getItem('token')!;
-    return this.loggedinUser;
-
+    return this.loggedinUser = this.userService.loggedin();
   }
   onLogout() {
-    localStorage.removeItem('token');
-    alertyfy.success("Logout successfuly!");
+    this.userService.onLogout();
   }
   openNav() {
     document.getElementById("mySidenav")!.style.width = "280px";
