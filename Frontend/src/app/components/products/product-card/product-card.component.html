@@ -1,11 +1,11 @@
 <div class="card ">
   <div class="card-img-wrapper">
 
-      <img class="card-img-top" src="../../../../assets/Images/products/prop1.jpg">
+    <img class="card-img-top" src="../../../../assets/Images/products/prop1.jpg">
   </div>
 
   <div class="card-body p-1">
-    <div class="card-title text-center" >
+    <div class="card-title text-center">
       <h6 type="button" style="max-height: 37px;overflow: hidden;" routerLink="/product-detail/{{product.id}}">
         {{product.title}}
       </h6>
@@ -16,5 +16,6 @@
       <span *ngIf="stock>=1" style="color: green;">In stock</span>
       <span *ngIf="stock<=0" style="color: red;">In stock</span>
     </h6>
-  </div><a href="#" class="btn btn-outline-dark" (click)="addToCart(product)">Adauga in cos</a>
+  </div>
+   <h6 (click)="addToCart(product)" class="btn btn-outline-dark" >Adauga in cos</h6>
 </div>

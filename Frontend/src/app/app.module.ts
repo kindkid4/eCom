@@ -30,7 +30,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
 import { CategoryPipe } from './pipes/category.pipe';
 import { ProductSearchComponent } from './components/products/product-search/product-search.component';
-
+import {OrderListModule} from 'primeng/orderlist';
 
 
 
@@ -82,7 +82,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     GalleriaModule,
-    CarouselModule
+    CarouselModule,
+    OrderListModule
   ],
   exports: [RouterModule],
   providers: [UserServiceService, LoginAuthService],

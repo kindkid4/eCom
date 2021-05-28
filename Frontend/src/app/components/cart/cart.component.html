@@ -1,0 +1,32 @@
+<p-orderList [value]="cart" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="title"
+  filterPlaceholder="Filter by name" [dragdrop]="true">
+  <button>Delete items</button>
+  <ng-template let-item pTemplate="item">
+
+    <div class="product-item">
+
+      <div class="image-container">
+        <img src="{{item.image}}" [alt]="item.title" class="product-image" />
+      </div>
+
+      <div class="product-list-detail">
+        <h5 class="p-mb-2">{{item.title}}</h5>
+        <i class="pi pi-tag product-category-icon"></i>
+        <span class="product-category">{{item.category}}</span>
+      </div>
+
+        <h6 class="p-mb-2">
+          <button (click)="removeQuant(item)" class="btn btn-outline-dark mr-3">-</button> {{item.qty}}
+          <button (click)="addQuant(item)" class="ml-3 btn btn-outline-dark">+</button>
+        </h6>
+
+      <div class="product-list-action">
+        <h6 class="p-mb-2">${{item.price*item.qty}}</h6>
+        <span *ngIf="item.stock==0" class="product-badge status-outofstock">NOT IN STOCK</span>
+        <span *ngIf="item.stock>=7" class="product-badge status-instock">IN STOCK</span>
+        <span *ngIf="item.stock<=6 && item.stock>=1" class="product-badge status-lowstock">LOWSTOCK</span>
+      </div>
+    </div>
+  </ng-template>
+
+</p-orderList>
