@@ -29,10 +29,13 @@ import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
 import { CategoryPipe } from './pipes/category.pipe';
 import { ProductSearchComponent } from './components/products/product-search/product-search.component';
-import {OrderListModule} from 'primeng/orderlist';
+import { OrderListModule } from 'primeng/orderlist';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
-
-
+import {BadgeModule} from 'primeng/badge';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
+import {StepsModule} from 'primeng/steps';
+import {CardModule} from 'primeng/card';
 
 // For MDB Angular Free
 const routes: Routes = [
@@ -45,7 +48,7 @@ const routes: Routes = [
   { path: 'product-category/:category', component: ProductCategoryComponent },
   { path: 'product-search/:title', component: ProductSearchComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'user/profile',component:UserProfileComponent},
+  { path: 'user/profile', component: UserProfileComponent },
   { path: '**', component: HomeComponent },
 ];
 
@@ -84,7 +87,13 @@ const routes: Routes = [
     MatInputModule,
     GalleriaModule,
     CarouselModule,
-    OrderListModule
+    OrderListModule,
+    BadgeModule,
+    AvatarGroupModule,
+    AvatarModule,
+    StepsModule,
+    CardModule
+
   ],
   exports: [RouterModule],
   providers: [UserServiceService],

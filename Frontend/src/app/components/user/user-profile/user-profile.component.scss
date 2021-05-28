@@ -1,0 +1,24 @@
+.pfp{
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+}
+.fa-id-badge{
+  position: absolute;
+  top:220px;
+  left:255px;
+}
+.cmd{
+  margin-bottom: 40px;
+  position:relative;
+}
+.cmd>span{
+  margin-left: 0.5vw;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+.cmd>button{
+  position: absolute;
+  top:32px;
+  left:40vw;
+}

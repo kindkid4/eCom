@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
   <div class="row">
     <div class="justify-content-center flex-relative">
@@ -9,7 +8,7 @@
       <i type="button" *ngIf="searchText" (click)="searchText=''" class="xSearch fas fa-times"></i>
       <ul class="list-group  UL input alig text-center" *ngIf="searchText">
         <li class="list-group-item" (click)="searchText=''" (click)="reload()" routerLinkActive
-        routerLink="/product-detail/{{product.id}}" type="button"
+          routerLink="/product-detail/{{product.id}}" type="button"
           *ngFor="let product of products | search: searchText">
           {{product.title}}
         </li>
@@ -27,8 +26,8 @@
       </label>
 
       <label routerLink="/cart" type="button" class="btn btn-dark btnBas">
-        <i class="fas fa-shopping-basket">
-          <span class="btnBasText"> Cosul meu {{itemInCart}} </span></i>
+        <i class="fas fa-shopping-basket"><i  *ngIf="itemInCart>=1" pBadge  value="{{itemInCart}}"></i>
+          <span class="btnBasText ml-2"> Cosul meu </span></i>
       </label>
 
     </div>

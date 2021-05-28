@@ -41,9 +41,6 @@ export class CartService {
     }
     this.placeholder = this.getCartData();
   }
-
-
-
   setCartData(data: any) {
     localStorage.setItem('cart', JSON.stringify(data));
     this.cartItems.next(this.getCartData());
@@ -51,7 +48,6 @@ export class CartService {
   getCartData() {
     return JSON.parse(localStorage.getItem('cart')!);
   }
-
   deleteItem(id: number) {
     const ls = this.getCartData();
 

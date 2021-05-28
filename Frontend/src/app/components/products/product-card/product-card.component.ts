@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/model/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import * as alertyfy from 'alertifyjs';
 
 @Component({
   selector: 'app-product-card',
@@ -22,5 +23,6 @@ export class ProductCardComponent implements OnInit {
 
   addToCart(product: Product){
     this.cartService.addItem(product);
+    alertyfy.success("Produs adaugat!");
   }
 }

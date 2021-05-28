@@ -1,8 +1,214 @@
 <div class="container">
-  <div class="col-3 card">
-<h1>CONT</h1>
-  </div>
-  <div class="col-9">
+  <div class="row">
+    <!-- side profile -->
+    <div class="col col-lg-3 align-items-center ">
+      <div class="card p-1 shadow-lg">
+        <img class="pfp" src="../../../../assets/Images/logo.png"><i type="button" class="fs-2 fas fa-id-badge"></i>
+        <span class="text-center" style="font-size:x-large;">Poenaru Mihai Vladut</span>
+        <hr>
+        <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+          <input type="radio" class="btn-check" (click)="pagina=1" (click)="passChange=0" name="vbtn-radio" id="vbtn-radio1"
+            autocomplete="off">
+          <label class="btn btn-outline-dark" for="vbtn-radio1">Contul meu</label>
+
+          <input type="radio" class="btn-check" (click)="pagina=2"  name="vbtn-radio" id="vbtn-radio2"
+            autocomplete="off">
+          <label class="btn btn-outline-dark" for="vbtn-radio2">Informatii cont</label>
+
+          <input type="radio" class="btn-check" (click)="pagina=3" (click)="passChange=0" name="vbtn-radio" id="vbtn-radio3"
+            autocomplete="off">
+          <label class="btn btn-outline-dark" for="vbtn-radio3">Adrese</label>
+
+          <input type="radio" class="btn-check" (click)="pagina=4" (click)="passChange=0" name="vbtn-radio" id="vbtn-radio4"
+            autocomplete="off">
+          <label class="btn btn-outline-dark" for="vbtn-radio4">Comenzi</label>
+
+          <input type="radio" class="btn-check" (click)="pagina=5" (click)="passChange=0" name="vbtn-radio" id="vbtn-radio5"
+            autocomplete="off">
+          <label class="btn btn-outline-dark" for="vbtn-radio5">Retur produse</label>
+        </div>
+      </div>
+
+    </div>
+    <!-- Sumar cont -->
+    <div *ngIf="pagina==1" class="col col-lg-9 ">
+      <h2 class="m-4">Sumar cont</h2>
+      <div class="card p-1 shadow-lg">
+        <span class="m-4 fs-3">Informatii de contact <i type="button" class="ml-5 fas fa-edit"></i></span>
+        <span class="m-2">Email : testtest@yahoo.com</span>
+        <span class="m-2">Telefon : 123123123</span>
+        <hr class="m-2">
+
+        <span class="m-4 fs-3">Comenzi recente <i class="ml-5 fas fa-list-alt"></i></span>
+        <div class="cmd" *ngFor="let item of [1,2,3]">
+          <span class=" row">Comanada : #123123123</span>
+          <span class=" row">Total comanda : 123 Ron</span>
+          <span class=" row">Plasata pe : 12.12.2012</span>
+          <button class="btn btn-outline-dark float-end">Vezi Comanda</button>
+          <hr class="m-2">
+        </div>
+        <span class="m-4 fs-3">Adresa de contact <i type="button" class="ml-5 fas fa-map-marked-alt"></i></span>
+        <div class="row">
+          <div class="col-6 text-center">
+            <span class="m-2 fs-4 text-center">Adresa mea</span>
+            <hr>
+            <span class="m-3 row">Tara : Romania</span>
+            <span class="m-3 row">Judet : Suceava</span>
+            <span class="m-3 row">Oras : Liteni</span>
+            <span class="m-3 row">Strada : Teste</span>
+            <span class="m-3 row">Numarul : 13</span>
+            <span class="m-3 row">Telefon : 123123123</span>
+          </div>
+
+          <div class="col-6 text-center">
+            <span class="m-2 fs-4">Date facturare</span>
+            <hr>
+            <span class="m-3 row">Tara : Romania</span>
+            <span class="m-3 row">Judet : Suceava</span>
+            <span class="m-3 row">Oras : Liteni</span>
+            <span class="m-3 row">Strada : Teste</span>
+            <span class="m-3 row">Numarul : 13</span>
+            <span class="m-3 row">Telefon : 123123123</span>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <!-- Informatii cont -->
+    <div *ngIf="pagina==2" class="col col-lg-9">
+      <h2 class="m-4">Informatii cont</h2>
+      <form class="card  card p-1 shadow-lg ">
+        <div class="col-md-6 m-3">
+          <label for="inputEmail4" class="form-label">Nume</label>
+          <input type="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-6 m-3">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-md-6 m-3">
+          <label for="inputAddress" class="form-label">Email</label>
+          <input type="text" class="form-control" id="inputAddress">
+        </div>
+        <div class="col-md-6 m-3">
+          <label for="inputAddress" class="form-label">Telefon</label>
+          <input type="text" class="form-control" id="inputAddress" >
+        </div>
+
+        <div class="col-12 m-3">
+          <div class="form-check">
+            <input class="form-check-input" (click)="passCheck()" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Schimba parola
+            </label>
+          </div>
+        </div>
+
+        <div *ngIf="passChange==1" style="margin-left: -12px;">
+          <div class="col-md-6 m-3 ">
+            <label for="inputAddress" class="form-label">Parola veche</label>
+            <input type="text" class="form-control" id="inputAddress" >
+          </div>
+          <div class="col-md-6 m-3 ">
+            <label for="inputAddress" class="form-label">Parola noua</label>
+            <input type="text" class="form-control" id="inputAddress" >
+          </div>
+          <div class="col-md-6 m-3">
+            <label for="inputAddress" class="form-label">Confirma parola noua</label>
+            <input type="text" class="form-control" id="inputAddress" >
+          </div>
+        </div>
+
+        <div class="col-12 m-3">
+          <button type="submit" class="btn btn-outline-dark">Salveaza</button>
+        </div>
+
+      </form>
+    </div>
+    <!-- Adrese -->
+    <div *ngIf="pagina==3" class="col col-lg-9">
+      <h2 class="m-4">Adrese</h2>
+        <div class=" card shadow-lg p-1">
+
+          <div class="row">
+
+          <div class="col-6 text-center mt-3">
+            <span class="fs-4 ">Adresa mea</span>
+            <hr>
+            <span class="m-3 row">Tara : Romania</span>
+            <span class="m-3 row">Judet : Suceava</span>
+            <span class="m-3 row">Oras : Liteni</span>
+            <span class="m-3 row">Strada : Teste</span>
+            <span class="m-3 row">Numarul : 13</span>
+            <span class="m-3 row">Telefon : 123123123</span>
+
+          </div>
+
+          <div class="col-6 text-center mt-3">
+            <span class="fs-4">Date facturare</span>
+            <hr>
+            <span class="m-3 row">Tara : Romania</span>
+            <span class="m-3 row">Judet : Suceava</span>
+            <span class="m-3 row">Oras : Liteni</span>
+            <span class="m-3 row">Strada : Teste</span>
+            <span class="m-3 row">Numarul : 13</span>
+            <span class="m-3 row">Telefon : 123123123</span>
+          </div>
+          </div>
+
+          <div class="col-lg-12 text-center">
+           <button class="btn btn-outline-dark col-4 m-3">Modifica adresa</button>
+          </div>
+        </div>
+
+    </div>
+    <!-- Comenzi -->
+    <div *ngIf="pagina==4" class=" col col-lg-9 ">
+      <h2 class="m-4">Comenzi </h2>
+      <div class="card shadow-lg p-1">
+        <div class="cmd m-4 " *ngFor="let item of [1,2,3,4,5,6,7,8,9]">
+          <span class=" row">Comanada : #123123123</span>
+          <span class=" row">Total comanda : 123 Ron</span>
+          <span class=" row">Plasata pe : 12.12.2012</span>
+          <button class="btn btn-outline-dark float-end">Vezi Comanda</button>
+          <hr class="m-2">
+        </div>
+      </div>
+    </div>
+    <!-- Retur produse -->
+    <div *ngIf="pagina==5" class="col col-lg-9">
+      <h2 class="m-4">Comenzi eligibile pentru retur </h2>
+      <div class="card shadow-lg p-1">
+        <div class="cmd m-4 " *ngFor="let item of [1,2]">
+          <span class=" row">Comanada : #123123123</span>
+          <span class=" row">Total comanda : 123 Ron</span>
+          <span class=" row">Plasata pe : 12.12.2012</span>
+          <button class="btn btn-outline-dark float-end">Vezi Comanda</button>
+          <hr class="m-2">
+        </div>
+      </div>
+      <h2 class="m-4">Retur produse </h2>
+      <div class=" card shadow-lg p-1">
+        <div class="row m-4">
+          <div class="col-md-6" >
+            <label for="retur" class="form-label">Comanda #</label>
+            <input type="email" class="form-control" id="retur">
+          </div>
+          <div class="col-md-6">
+            <label for="mobile1" class="form-label">Numar de telefon</label>
+            <input type="label" class="form-control" id="mobile1">
+          </div>
+          <div class="text-center col-5">
+            <button class="btn btn-outline-dark col-5 m-3">Returneaza</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
+
 </div>
