@@ -9,51 +9,59 @@ import { User } from '../model/User';
 })
 export class UserServiceService {
   loggedinUser!: string;
-  userToEdit! : User;
+  userToEdit!: User;
   Users = [];
-  constructor(private router :Router,) { }
+  constructor(private router: Router,) { }
 
-  addUser(user: User){
+  addUser(user: User) {
     let users = [];
-    if(localStorage.getItem('Users')){
+    if (localStorage.getItem('Users')) {
       users = JSON.parse(localStorage.getItem('Users')!);
       users = [user, ...users];
     }
-    else
-    {
+    else {
       users = [user];
     }
-    localStorage.setItem('Users',JSON.stringify(users));
+    localStorage.setItem('Users', JSON.stringify(users));
   }
-  getUser(username:string){
+  getUser(email: string) {
     let UserArray = [];
-    if(localStorage.getItem('Users')){
+    if (localStorage.getItem('Users')) {
       UserArray = JSON.parse(localStorage.getItem('Users')!);
     }
-    const index = UserArray.findIndex((p: { userName: any;}) => p.userName === username);
+    const index = UserArray.findIndex((p: { email: any; }) => p.email === email);
     this.Users = JSON.parse(localStorage.getItem('Users')!);
     this.userToEdit = this.Users[index];
     return this.Users[index];
   }
-  authUser(user:any){
+
+  authUser(user: any) {
     let UserArray = [];
-    if(localStorage.getItem('Users')){
+    if (localStorage.getItem('Users')) {
       UserArray = JSON.parse(localStorage.getItem('Users')!);
     }
-    const token = UserArray.find((p: { userName: any; password: any; }) => p.userName === user.userName && p.password === user.password);
+    const token = UserArray.find((p: { email: any; password: any; }) => p.email === user.email && p.password === user.password);
 
-    if(token){
-      localStorage.setItem('token',token.userName);
+    if (token) {
+      localStorage.setItem('token', token.email);
+      this.router.navigate(['/user/profile/1']);
+
       alertyfy.success("Login reusit!");
-      this.router.navigate(['/']);
-    }else
-    {
+      return true;
+    } else {
       alertyfy.error('User sau parola gresita!')
+      return false;
     }
   }
-  upUsers(){
 
-    localStorage.setItem('Users',JSON.stringify(this.Users))
+  reload() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  }
+  upUsers() {
+    localStorage.setItem('token', this.userToEdit.email);
+    localStorage.setItem('Users', JSON.stringify(this.Users))
   }
   loggedin() {
     this.loggedinUser = localStorage.getItem('token')!;

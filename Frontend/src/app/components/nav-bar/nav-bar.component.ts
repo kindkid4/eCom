@@ -13,13 +13,16 @@ export class NavBarComponent implements OnInit {
   public wasInside = true;
   user! : User;
   public text!: String;
+  ok! :boolean;
   url = '';
   constructor(public userService: UserServiceService,
     private router: Router) { }
 
-  async ngOnInit() {
+  ngOnInit() {
+
     this.user = this.userService.getUser(this.userService.loggedin());
-    this.url = this.user.pfp;
+    this.url = this.userService.userToEdit.pfp;
+
   }
 
   reload() {
@@ -42,9 +45,11 @@ export class NavBarComponent implements OnInit {
   }
 
 
-  inLogin(loginForm: NgForm) {
-    this.userService.authUser(loginForm.value);
-    this.reload();
+  onLogin(loginForm: NgForm) {
+    if(this.userService.authUser(loginForm.value))
+      this.reload();
+    else
+      return
   }
 
   loggedin() {

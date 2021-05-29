@@ -17,19 +17,42 @@ export class UserProfileComponent implements OnInit {
   passChange: number = 0;
   url = '';
   user!: User;
-  tara ='';
-  judet ='';
+  tara = '';
+  judet = '';
   oras = '';
   numar = 0;
   strada = '';
+  password = '';
+  passwordConfirm = ''
+  passwordOld = '';
   constructor(private route: ActivatedRoute, private userService: UserServiceService, private formB: FormBuilder,) { }
 
   ngOnInit(): void {
     this.pagina = this.route.snapshot.params['page'];
     this.user = this.userService.getUser(this.userService.loggedin());
     this.url = this.user.pfp;
+
   }
 
+  changeProfile() {
+    if (this.passChange === 1)
+      if (this.password != this.passwordConfirm || this.passwordOld != this.user.password)
+        alertyfy.error('Detalii introduse incorect!');
+      else {
+        this.userService.userToEdit.password = this.password;
+        alertyfy.success('Date salvate!');
+        this.userService.upUsers();
+      }
+
+    else {
+      this.userService.userToEdit.userName = this.user.userName;
+      this.userService.userToEdit.email = this.user.email;
+      this.userService.userToEdit.mobile = this.user.mobile;
+      alertyfy.success('Date salvate!');
+      this.userService.upUsers();
+    }
+
+  }
 
   reload() {
     setTimeout(() => {
@@ -44,6 +67,7 @@ export class UserProfileComponent implements OnInit {
     this.userService.userToEdit.numar = this.user.numar;
     this.userService.upUsers();
     alertyfy.success('Data modificate!');
+    this.reload();
   }
 
   onSelectFile(event) {

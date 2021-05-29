@@ -12,7 +12,7 @@
         <br />
         <input id="fileInput" type='file' (change)="onSelectFile($event)">
 
-        <span class="text-center" style="font-size:x-large;"> test </span>
+        <span class="text-center" style="font-size:x-large;"> {{user.userName}} </span>
         <hr>
         <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
           <input type="radio" class="btn-check" routerLink="/user/profile/1" (click)="reload()" (click)="passChange=0"
@@ -87,18 +87,18 @@
     <!-- Informatii cont -->
     <div *ngIf="pagina==2" class="col col-lg-9">
       <h2 class="m-4">Informatii cont</h2>
-      <form class="card  card p-1 shadow-lg ">
+      <div class="card  card p-1 shadow-lg ">
         <div class="col-md-6 m-3">
           <label class="form-label">Nume</label>
-          <input type="email" class="form-control" value="{{user.userName}}">
+          <input value="{{user.userName}}" [(ngModel)]="user.userName" type="email" class="form-control" >
         </div>
         <div class="col-md-6 m-3">
           <label class="form-label">Email</label>
-          <input type="text" class="form-control" value="{{user.email}}">
+          <input type="text" value="{{user.email}}" [(ngModel)]="user.email" class="form-control" >
         </div>
         <div class="col-md-6 m-3">
           <label class="form-label">Telefon</label>
-          <input type="text" value="{{user.mobile}}" class="form-control">
+          <input type="text" value="{{user.mobile}}" [(ngModel)]="user.mobile" class="form-control">
         </div>
 
         <div class="col-12 m-3">
@@ -113,23 +113,23 @@
         <div *ngIf="passChange==1" style="margin-left: -12px;">
           <div class="col-md-6 m-3 ">
             <label class="form-label">Parola veche</label>
-            <input type="password" class="form-control">
+            <input type="password" [(ngModel)]="passwordOld" class="form-control">
           </div>
           <div class="col-md-6 m-3 ">
             <label class="form-label">Parola noua</label>
-            <input type="password" class="form-control">
+            <input type="password" [(ngModel)]="password" class="form-control">
           </div>
           <div class="col-md-6 m-3">
             <label class="form-label">Confirma parola noua</label>
-            <input type="password" class="form-control">
+            <input type="password" [(ngModel)]="passwordConfirm" class="form-control">
           </div>
         </div>
 
         <div class="col-12 m-3">
-          <button type="submit" class="btn btn-outline-dark">Salveaza</button>
+          <button type="submit" (click)="changeProfile()" class="btn btn-outline-dark">Salveaza</button>
         </div>
 
-      </form>
+      </div>
     </div>
     <!-- Adrese -->
     <div *ngIf="pagina==3" class="col col-lg-9">
@@ -164,7 +164,7 @@
                 <input type="text" value="{{user.numar}}" [(ngModel)]="user.numar" class="form-control">
               </div>
               <div class="form-group col-lg-12 text-center">
-                <button (click)="changeAdress()" class="btn btn-outline-dark col-8 m-3">Modifica adresa</button>
+                <button (click)="changeAdress()" (click)="reload()" class="btn btn-outline-dark col-8 m-3">Modifica adresa</button>
               </div>
             </div>
           </div>

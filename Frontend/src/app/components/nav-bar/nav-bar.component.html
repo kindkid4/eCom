@@ -52,13 +52,14 @@
               Login <span class="caret"></span>
             </button>
             <ul *dropdownMenu class="dropdown-menu" role="menu">
-              <form #loginForm='ngForm' (ngSubmit)="inLogin(loginForm)">
-                <li role="menuitem"><input required ngModel name="userName" class="m-3 form-control"></li>
+              <form #loginForm='ngForm' (ngSubmit)="onLogin(loginForm)">
+                <li role="menuitem"><input required ngModel name="email" class="m-3 form-control"></li>
                 <li role="menuitem"><input required type="password" ngModel name="password" class="m-3 form-control">
                 </li>
                 <li role="menuitem">
                   <button [disabled]="!loginForm.valid" type="submit"
-                    class="btn btn-dark col-5 offset-sm-1 mr-1">Login</button>
+                    class="btn btn-dark col-5 offset-sm-1 mr-1" >Login</button>
+
                   <button (click)="dropdown.isOpen = !dropdown.isOpen" routerLink="user/register"
                     class=" btn btn-outline-dark col-5 offset-sm-1">Register</button>
                 </li>
@@ -79,10 +80,10 @@
 
         <div *ngIf="loggedin()" class="dropdown mr-5" dropdown>
 
-          <a href="#" class="dropdown-toggle text-light row text-center" dropdownToggle (click)="false">
-            <p-avatar class="col" shape="circle">
-              <img  [src]="url ? url: 'https://www.w3schools.com/howto/img_avatar.png'">
-            </p-avatar>
+          <a class="dropdown-toggle text-light row text-center" dropdownToggle (click)="false">
+
+              <img class="pfp-nav"  [src]="url ? url: 'https://www.w3schools.com/howto/img_avatar.png'">
+
             <span class="col mt-2">Bun venit {{user.userName}}</span>
           </a>
           <div class="dropdown-menu " style="margin-left: 0vw;" *dropdownMenu>
