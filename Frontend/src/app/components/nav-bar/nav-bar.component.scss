@@ -15,16 +15,20 @@ a:link {
 }
 
 a:visited {
-  color: white;
+  color          : white;
   text-decoration: none;
 }
 
 a:hover {
-  color: grey;
+  color          : grey;
   text-decoration: none;
 }
 
-
+.pfp {
+  border-radius: 50%;
+  height       : 190px;
+  width        : 190px;
+}
 
 
 .sidenav {
@@ -90,11 +94,12 @@ a:hover {
 .dropdown-menu>li {
   padding: 7px 35px;
 }
-.form-control{
+
+.form-control {
   width: 22vw;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   margin-left: -20vh;
-  margin-top:10px;
+  margin-top : 10px;
 }

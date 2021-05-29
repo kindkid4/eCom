@@ -3,28 +3,36 @@
     <!-- side profile -->
     <div class="col col-lg-3 align-items-center ">
       <div class="card p-1 shadow-lg">
-        <img class="pfp" src="../../../../assets/Images/logo.png"><i type="button" class="fs-2 fas fa-id-badge"></i>
-        <span class="text-center" style="font-size:x-large;">Poenaru Mihai Vladut</span>
+
+        <label class="hoverable ml-5 mt-5" for="fileInput">
+          <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
+          <div class="hover-text">Choose file</div>
+          <div class="background"></div>
+        </label>
+        <br />
+        <input id="fileInput" type='file' (change)="onSelectFile($event)">
+
+        <span class="text-center" style="font-size:x-large;"> test </span>
         <hr>
         <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
-          <input type="radio" class="btn-check" (click)="pagina=1" (click)="passChange=0" name="vbtn-radio" id="vbtn-radio1"
-            autocomplete="off">
+          <input type="radio" class="btn-check" routerLink="/user/profile/1" (click)="reload()" (click)="passChange=0"
+            name="vbtn-radio" id="vbtn-radio1" autocomplete="off">
           <label class="btn btn-outline-dark" for="vbtn-radio1">Contul meu</label>
 
-          <input type="radio" class="btn-check" (click)="pagina=2"  name="vbtn-radio" id="vbtn-radio2"
-            autocomplete="off">
+          <input type="radio" class="btn-check" routerLink="/user/profile/2" (click)="reload()" name="vbtn-radio"
+            id="vbtn-radio2" autocomplete="off">
           <label class="btn btn-outline-dark" for="vbtn-radio2">Informatii cont</label>
 
-          <input type="radio" class="btn-check" (click)="pagina=3" (click)="passChange=0" name="vbtn-radio" id="vbtn-radio3"
-            autocomplete="off">
+          <input type="radio" class="btn-check" routerLink="/user/profile/3" (click)="reload()" (click)="passChange=0"
+            name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
           <label class="btn btn-outline-dark" for="vbtn-radio3">Adrese</label>
 
-          <input type="radio" class="btn-check" (click)="pagina=4" (click)="passChange=0" name="vbtn-radio" id="vbtn-radio4"
-            autocomplete="off">
+          <input type="radio" class="btn-check" routerLink="/user/profile/4" (click)="reload()" (click)="passChange=0"
+            name="vbtn-radio" id="vbtn-radio4" autocomplete="off">
           <label class="btn btn-outline-dark" for="vbtn-radio4">Comenzi</label>
 
-          <input type="radio" class="btn-check" (click)="pagina=5" (click)="passChange=0" name="vbtn-radio" id="vbtn-radio5"
-            autocomplete="off">
+          <input type="radio" class="btn-check" routerLink="/user/profile/5" (click)="reload()" (click)="passChange=0"
+            name="vbtn-radio" id="vbtn-radio5" autocomplete="off">
           <label class="btn btn-outline-dark" for="vbtn-radio5">Retur produse</label>
         </div>
       </div>
@@ -35,8 +43,8 @@
       <h2 class="m-4">Sumar cont</h2>
       <div class="card p-1 shadow-lg">
         <span class="m-4 fs-3">Informatii de contact <i type="button" class="ml-5 fas fa-edit"></i></span>
-        <span class="m-2">Email : testtest@yahoo.com</span>
-        <span class="m-2">Telefon : 123123123</span>
+        <span class="m-2">Email : {{user.email}}</span>
+        <span class="m-2">Telefon : {{user.mobile}}</span>
         <hr class="m-2">
 
         <span class="m-4 fs-3">Comenzi recente <i class="ml-5 fas fa-list-alt"></i></span>
@@ -56,7 +64,7 @@
             <span class="m-3 row">Judet : Suceava</span>
             <span class="m-3 row">Oras : Liteni</span>
             <span class="m-3 row">Strada : Teste</span>
-            <span class="m-3 row">Numarul : 13</span>
+            <span class="m-3 row">numar : 13</span>
             <span class="m-3 row">Telefon : 123123123</span>
           </div>
 
@@ -67,7 +75,7 @@
             <span class="m-3 row">Judet : Suceava</span>
             <span class="m-3 row">Oras : Liteni</span>
             <span class="m-3 row">Strada : Teste</span>
-            <span class="m-3 row">Numarul : 13</span>
+            <span class="m-3 row">numar : 13</span>
             <span class="m-3 row">Telefon : 123123123</span>
           </div>
         </div>
@@ -81,20 +89,16 @@
       <h2 class="m-4">Informatii cont</h2>
       <form class="card  card p-1 shadow-lg ">
         <div class="col-md-6 m-3">
-          <label for="inputEmail4" class="form-label">Nume</label>
-          <input type="email" class="form-control" id="inputEmail4">
+          <label class="form-label">Nume</label>
+          <input type="email" class="form-control" value="{{user.userName}}">
         </div>
         <div class="col-md-6 m-3">
-          <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword4">
+          <label class="form-label">Email</label>
+          <input type="text" class="form-control" value="{{user.email}}">
         </div>
         <div class="col-md-6 m-3">
-          <label for="inputAddress" class="form-label">Email</label>
-          <input type="text" class="form-control" id="inputAddress">
-        </div>
-        <div class="col-md-6 m-3">
-          <label for="inputAddress" class="form-label">Telefon</label>
-          <input type="text" class="form-control" id="inputAddress" >
+          <label class="form-label">Telefon</label>
+          <input type="text" value="{{user.mobile}}" class="form-control">
         </div>
 
         <div class="col-12 m-3">
@@ -108,16 +112,16 @@
 
         <div *ngIf="passChange==1" style="margin-left: -12px;">
           <div class="col-md-6 m-3 ">
-            <label for="inputAddress" class="form-label">Parola veche</label>
-            <input type="text" class="form-control" id="inputAddress" >
+            <label class="form-label">Parola veche</label>
+            <input type="password" class="form-control">
           </div>
           <div class="col-md-6 m-3 ">
-            <label for="inputAddress" class="form-label">Parola noua</label>
-            <input type="text" class="form-control" id="inputAddress" >
+            <label class="form-label">Parola noua</label>
+            <input type="password" class="form-control">
           </div>
           <div class="col-md-6 m-3">
-            <label for="inputAddress" class="form-label">Confirma parola noua</label>
-            <input type="text" class="form-control" id="inputAddress" >
+            <label class="form-label">Confirma parola noua</label>
+            <input type="password" class="form-control">
           </div>
         </div>
 
@@ -130,38 +134,65 @@
     <!-- Adrese -->
     <div *ngIf="pagina==3" class="col col-lg-9">
       <h2 class="m-4">Adrese</h2>
-        <div class=" card shadow-lg p-1">
+      <div class=" card shadow-lg p-1">
 
-          <div class="row">
+        <div class="row">
 
-          <div class="col-6 text-center mt-3">
-            <span class="fs-4 ">Adresa mea</span>
-            <hr>
-            <span class="m-3 row">Tara : Romania</span>
-            <span class="m-3 row">Judet : Suceava</span>
-            <span class="m-3 row">Oras : Liteni</span>
-            <span class="m-3 row">Strada : Teste</span>
-            <span class="m-3 row">Numarul : 13</span>
-            <span class="m-3 row">Telefon : 123123123</span>
+          <div class="col-6 mt-3">
+            <div class="text-center"><span class="fs-4 text-ce">Adresa mea</span> </div>
+            <hr style="border:dotted">
 
+            <div>
+              <div class="form-group col-md-12 ">
+                <label class="form-label">Tara</label>
+                <input type="text" value="{{user.tara}}" [(ngModel)]="user.tara" class="form-control">
+              </div>
+              <div class="form-group col-md-12 ">
+                <label class="form-label">Judet</label>
+                <input type="text" value="{{user.judet}}" [(ngModel)]="user.judet" class="form-control">
+              </div>
+              <div class="form-group col-md-12">
+                <label class="form-label">Oras</label>
+                <input type="text" value="{{user.oras}}" [(ngModel)]="user.oras" class="form-control">
+              </div>
+              <div class=" form-group col-md-12 ">
+                <label class="form-label">Strada</label>
+                <input type="text" value="{{user.strada}}" [(ngModel)]="user.strada" class="form-control">
+              </div>
+              <div class="form-group col-md-12">
+                <label for="numar" class="form-label">Numar</label>
+                <input type="text" value="{{user.numar}}" [(ngModel)]="user.numar" class="form-control">
+              </div>
+              <div class="form-group col-lg-12 text-center">
+                <button (click)="changeAdress()" class="btn btn-outline-dark col-8 m-3">Modifica adresa</button>
+              </div>
+            </div>
           </div>
 
-          <div class="col-6 text-center mt-3">
-            <span class="fs-4">Date facturare</span>
-            <hr>
-            <span class="m-3 row">Tara : Romania</span>
-            <span class="m-3 row">Judet : Suceava</span>
-            <span class="m-3 row">Oras : Liteni</span>
-            <span class="m-3 row">Strada : Teste</span>
-            <span class="m-3 row">Numarul : 13</span>
-            <span class="m-3 row">Telefon : 123123123</span>
-          </div>
-          </div>
+          <div class="col-6 text-center mt-3 ">
+            <span class="fs-4 ">Date facturare</span>
+            <hr style="border:dotted">
+            <div class="col fs-4 ">
+              <span>Tara : </span><span>{{user.tara}}</span>
+              <hr>
+              <span>Judet : </span><span class="">{{user.judet}}</span>
+              <hr>
+              <span>Oras : </span><span>{{user.oras}} </span>
 
-          <div class="col-lg-12 text-center">
-           <button class="btn btn-outline-dark col-4 m-3">Modifica adresa</button>
+              <hr>
+              <span>Strada : </span><span>{{user.strada}} </span>
+              <hr>
+              <span>Numar :</span><span>{{user.numar}} </span>
+              <hr>
+              <span>Telefon : </span><span> {{user.mobile}}</span>
+              <hr>
+            </div>
+
           </div>
         </div>
+
+
+      </div>
 
     </div>
     <!-- Comenzi -->
@@ -192,7 +223,7 @@
       <h2 class="m-4">Retur produse </h2>
       <div class=" card shadow-lg p-1">
         <div class="row m-4">
-          <div class="col-md-6" >
+          <div class="col-md-6">
             <label for="retur" class="form-label">Comanda #</label>
             <input type="email" class="form-control" id="retur">
           </div>

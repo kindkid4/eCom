@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/model/user';
+import { UserBase } from 'src/app/model/UserBase';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import * as alertyfy from 'alertifyjs';
+import { User } from 'src/app/model/User';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
@@ -26,13 +27,17 @@ export class UserRegisterComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(8)]],
       confirmPassword: [null, Validators.required],
-      mobile: [null, [Validators.required, Validators.minLength(9), Validators.maxLength(9)]]
+      mobile: [null, [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      tara:[null],
+      judet:[null],
+      oras:[null],
+      strada:[null],
+      numarul:[null],
+      pfp:[null],
 
     }, { validators: [this.matchPassword, this.mobileisNumber] })
   }
   onSubmit() {
-
-    console.log(this.registerForm.value);
     this.userDidRegister = true;
     if (this.registerForm.valid) {
       this.userService.addUser(this.userData());
@@ -49,7 +54,14 @@ export class UserRegisterComponent implements OnInit {
       userName: this.userName.value,
       email: this.email.value,
       password: this.password.value,
-      mobile: this.mobile.value
+      mobile: this.mobile.value,
+      tara:'',
+      judet:'',
+      oras:'',
+      strada:'',
+      numar:0,
+      pfp:''
+
     }
   }
 

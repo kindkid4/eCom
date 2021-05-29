@@ -16,14 +16,16 @@
       <!-- search filter attempt -->
 
 
-      <label type="button" class="btn btn-dark btnSearch"><i class="fas fa-search ">
-          <span class="btnSearchText" routerLink="/product-search/{{searchText}}" (click)="reload()"> Cauta</span></i>
+      <label  type="button" class="btn btn-dark btnSearch">
+        <i class="fas fa-search " >
+          <span class="btnSearchText"  (click)="Search()" (click)="reload()"> Cauta</span></i>
       </label>
       <label routerLink="/" *ngIf="!loggedin()" style="margin-right: 7vw;"></label>
-      <label routerLink="/user/profile" *ngIf="loggedin()" type="button" class="btn btn-dark btnAcc">
+
+      <!-- <label routerLink="/user/profile" *ngIf="loggedin()" type="button" class="btn btn-dark btnAcc">
         <i class="fas fa-user-circle">
           <span class="btnAccText"> Acontul meu</span></i>
-      </label>
+      </label> -->
 
       <label routerLink="/cart" type="button" class="btn btn-dark btnBas">
         <i class="fas fa-shopping-basket"><i  *ngIf="itemInCart>=1" pBadge  value="{{itemInCart}}"></i>

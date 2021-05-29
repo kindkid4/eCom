@@ -1,17 +1,27 @@
 <div id="mySidenav" class="sidenav">
-  <a *ngIf="loggedin()" (click)="false">Welcome {{loggedinUser}}</a>
+<label  class="m-5">
+    <img *ngIf="loggedin()" class="pfp" [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
+  </label>
+  <br />
+
+  <!-- <input id="fileInput" type='file' (change)="onSelectFile($event)"> -->
+  <h1 (click)="false" class="m-3 text-center"  style="color:white">Bun venit <h1 *ngIf="loggedin()" >{{loggedinUser}}</h1></h1>
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-  <a routerLink="/" class="dropdown-item">About</a>
-  <a *ngIf="!loggedin()" (click)="closeNav()" class="dropdown-item" routerLink="user/register"
+  <a *ngIf="!loggedin()" (click)="closeNav()" (click)="reload()" class="dropdown-item" routerLink="user/register"
     routerLinkActive="active">Register</a>
-  <a *ngIf="!loggedin()" (click)="closeNav()" class="dropdown-item" routerLink="user/login"
+  <a *ngIf="!loggedin()" (click)="closeNav()" (click)="reload()" class="dropdown-item" routerLink="user/login"
     routerLinkActive="active">Login</a>
-  <a *ngIf="loggedin()" (click)="closeNav()" routerLink="/" class="dropdown-item"><i class="fas fa-tachometer-alt"></i>
-    View Dashbord</a>
-  <a *ngIf="loggedin()" (click)="closeNav()" routerLink="/" class="dropdown-item"><i class="fas fa-user-circle"></i> My
-    Profile</a>
-  <a *ngIf="loggedin()" (click)="closeNav()" routerLink="/" class="dropdown-item"><i class="fas fa-key"></i> Change
-    Password</a>
+  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/1" class="dropdown-item"><i class="fas fa-file-invoice"></i>
+    Sumar cont</a>
+  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/2" class="dropdown-item"><i
+      class="fas fa-user-circle"></i> Profil</a>
+  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/3" class="dropdown-item"><i class="fas fa-map-marked-alt"></i>
+    Adresa</a>
+  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/4" class="dropdown-item"><i class="fas fa-box-open"></i>
+    Comenzi</a>
+  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()"  routerLink="/user/profile/2" class="dropdown-item"><i class="fas fa-key"></i>
+    Schimba parola</a>
+
   <a *ngIf="loggedin()" (click)="onLogout()" routerLink="/" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>
     Logout</a>
 </div>
@@ -37,8 +47,8 @@
 
       <ul class="nav navbar-nav">
         <li>
-          <div *ngIf="!loggedin()" class="btn-group " dropdown #dropdown="bs-dropdown" [autoClose]="false">
-            <button dropdownToggle type="button" class="btn btn-dark dropdown-toggle">
+          <div *ngIf="!loggedin()"  class="btn-group " dropdown #dropdown="bs-dropdown" [autoClose]="false">
+            <button  dropdownToggle type="button" class="btn btn-dark dropdown-toggle">
               Login <span class="caret"></span>
             </button>
             <ul *dropdownMenu class="dropdown-menu" role="menu">
@@ -48,9 +58,9 @@
                 </li>
                 <li role="menuitem">
                   <button [disabled]="!loginForm.valid" type="submit"
-                    class="btn btn-dark col-5 offset-sm-1 mr-1" >Login</button>
+                    class="btn btn-dark col-5 offset-sm-1 mr-1">Login</button>
                   <button (click)="dropdown.isOpen = !dropdown.isOpen" routerLink="user/register"
-                    class=" btn btn-outline-dark col-5 offset-sm-1"  >Register</button>
+                    class=" btn btn-outline-dark col-5 offset-sm-1">Register</button>
                 </li>
               </form>
               <li role="menuitem" class="text-center"><span type="button" (click)="dropdown.isOpen = !dropdown.isOpen"
@@ -68,18 +78,32 @@
 
 
         <div *ngIf="loggedin()" class="dropdown mr-5" dropdown>
-          <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
-            Welcome {{loggedinUser}}
+
+          <a href="#" class="dropdown-toggle text-light row text-center" dropdownToggle (click)="false">
+            <p-avatar class="col" shape="circle">
+              <img  [src]="url ? url: 'https://www.w3schools.com/howto/img_avatar.png'">
+            </p-avatar>
+            <span class="col mt-2">Bun venit {{user.userName}}</span>
           </a>
-          <div class="dropdown-menu" *dropdownMenu>
-            <a href="#" class="dropdown-item" style="color: black;">
-              <i class="fas fa-tachometer-alt" style="color: black;"></i> View Dashbord</a>
-            <a href="#" class="dropdown-item" style="color: black;">
-              <i class="fas fa-user-circle"></i> My Profile</a>
-            <a href="#" class="dropdown-item" style="color: black;">
-              <i class="fas fa-key"></i> Change Password</a>
-            <a (click)="onLogout()" class="dropdown-item" style="color: black;">
-              <i class="fas fa-sign-out-alt"></i> Logout</a>
+          <div class="dropdown-menu " style="margin-left: 0vw;" *dropdownMenu>
+
+            <a routerLink="/user/profile/1" (click)="reload()"  class="dropdown-item" style="color: black;"><i class="fas fa-file-invoice "
+                style="color: black;"></i> Sumar cont </a>
+
+            <a routerLink="/user/profile/2" (click)="reload()"  class="dropdown-item" style="color: black;"><i
+                class="fas fa-user-circle"></i> Profil </a>
+
+            <a routerLink="/user/profile/3" (click)="reload()"  href="#" class="dropdown-item " style="color: black;"><i
+                class="fas fa-map-marked-alt"></i> Adrese </a>
+
+            <a routerLink="/user/profile/4" (click)="reload()" href="#" class="dropdown-item" style="color: black;"><i
+                class="fas fa-box-open"></i> Comenzi </a>
+
+            <a routerLink="/user/profile/2" (click)="reload()" href="#" class="dropdown-item" style="color: black;"><i
+                class="fas fa-key"></i> Schimba parola </a>
+
+            <a (click)="onLogout()" routerLink="/" class="dropdown-item" style="color: black;"><i class="fas fa-sign-out-alt"> </i>
+              Logout</a>
           </div>
         </div>
 

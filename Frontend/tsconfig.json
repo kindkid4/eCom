@@ -30,6 +30,7 @@
     "strictPropertyInitialization": false,
     "noImplicitReturns": false,
     "strictNullChecks":false,
+    "noImplicitAny": false,
 
   }
 }
