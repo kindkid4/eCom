@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -10,18 +11,20 @@ import { ProductService } from 'src/app/services/product.service';
 export class HeaderComponent implements OnInit {
   loggedinUser!: string;
   value = '';
-  itemInCart! : number ;
+  itemInCart!: number;
   public wasInside = true;
   searchText = '';
   products!: Array<any>;
-
-  constructor(private productService: ProductService,private cartService:CartService) { }
+  constructor(private productService: ProductService, private cartService: CartService,
+    private router: Router) { }
 
   ngOnInit(): void {
-  this.products = this.productService.getProducts();
-  this.cartService.cartItems.subscribe((d: string | any[]) => {
-    this.itemInCart = d.length;
-  })
+    this.products = this.productService.getProducts();
+    this.cartService.cartItems.subscribe((d: string | any[]) => {
+      this.itemInCart = d.length;
+
+    })
+
   }
 
 
@@ -31,6 +34,14 @@ export class HeaderComponent implements OnInit {
 
     this.searchText = "";
     this.wasInside = true;
+  }
+
+  Search() {
+    if (this.searchText == '')
+    this.router.navigate(['/'])
+    else {
+      this.router.navigate(['/product-search/' + this.searchText]);
+    }
   }
   reload() {
     setTimeout(() => {

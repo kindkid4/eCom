@@ -48,7 +48,7 @@ const routes: Routes = [
   { path: 'product-category/:category', component: ProductCategoryComponent },
   { path: 'product-search/:title', component: ProductSearchComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'user/profile', component: UserProfileComponent },
+  { path: 'user/profile/:page', component: UserProfileComponent },
   { path: '**', component: HomeComponent },
 ];
 

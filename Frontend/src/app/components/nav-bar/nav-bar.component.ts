@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/User';
 import { UserServiceService } from 'src/app/services/user-service.service';
 @Component({
   selector: 'app-nav-bar',
@@ -10,19 +11,25 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 export class NavBarComponent implements OnInit {
   public loggedinUser!: string;
   public wasInside = true;
+  user! : User;
   public text!: String;
+  url = '';
   constructor(public userService: UserServiceService,
     private router: Router) { }
 
-  ngOnInit(): void {
-
+  async ngOnInit() {
+    this.user = this.userService.getUser(this.userService.loggedin());
+    this.url = this.user.pfp;
   }
 
-
+  reload() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  }
 
   @HostListener('click')
   clickInside() {
-    console.log("clicked inside");
     this.wasInside = true;
   }
 
@@ -37,6 +44,7 @@ export class NavBarComponent implements OnInit {
 
   inLogin(loginForm: NgForm) {
     this.userService.authUser(loginForm.value);
+    this.reload();
   }
 
   loggedin() {
@@ -44,6 +52,7 @@ export class NavBarComponent implements OnInit {
   }
   onLogout() {
     this.userService.onLogout();
+    this.reload();
   }
   openNav() {
     document.getElementById("mySidenav")!.style.width = "280px";
