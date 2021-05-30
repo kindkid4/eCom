@@ -53,7 +53,6 @@ export class UserServiceService {
       return false;
     }
   }
-
   reload() {
     setTimeout(() => {
       window.location.reload();
