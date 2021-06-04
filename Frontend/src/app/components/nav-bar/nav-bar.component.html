@@ -1,114 +1,172 @@
+<!-- SideNav -->
 <div id="mySidenav" class="sidenav">
-<label  class="m-5">
+  <label class="m-5">
     <img *ngIf="loggedin()" class="pfp" [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
   </label>
   <br />
-
-  <!-- <input id="fileInput" type='file' (change)="onSelectFile($event)"> -->
-  <h1 (click)="false" class="m-3 text-center"  style="color:white">Bun venit <h1 *ngIf="loggedin()" >{{loggedinUser}}</h1></h1>
+  <h1 (click)="false" class="m-3 text-center" style="color:white">Bun venit <h1 *ngIf="loggedin()">{{user.userName}}</h1>
+  </h1>
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
   <a *ngIf="!loggedin()" (click)="closeNav()" (click)="reload()" class="dropdown-item" routerLink="user/register"
     routerLinkActive="active">Register</a>
   <a *ngIf="!loggedin()" (click)="closeNav()" (click)="reload()" class="dropdown-item" routerLink="user/login"
     routerLinkActive="active">Login</a>
-  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/1" class="dropdown-item"><i class="fas fa-file-invoice"></i>
+  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/1" class="dropdown-item"><i
+      class="fas fa-file-invoice"></i>
     Sumar cont</a>
   <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/2" class="dropdown-item"><i
       class="fas fa-user-circle"></i> Profil</a>
-  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/3" class="dropdown-item"><i class="fas fa-map-marked-alt"></i>
+  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/3" class="dropdown-item"><i
+      class="fas fa-map-marked-alt"></i>
     Adresa</a>
-  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/4" class="dropdown-item"><i class="fas fa-box-open"></i>
+  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/4" class="dropdown-item"><i
+      class="fas fa-box-open"></i>
     Comenzi</a>
-  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()"  routerLink="/user/profile/2" class="dropdown-item"><i class="fas fa-key"></i>
+  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/2" class="dropdown-item"><i
+      class="fas fa-key"></i>
     Schimba parola</a>
-
   <a *ngIf="loggedin()" (click)="onLogout()" routerLink="/" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>
     Logout</a>
 </div>
-
-<nav class="navbar navbar-expand-lg bg-dark">
+<!-- NavBar -->
+<nav class="navbar sticky-top navbar-expand-lg bg-dark">
   <button (click)="openNav()" class="navbar-toggler  btn-close-white" type="button" data-toggle="collapse"
     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
     aria-label="Toggle navigation">
     <span><i class="fas fa-bars"></i></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
-      </li>
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <div class="col col-2"></div>
+    <!-- Category Select -->
+    <ul class="navbar-nav col col-6">
       <li class="nav-item">
-        <a class="nav-link" href="#">Produse(work in progress)</a>
-      </li>
-
-    </ul>
-    <div>
-
-      <ul class="nav navbar-nav">
-        <li>
-          <div *ngIf="!loggedin()"  class="btn-group " dropdown #dropdown="bs-dropdown" [autoClose]="false">
-            <button  dropdownToggle type="button" class="btn btn-dark dropdown-toggle">
-              Login <span class="caret"></span>
+        <div class="dropdown-container">
+          <div class="btn-group " dropdown [insideClick]="true" [autoClose]="true" container="body">
+            <button id="button-nested" dropdownToggle type="button" class="btn btn-outline-light dropdown-toggle ml-5"
+              aria-controls="dropdown-nested">
+              <i class="fas fa-bars"></i> Produse <span class="caret"></span>
             </button>
-            <ul *dropdownMenu class="dropdown-menu" role="menu">
-              <form #loginForm='ngForm' (ngSubmit)="onLogin(loginForm)">
-                <li role="menuitem"><input required ngModel name="email" class="m-3 form-control"></li>
-                <li role="menuitem"><input required type="password" ngModel name="password" class="m-3 form-control">
-                </li>
-                <li role="menuitem">
-                  <button [disabled]="!loginForm.valid" type="submit"
-                    class="btn btn-dark col-5 offset-sm-1 mr-1" >Login</button>
 
-                  <button (click)="dropdown.isOpen = !dropdown.isOpen" routerLink="user/register"
-                    class=" btn btn-outline-dark col-5 offset-sm-1">Register</button>
-                </li>
-              </form>
-              <li role="menuitem" class="text-center"><span type="button" (click)="dropdown.isOpen = !dropdown.isOpen"
-                  routerLink="/">Recuperare parola</span></li>
+            <ul id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
+              <li role="menuitem" dropdown container="body" class="text-center  categTitle">
+                <div dropdownToggle class="dropdown-toggle" style="display: block;">
+                  <span type="button">Laptopuri</span>
+                </div>
+
+
+                <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-56px" role="menu">
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Laptopuri</span></li>
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Laptop gaming</span></li>
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Laptop multimedia</span></li>
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Laptop office</span></li>
+                </ul>
+              </li>
+              <li role="menuitem" dropdown container="body" class="text-center categTitle">
+                <span dropdownToggle class=" dropdown-toggle  " type="button">Mobile</span>
+                <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-112px" role="menu">
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Telefoane</span></li>
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Tablete</span></li>
+                </ul>
+              </li>
+              <li role="menuitem" dropdown container="body" class="text-center categTitle">
+                <span dropdownToggle class="dropdown-toggle " type="button">Televizoare</span>
+                <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-169px" role="menu">
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Televizoare</span></li>
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Full HD & HD</span></li>
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">4K UHD</span></li>
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Smart TV</span></li>
+                </ul>
+              </li>
+              <li role="menuitem" dropdown container="body" class="text-center categTitle">
+                <span dropdownToggle class="dropdown-toggle " type="button">Componente PC</span>
+                <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-225px" role="menu">
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Procesoare</span></li>
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Placi Video</span></li>
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Placi de baza</span></li>
+                  <li role="menuitem"><span class="dropdown-item" routerLink="/">SSD</span></li>
+                </ul>
+              </li>
+
             </ul>
-          </div>
-        </li>
-
-        <li *ngIf="!loggedin()" class="nav-item ml-5 mr-5">
-          <a class="nav-link" routerLink="user/register" routerLinkActive="active">
-            Register
-          </a>
-        </li>
-
-
-
-        <div *ngIf="loggedin()" class="dropdown mr-5" dropdown>
-
-          <a class="dropdown-toggle text-light row text-center" dropdownToggle (click)="false">
-
-              <img class="pfp-nav"  [src]="url ? url: 'https://www.w3schools.com/howto/img_avatar.png'">
-
-            <span class="col mt-2">Bun venit {{user.userName}}</span>
-          </a>
-          <div class="dropdown-menu " style="margin-left: 0vw;" *dropdownMenu>
-
-            <a routerLink="/user/profile/1" (click)="reload()"  class="dropdown-item" style="color: black;"><i class="fas fa-file-invoice "
-                style="color: black;"></i> Sumar cont </a>
-
-            <a routerLink="/user/profile/2" (click)="reload()"  class="dropdown-item" style="color: black;"><i
-                class="fas fa-user-circle"></i> Profil </a>
-
-            <a routerLink="/user/profile/3" (click)="reload()"  href="#" class="dropdown-item " style="color: black;"><i
-                class="fas fa-map-marked-alt"></i> Adrese </a>
-
-            <a routerLink="/user/profile/4" (click)="reload()" href="#" class="dropdown-item" style="color: black;"><i
-                class="fas fa-box-open"></i> Comenzi </a>
-
-            <a routerLink="/user/profile/2" (click)="reload()" href="#" class="dropdown-item" style="color: black;"><i
-                class="fas fa-key"></i> Schimba parola </a>
-
-            <a (click)="onLogout()" routerLink="/" class="dropdown-item" style="color: black;"><i class="fas fa-sign-out-alt"> </i>
-              Logout</a>
           </div>
         </div>
 
-      </ul>
-    </div>
+      </li>
+      <li class="nav-item active ml-3">
+        <a class="nav-link" routerLink="/">Home<span class="sr-only"></span></a>
+      </li>
+
+    </ul>
+    <!-- Category Select -->
+
+    <ul class="nav navbar-nav">
+      <li>
+        <div *ngIf="!loggedin()" class="btn-group " dropdown #dropdown="bs-dropdown" [insideClick]="true"
+          [autoClose]="true">
+          <button dropdownToggle type="button" class="btn btn-dark dropdown-toggle">
+            Login <span class="caret"></span>
+          </button>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <form #loginForm='ngForm' (ngSubmit)="onLogin(loginForm)">
+              <li role="menuitem"><input placeholder="Email@yahoo.com" required ngModel name="email"
+                  class="m-3 form-control"></li>
+              <li role="menuitem"><input placeholder="Parola" required type="password" ngModel name="password"
+                  class="m-3 form-control">
+              </li>
+              <li role="menuitem">
+                <button [disabled]="!loginForm.valid" type="submit"
+                  class="btn btn-dark col-5 offset-sm-1 mr-1">Login</button>
+
+                <button (click)="dropdown.isOpen = !dropdown.isOpen" routerLink="user/register"
+                  class=" btn btn-outline-dark col-5 offset-sm-1">Register</button>
+              </li>
+            </form>
+            <li role="menuitem" class="text-center"><span type="button" (click)="dropdown.isOpen = !dropdown.isOpen"
+                routerLink="/">Recuperare parola</span></li>
+          </ul>
+        </div>
+      </li>
+
+      <li *ngIf="!loggedin()" class="nav-item ml-5 mr-5">
+        <a class="nav-link" routerLink="user/register" routerLinkActive="active">
+          Register
+        </a>
+      </li>
+
+
+
+      <div *ngIf="loggedin()" class="dropdown mr-5" dropdown>
+
+        <a class="dropdown-toggle text-light row text-center" type="button" dropdownToggle (click)="false">
+
+          <img class="pfp-nav" [src]="url ? url: 'https://www.w3schools.com/howto/img_avatar.png'">
+
+          <span class="col mt-2">Bun venit {{user.userName}}</span>
+        </a>
+        <div class="dropdown-menu " style="margin-left: 105px;" *dropdownMenu>
+
+          <a routerLink="/user/profile/1" (click)="reload()" class="dropdown-item" style="color: black;"><i
+              class="fas fa-file-invoice " style="color: black;"></i> Sumar cont </a>
+
+          <a routerLink="/user/profile/2" (click)="reload()" class="dropdown-item" style="color: black;"><i
+              class="fas fa-user-circle"></i> Profil </a>
+
+          <a routerLink="/user/profile/3" (click)="reload()" href="#" class="dropdown-item " style="color: black;"><i
+              class="fas fa-map-marked-alt"></i> Adrese </a>
+
+          <a routerLink="/user/profile/4" (click)="reload()" href="#" class="dropdown-item" style="color: black;"><i
+              class="fas fa-box-open"></i> Comenzi </a>
+
+          <a routerLink="/user/profile/2" (click)="reload()" href="#" class="dropdown-item" style="color: black;"><i
+              class="fas fa-key"></i> Schimba parola </a>
+
+          <a (click)="onLogout()" routerLink="/" class="dropdown-item" style="color: black;"><i
+              class="fas fa-sign-out-alt"> </i>
+            Logout</a>
+        </div>
+      </div>
+
+    </ul>
   </div>
 </nav>
