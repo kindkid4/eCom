@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
   cart:Product[] = []
   totalSum:number = 0;
   loggedinUser!: string;
+  productList!: any[];
   constructor(
     private cartService:CartService,
     private router: Router
@@ -26,6 +27,7 @@ export class CartComponent implements OnInit {
     this.cart.forEach((exist: Product, index: any) => {
       this.totalSum+= exist.price*exist.qty
     });
+    this.cartService.getAllCart().subscribe(data => this.productList = data);
   }
   removeQuant(item:Product){
     this.cartService.deleteItem(item.id);
