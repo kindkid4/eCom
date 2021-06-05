@@ -10,7 +10,7 @@ import { Product } from '../model/product';
 export class CartService {
   placeholder: Product[] = [];
   cartItems = new BehaviorSubject([]);
-
+  sumToPay!: number;
   numOfItems: any;
   cartTotal = 0;
   constructor() {
@@ -18,6 +18,14 @@ export class CartService {
     if (ls) this.cartItems.next(ls);
   }
 
+  getSumOfCart() {
+    let zum = 0;
+    let cart = JSON.parse(localStorage.getItem('cart')!);
+    cart.forEach((x: { qty: number; price: number; })=>zum+=x.qty * x.price );
+    if(zum<=4999)
+      zum+=15;
+    return +zum;
+  }
   addItem(product: Product) {
     const ls = this.getCartData();
     let exist: Product;
@@ -70,8 +78,11 @@ export class CartService {
         this.setCartData(ls);
       }
 
-      this.placeholder = this.getCartData();
+    this.placeholder = this.getCartData();
   }
-
+  deleteCart(){
+    this.placeholder = [];
+    this.setCartData(this.placeholder);
+  }
 
 }

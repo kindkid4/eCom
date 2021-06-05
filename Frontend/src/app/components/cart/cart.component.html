@@ -54,7 +54,8 @@
     <span *ngIf="totalSum>=5000" class="float-end fs-2" style="margin-top: -13px;">{{totalSum}} Ron</span>
   </span>
     <hr>
-    <button [disabled]="!loggedin()" class=" btn btn-outline-dark m-3">Comanda produsele</button>
+    <button *ngIf="!loggedin()" routerLink="/user/register" class=" btn btn-outline-dark m-3">Finalizare comanda</button>
+    <button *ngIf="loggedin()" (click)="sendSum()"class=" btn btn-outline-dark m-3">Finalizare comanda</button>
   </form>
 
 </div>

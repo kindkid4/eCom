@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { Product } from 'src/app/model/product';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -12,9 +13,14 @@ export class CartComponent implements OnInit {
   totalSum:number = 0;
   loggedinUser!: string;
   constructor(
-    private cartService:CartService
+    private cartService:CartService,
+    private router: Router
   ) { }
 
+  sendSum(){
+    this.cartService.sumToPay = this.totalSum;
+    this.router.navigate(['/checkout']);
+  }
   ngOnInit(): void {
     this.cart = this.cartService.getCartData();
     this.cart.forEach((exist: Product, index: any) => {

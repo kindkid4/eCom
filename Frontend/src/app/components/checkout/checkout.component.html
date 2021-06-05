@@ -1,1 +1,89 @@
-<p>checkout works!</p>
+<div class="container">
+  <div>
+    <div class="row text-center m-3">
+      <h1>Adresa de facturare</h1>
+    </div>
+    <div class="row ml-5">
+      <h5>Tara : {{user.tara}}</h5>
+      <h5>Judet: {{user.judet}}</h5>
+      <h5>Oras: {{user.oras}}</h5>
+      <h5>Strada: {{user.strada}}</h5>
+      <h5>Numar: {{user.numar}}</h5>
+    </div>
+    <button class="btn btn-outline-dark col-4 ml-5" routerLink="/user/profile/3">Schimba adresa</button>
+    <div class="row text-center m-3">
+      <h1>Adresa livrare</h1>
+    </div>
+    <div class="row ml-5">
+      <h5>Tara : {{user.tara}}</h5>
+      <h5>Judet: {{user.judet}}</h5>
+      <h5>Oras: {{user.oras}}</h5>
+      <h5>Strada: {{user.strada}}</h5>
+      <h5>Numar: {{user.numar}}</h5>
+    </div>
+    <div class="row text-center m-3">
+      <h1>Detalii plata</h1>
+    </div>
+    <div class="btn-group ml-5" role="group" aria-label="Basic radio toggle button group">
+      <input type="radio"  disabled class="btn-check " name="btnradio" id="btnradio1" autocomplete="off" >
+      <label  class="btn btn-outline-dark m-1" for="btnradio1">Online cu card bancar</label>
+
+      <input disabled type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+      <label class="btn btn-outline-dark m-1" for="btnradio2">Rate online</label>
+
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
+      <label class="btn btn-outline-dark m-1" for="btnradio3">Plata la livrare</label>
+    </div>
+  </div>
+  <div class="row text-center m-3">
+    <h1>Sumar comanda</h1>
+  </div>
+
+  <div class="mr-5">
+
+
+    <p-orderList  *ngIf="sum>=1" [value]="cart" [listStyle]="{'max-height':'30rem'}" >
+      <ng-template let-item pTemplate="item">
+        <div class="product-item">
+          <div class="image-container">
+            <img src="{{item.image}}" [alt]="item.title" class="product-image" />
+          </div>
+          <div class="product-list-detail">
+            <h5 class="p-mb-2">{{item.title}}</h5>
+            <i class="pi pi-tag product-category-icon"></i>
+            <span class="product-category">{{item.category}}</span><br>
+            <span class="product-category">Numar de produse : {{item.qty}}</span>
+          </div>
+          <div class="product-list-action">
+            <h6 class="p-mb-2">{{item.price*item.qty}} Ron</h6>
+            <span *ngIf="item.stock==0" class="product-badge status-outofstock">NOT IN STOCK</span>
+            <span *ngIf="item.stock>=7" class="product-badge status-instock">IN STOCK</span>
+            <span *ngIf="item.stock<=6 && item.stock>=1" class="product-badge status-lowstock">LOWSTOCK</span>
+          </div>
+        </div>
+      </ng-template>
+
+    </p-orderList>
+    <div class="row mt-2 mr-2" *ngIf="sum>=1">
+      <div class="col col-lg-8">
+
+      </div>
+
+      <form  class="card col-lg-4 ">
+        <span class="col  text-left mt-3">Subtotal: <span class="float-end fs-2" style="margin-top: -13px;">{{sum}} Ron</span> </span>
+        <hr>
+        <span class="col text-left mt-1">Transport: <span *ngIf="sum<=4999" class="float-end fs-2" style="margin-top: -13px;">15 Ron</span> <span *ngIf="sum>=5000" class="float-end fs-2" style="margin-top: -13px;">0 Ron</span></span>
+        <hr>
+        <span class="col text-left mt-1">Total final: <span  class="float-end fs-2" style="margin-top: -13px;">{{sum}} Ron</span>
+      </span>
+      </form>
+  </div>
+  <div class="row mt-4">
+    <button class="btn btn-dark col col-12" (click)="procComanda()">Plaseaza comanda</button>
+  </div>
+  <br>
+  <div class="row">
+    <button class="btn btn-outline-dark col col-12" routerLink="/">Intoarce-te in magazin</button>
+  </div>
+</div>
+
