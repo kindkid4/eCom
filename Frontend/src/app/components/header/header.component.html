@@ -4,8 +4,9 @@
 
       <img src="../../../assets/Images/logo.png" routerLink="/" type="button" class="logo">
       <!-- search filter attempt -->
-      <input type="text" class=" input text-center " [(ngModel)]="searchText" placeholder="Enter text to search">
+      <input type="text" class=" input text-center " [(ngModel)]="searchText" placeholder="Introduce textul pentru cautare!">
       <i type="button" *ngIf="searchText" (click)="searchText=''" class="xSearch fas fa-times"></i>
+
       <ul class="list-group  UL input alig text-center" *ngIf="searchText">
         <li class="list-group-item" (click)="searchText=''" (click)="reload()" routerLinkActive
           routerLink="/product-detail/{{product.id}}" type="button"
@@ -28,7 +29,7 @@
       </label> -->
 
       <label routerLink="/cart" type="button" class="btn btn-dark btnBas">
-        <i class="fas fa-shopping-basket"><i  *ngIf="itemInCart>=1" pBadge  value="{{itemInCart}}"></i>
+        <i class="fas fa-shopping-basket btnCart"><i  *ngIf="itemInCart>=1" pBadge  value="{{itemInCart}}"></i>
           <span class="btnBasText ml-2"> Cosul meu </span></i>
       </label>
 

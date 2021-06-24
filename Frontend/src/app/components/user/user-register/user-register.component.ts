@@ -27,7 +27,7 @@ export class UserRegisterComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(8)]],
       confirmPassword: [null, Validators.required],
-      mobile: [null, [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      mobile: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       tara:[null],
       judet:[null],
       oras:[null],
@@ -43,10 +43,10 @@ export class UserRegisterComponent implements OnInit {
       this.userService.addUser(this.userData());
       this.registerForm.reset();
       this.userDidRegister = false;
-      alertyfy.success('You have been registered successfuly!');
+      alertyfy.success('Ai fost inregistrat cu succes!');
     }
     else{
-      alertyfy.error('The fields are not correctly completed!');
+      alertyfy.error('Nu ai introdus corect datele necesare!');
     }
   }
   userData(): User {

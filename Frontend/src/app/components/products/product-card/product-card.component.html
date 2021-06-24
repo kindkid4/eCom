@@ -1,9 +1,8 @@
 <div class="card ">
   <div class="card-img-wrapper">
-
-    <img class="card-img-top" src="../../../../assets/Images/products/prop1.jpg">
+    <img *ngIf="product.category.includes('Televizor')" class="card-img-top " src="{{product.image}}">
+    <img *ngIf="product.category=='Telefon'" style="height: 168px;" class="card-img-top mt-3 mb-3" src="{{product.image}}">
   </div>
-
   <div class="card-body p-1">
     <div class="card-title text-center">
       <h6 type="button" style="max-height: 37px;overflow: hidden;" routerLink="/product-detail/{{product.id}}">
@@ -13,8 +12,8 @@
     </div>
     <h6 class="card-title text-center">
       Pret: <span class="font-hl">{{product.price}}</span> &nbsp;Ron &nbsp;|
-      <span *ngIf="stock>=1" style="color: green;">In stock</span>
-      <span *ngIf="stock<=0" style="color: red;">In stock</span>
+      <span *ngIf="product.stock>=1" style="color: green;">In stock</span>
+      <span *ngIf="product.stock<1" style="color: red;">In stock</span>
     </h6>
   </div>
    <h6 (click)="addToCart(product)" class="btn btn-outline-dark" >Adauga in cos</h6>

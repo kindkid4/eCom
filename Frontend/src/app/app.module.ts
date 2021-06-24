@@ -37,7 +37,6 @@ import {AvatarGroupModule} from 'primeng/avatargroup';
 import {StepsModule} from 'primeng/steps';
 import {CardModule} from 'primeng/card';
 
-// For MDB Angular Free
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },

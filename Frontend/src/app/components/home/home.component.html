@@ -1,7 +1,4 @@
-
-
-
-<div *ngFor="let category of categoryList" class="mb-3">
-  <h1 class="m-3" routerLink="/product-category/{{category.category}}">{{category.category}}</h1>
-  <app-product-list [category]="category.category" class="row "></app-product-list>
+<div  *ngFor="let category of categoryList" class="mb-3" >
+  <h1 class="m-3"  routerLink="/product-category/{{category.category}}">{{category.category}}</h1>
+  <app-product-list style="background-color:#01003d; border-radius: 15px;" [category]="category.category" class="row p-3"></app-product-list>
 </div>

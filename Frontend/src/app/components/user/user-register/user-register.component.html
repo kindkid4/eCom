@@ -7,11 +7,11 @@
       <div class="card-body">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="form-group col-12">
-            <label for="userName" class="form-label">Name<p class="d-inline" style="color: red;">*</p></label>
+            <label for="userName" class="form-label">Nume utilizator<p class="d-inline" style="color: red;">*</p></label>
             <input type="text" class="form-control" formControlName="userName">
             <span *ngIf="!userName.valid && (userName.touched || userDidRegister)" class="error-block">
               <span *ngIf="userName.hasError('required')">
-                Please provide a name!
+                Introdu un nume
               </span>
             </span>
           </div>
@@ -20,61 +20,61 @@
             <label for="email" class="form-label">Email<p class="d-inline" style="color: red;">*</p></label>
             <input type="text" class="form-control" formControlName="email">
             <span *ngIf="!email.valid && (email.touched || userDidRegister)" class="error-block">
-              <span *ngIf="email.hasError('required')">Provide an email id!
+              <span *ngIf="email.hasError('required')">Introdu un email!
               </span>
-              <span *ngIf="email.hasError('email')">Provide an valid email id!
+              <span *ngIf="email.hasError('email')">Emailul trebuie sa fie valid!
               </span>
             </span>
           </div>
 
           <div class="form-group col-12">
 
-            <label for="password" class="form-label">Password<p class="d-inline" style="color: red;">*</p></label>
+            <label for="password" class="form-label">Parola<p class="d-inline" style="color: red;">*</p></label>
             <input type="password" class="form-control" formControlName="password" />
 
             <span *ngIf="!password.valid && (password.touched || userDidRegister)" class="error-block">
               <span *ngIf="password.errors!['required']">
-                Please provide password!
+                Introdu o parola!
               </span>
               <span *ngIf="password.errors!.minlength">
-                Password shouldn't be lesser then 8 characters
+                Parola nu trebuie sa fie mai mica de 8 caractere!
               </span>
             </span>
           </div>
 
           <div class="form-group col-12">
-            <label for="password" class="form-label">Confirm Password<p class="d-inline" style="color: red;">*</p>
+            <label for="password" class="form-label">Reintroducere parola<p class="d-inline" style="color: red;">*</p>
               </label>
             <input type="password" class="form-control" formControlName="confirmPassword" />
             <span *ngIf="!confirmPassword.valid && (confirmPassword.touched || userDidRegister)" class="error-block">
               <span *ngIf="confirmPassword.hasError('required')">
-                Please confirm password!
+                Introdu parola inca o data!
               </span>
             </span>
             <span *ngIf="registerForm.hasError('notmatched') && confirmPassword.valid" class="error-block">
-              Password not matched!
+              Parola gresita!
             </span>
           </div>
 
           <div class="form-group col-12">
-            <label for="mobile" class="form-label">Mobile<p class="d-inline" style="color: red;">*</p></label>
+            <label for="mobile" class="form-label">Telefon<p class="d-inline" style="color: red;">*</p></label>
             <input type="text" class="form-control" formControlName="mobile">
             <span *ngIf="!mobile.valid && (mobile.touched || userDidRegister)" class="error-block">
               <span *ngIf="mobile.hasError('required')">
 
               </span>
-              Provide a valid mobile number !
+              Introdu un numar de telefon!
             </span>
             <span *ngIf="registerForm.hasError('notmobile') && mobile.valid" class="error-block">
-              Provide a valid mobile number!
+              Introdu un numar de telefon valid!
             </span>
           </div>
 
           <div class="form-group col-12">
-            <button type="submit" class="btn w-100 btn-dark">Register</button>
+            <button type="submit" class="btn w-100 btn-dark">Inregistrare</button>
           </div>
           <div class="form-group col-12">
-            <button type="reset" class="btn w-100 btn-outline-dark">Cancel</button>
+            <button type="reset"  class="btn w-100 btn-outline-dark">Inchide</button>
           </div>
         </form>
       </div>
@@ -87,13 +87,12 @@
 
     <h3>De ce sa iti creezi cont ?</h3>
     <ul>
-      <li>Reduci timpul de finalizare a comenzii prin salvarea datelor de facturare, livrare si plata</li>
+      <li>Reduci timpul de finalizare a comenzii prin salvarea datelor de facturare, livrare si plata.</li>
       <li>Verifici situatia comenzilor tale.</li>
-      <li> Salvezi produse in wishlist si faci liste de cumparaturi</li>
-      <li> Poti seta alerte de stoc</li>
+      <li>Esti primul care afla de promotiile noastre!</li>
     </ul>
     <div class="col-12">
-      <h2 class="text-center">Am deja cont</h2>
+      <h3 class="text-center">Am deja cont</h3>
       <app-user-login></app-user-login>
     </div>
     </div>

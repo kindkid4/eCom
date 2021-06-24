@@ -4,16 +4,35 @@
     <img *ngIf="loggedin()" class="pfp" [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
   </label>
   <br />
-  <h1 (click)="false" class="m-3 text-center" style="color:white">Bun venit <h1 *ngIf="loggedin()">{{user.userName}}</h1>
+  <h1 (click)="false" class="m-3 text-center" style="color:white">Bun venit <h1 *ngIf="loggedin()">{{user.userName}}
+    </h1>
   </h1>
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
   <a *ngIf="!loggedin()" (click)="closeNav()" (click)="reload()" class="dropdown-item" routerLink="user/register"
-    routerLinkActive="active">Register</a>
+    routerLinkActive="active">Inregistrare</a>
   <a *ngIf="!loggedin()" (click)="closeNav()" (click)="reload()" class="dropdown-item" routerLink="user/login"
     routerLinkActive="active">Login</a>
-  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/1" class="dropdown-item"><i
-      class="fas fa-file-invoice"></i>
-    Sumar cont</a>
+
+  <a *ngIf="loggedin()"    class="dropdown-item">
+    <div class="btn-group" dropdown>
+      <button id="button-basic" dropdownToggle type="button" class="btn-dark dropdown-toggle"
+              aria-controls="dropdown-basic">
+       Produse <span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+          role="menu" aria-labelledby="button-basic">
+        <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Telefon">Telefoane</a></li>
+        <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Televizor">Televizoare</a></li>
+        <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Componenta">Componente</a></li>
+        <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Laptop">Laptopuri</a>
+        </li>
+      </ul>
+    </div>
+  </a>
+
+  <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/cart" class="dropdown-item"><i
+      class="fas fa-shopping-basket"></i>
+    Cos cumparaturi</a>
   <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/2" class="dropdown-item"><i
       class="fas fa-user-circle"></i> Profil</a>
   <a *ngIf="loggedin()" (click)="closeNav()" (click)="reload()" routerLink="/user/profile/3" class="dropdown-item"><i
@@ -43,58 +62,67 @@
       <li class="nav-item">
         <div class="dropdown-container">
           <div class="btn-group " dropdown [insideClick]="true" [autoClose]="true" container="body">
+
             <button id="button-nested" dropdownToggle type="button" class="btn btn-outline-light dropdown-toggle ml-5"
               aria-controls="dropdown-nested">
               <i class="fas fa-bars"></i> Produse <span class="caret"></span>
             </button>
-
             <ul id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
-              <li role="menuitem" dropdown container="body" class="text-center  categTitle">
-                <div dropdownToggle class="dropdown-toggle" style="display: block;">
-                  <span type="button">Laptopuri</span>
+              <li dropdownToggle type="button" role="menuitem" dropdown container="body"
+                class="text-center  categTitle">
+                <div class="dropdown-toggle" style="display: block;">
+                  <span>Laptopuri</span>
                 </div>
 
 
-                <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-56px" role="menu">
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Laptopuri</span></li>
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Laptop gaming</span></li>
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Laptop multimedia</span></li>
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Laptop office</span></li>
+                <ul *dropdownMenu type="button" class="dropdown-menu ddNest" style="margin-top:-56px" role="menu">
+                  <li role="menuitem"><span class="dropdown-item" type="button"
+                      routerLink="/product-category/Laptop">Laptopuri</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Laptop gaming</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Laptop multimedia</span>
+                  </li>
+                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Laptop office</span></li>
                 </ul>
               </li>
-              <li role="menuitem" dropdown container="body" class="text-center categTitle">
-                <span dropdownToggle class=" dropdown-toggle  " type="button">Mobile</span>
+              <li role="menuitem" type="button" dropdownToggle dropdown container="body" class="text-center categTitle">
+                <span class=" dropdown-toggle  " type="button">Telefoane</span>
                 <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-112px" role="menu">
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Telefoane</span></li>
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Tablete</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button"
+                      routerLink="/product-category/Telefon">Telefoane</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Tablete</span></li>
                 </ul>
               </li>
-              <li role="menuitem" dropdown container="body" class="text-center categTitle">
-                <span dropdownToggle class="dropdown-toggle " type="button">Televizoare</span>
+              <li role="menuitem" type="button" dropdownToggle dropdown container="body" class="text-center categTitle">
+                <span class="dropdown-toggle " type="button">Televizoare</span>
                 <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-169px" role="menu">
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Televizoare</span></li>
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Full HD & HD</span></li>
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">4K UHD</span></li>
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Smart TV</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button"
+                      routerLink="/product-category/Televizor">Televizoare</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button"
+                      routerLink="/product-category/Full HD & HD">Full HD & HD</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/4K UHD">4K
+                      UHD</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button"
+                      routerLink="/product-category/Smart TV">Smart TV</span></li>
                 </ul>
               </li>
-              <li role="menuitem" dropdown container="body" class="text-center categTitle">
-                <span dropdownToggle class="dropdown-toggle " type="button">Componente PC</span>
+              <li role="menuitem" dropdownToggle dropdown container="body" class="text-center categTitle">
+                <span class="dropdown-toggle " type="button">Componente PC</span>
                 <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-225px" role="menu">
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Procesoare</span></li>
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Placi Video</span></li>
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">Placi de baza</span></li>
-                  <li role="menuitem"><span class="dropdown-item" routerLink="/">SSD</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Procesoare</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Placi Video</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Placi de baza</span></li>
+                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">SSD</span></li>
                 </ul>
               </li>
 
             </ul>
+
           </div>
         </div>
 
       </li>
       <li class="nav-item active ml-3">
-        <a class="nav-link" routerLink="/">Home<span class="sr-only"></span></a>
+        <a class="nav-link" routerLink="/">Acasa<span class="sr-only"></span></a>
       </li>
 
     </ul>
@@ -119,18 +147,18 @@
                   class="btn btn-dark col-5 offset-sm-1 mr-1">Login</button>
 
                 <button (click)="dropdown.isOpen = !dropdown.isOpen" routerLink="user/register"
-                  class=" btn btn-outline-dark col-5 offset-sm-1">Register</button>
+                  class=" btn btn-outline-dark col-5 offset-sm-1">Inregistrare</button>
               </li>
             </form>
-            <li role="menuitem" style="margin-left: 160px;"><span type="button" (click)="dropdown.isOpen = !dropdown.isOpen"
-                routerLink="/">Recuperare parola</span></li>
+            <li role="menuitem" style="margin-left: 160px;"><span type="button"
+                (click)="dropdown.isOpen = !dropdown.isOpen" routerLink="/">Recuperare parola</span></li>
           </ul>
         </div>
       </li>
 
       <li *ngIf="!loggedin()" class="nav-item ml-5 mr-5">
         <a class="nav-link" routerLink="user/register" routerLinkActive="active">
-          Register
+          Inregistrare
         </a>
       </li>
 

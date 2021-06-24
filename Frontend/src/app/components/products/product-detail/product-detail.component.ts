@@ -20,7 +20,7 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.galleryOptions = [
       {
-        width: '60%',
+        width: '40%',
         height: '500px',
         thumbnailsColumns: 3,
         previewZoom:true,
@@ -38,32 +38,20 @@ export class ProductDetailComponent implements OnInit {
 
     this.galleryImages = [
       {
-        small: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg',
-        medium: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg',
-        big: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg'
+        small: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_007_Dynamic3_Black.jpg',
+        medium: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_007_Dynamic3_Black.jpg',
+        big: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_007_Dynamic3_Black.jpg'
       },
       {
-        small: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg',
-        medium: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg',
-        big: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg'
+        small: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_008_Dynamic-Back_Black.jpg',
+        medium: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_008_Dynamic-Back_Black.jpg',
+        big: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_008_Dynamic-Back_Black.jpg'
       },
       {
-        small: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg',
-        medium: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg',
-        big: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg'
+        small: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_004_L-side_Black.jpg',
+        medium: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_004_L-side_Black.jpg',
+        big: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_004_L-side_Black.jpg'
       },
-      {
-        small: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg',
-        medium: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg',
-        big: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg'
-      },
-      {
-        small: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg',
-        medium: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg',
-        big: 'https://lcdn.altex.ro/media/catalog/product/2/e/2e29d0ff1c72a537798ce1cafe6a7579_154230_2.jpg'
-      },
-
-
 
     ];
   }
