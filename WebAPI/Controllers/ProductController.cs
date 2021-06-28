@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
         private readonly IUnitOfWork uow;
         private readonly IMapper mapper;
 
-        public ProductController(IUnitOfWork uow,IMapper mapper)
+        public ProductController(IUnitOfWork uow, IMapper mapper)
         {
             this.uow = uow;
             this.mapper = mapper;
@@ -28,8 +28,10 @@ namespace WebAPI.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetProducts()
         {
+            throw new UnauthorizedAccessException();
             var products = await uow.ProductRepository.GetProductsAsync();
             var productsDto = mapper.Map<IEnumerable<ProductDto>>(products);
+            
             return Ok(productsDto);
         }
 
@@ -54,36 +56,50 @@ namespace WebAPI.Controllers
             return Ok(id);
         }
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateProduct(int id,ProductDto productDto)
+        public async Task<IActionResult> UpdateProduct(int id, ProductDto productDto)
         {
+            if (id != productDto.Id)
+            {
+                return BadRequest("Update not allowed");
+            }
             var productFromDb = await uow.ProductRepository.FindCity(id);
+            if (productFromDb == null)
+            {
+                return BadRequest("Update not allowed");
+            }
             productFromDb.LastUpdatedBy = 1;
             productFromDb.LastUpdateOn = DateTime.Now;
-            mapper.Map(productDto,productFromDb);
+            mapper.Map(productDto, productFromDb);
+
+
+            throw new Exception("Unknown error occured");
             await uow.SaveAsync();
             return StatusCode(200);
+
+
+
         }
 
         [HttpPut("updateProductName/{id}")]
-        public async Task<IActionResult> UpdateProduct(int id,ProductUpdateDto productDto)
+        public async Task<IActionResult> UpdateProduct(int id, ProductUpdateDto productDto)
         {
             var productFromDb = await uow.ProductRepository.FindCity(id);
             productFromDb.LastUpdatedBy = 1;
             productFromDb.LastUpdateOn = DateTime.Now;
-            mapper.Map(productDto,productFromDb);
+            mapper.Map(productDto, productFromDb);
             await uow.SaveAsync();
             return StatusCode(200);
         }
 
 
         [HttpPatch("update/{id}")]
-        public async Task<IActionResult> UpdateProductPatch(int id, JsonPatchDocument<Product>  productToPatch)
+        public async Task<IActionResult> UpdateProductPatch(int id, JsonPatchDocument<Product> productToPatch)
         {
             var productFromDb = await uow.ProductRepository.FindCity(id);
             productFromDb.LastUpdatedBy = 1;
             productFromDb.LastUpdateOn = DateTime.Now;
 
-            productToPatch.ApplyTo(productFromDb,ModelState);
+            productToPatch.ApplyTo(productFromDb, ModelState);
 
             await uow.SaveAsync();
             return StatusCode(200);

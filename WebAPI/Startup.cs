@@ -2,11 +2,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using WebAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Interfaces;
 using WebAPI.Helpers;
+using WebAPI.Extensions;
+using WebAPI.Middlewares;
 
 namespace WebAPI
 {
@@ -27,20 +28,17 @@ namespace WebAPI
             services.AddControllers().AddNewtonsoftJson();
             services.AddCors();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
-            services.AddScoped<IUnitOfWork,UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.ConfigureExceptionHandler(env);
 
             app.UseRouting();
 
-            app.UseCors(m=> m.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            app.UseCors(m => m.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseAuthorization();
 
