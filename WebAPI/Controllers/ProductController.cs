@@ -11,8 +11,6 @@ using Microsoft.AspNetCore.JsonPatch;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class ProductController : ControllerBase
     {
         private readonly IUnitOfWork uow;
