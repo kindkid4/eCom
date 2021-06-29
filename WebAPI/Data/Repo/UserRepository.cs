@@ -14,8 +14,8 @@ namespace WebAPI.Data.Repo
         public UserRepository(DataContext dc)
         {
             this.dc = dc;
-            this.dc = dc;
         }
+        //CHECK IF USER EXIST AND ENTERD CORRECT INFO
         public async Task<User> Authenticate(string userName, string passwordText)
         {
             //CHECK IF USER EXIST
@@ -26,7 +26,7 @@ namespace WebAPI.Data.Repo
                 return null;
             return user;
         }
-
+        //CHECK IF PASSWORD MATCHED WITH ENTERED ONE
         private bool MatchPasswordHash(string passwordText, byte[] password, byte[] passwordKey)
         {
             //GENERATE THE HASH CODE

@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
         }
 
         //GET api/product
-        [HttpGet("")]
+        [HttpGet("products")]
         [AllowAnonymous]
         public async Task<IActionResult> GetProducts()
         {
@@ -72,7 +72,6 @@ namespace WebAPI.Controllers
             mapper.Map(productDto, productFromDb);
 
 
-            throw new Exception("Unknown error occured");
             await uow.SaveAsync();
             return StatusCode(200);
 

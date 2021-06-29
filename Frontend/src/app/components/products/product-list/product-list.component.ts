@@ -10,13 +10,12 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
   @Input() public category!: string;
-
   products!: Array<any> ;
   constructor(private route:ActivatedRoute,
     private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.productService.getAllProducts().subscribe(data => this.products = data);
   }
 
   @ViewChild('widgetsContent', { read: ElementRef })

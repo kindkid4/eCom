@@ -42,6 +42,7 @@ namespace WebAPI
 
             //Authenticate
             var secretKey = Configuration.GetSection("AppSettings:Key").Value;
+            
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(op => op.TokenValidationParameters = new TokenValidationParameters{
@@ -59,6 +60,10 @@ namespace WebAPI
             app.ConfigureExceptionHandler(env);
 
             app.UseRouting();
+
+            app.UseHsts();
+
+            app.UseHttpsRedirection();
 
             app.UseCors(m => m.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 

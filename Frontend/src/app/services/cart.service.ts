@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../model/product';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,13 +14,10 @@ export class CartService {
   sumToPay!: number;
   numOfItems: any;
   cartTotal = 0;
+  baseUrl = environment.baseUrl;
   constructor(private http:HttpClient) {
     const ls = this.getCartData();
     if (ls) this.cartItems.next(ls);
-  }
-
-  getAllCart(): Observable<string[]>{
-    return this.http.get<string[]>('http://localhost:5000/api/product');
   }
 
   getSumOfCart() {

@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '../model/product';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -81,11 +83,18 @@ export class ProductService {
     },
 
   ]
-  constructor() { }
+
+  baseUrl = environment.baseUrl;
+  constructor(private http:HttpClient) { }
 
   getProducts(){
     return this.products;
   }
+
+  getAllProducts(): Observable<string[]>{
+    return this.http.get<string[]>(this.baseUrl+'/product/products');
+  }
+
   getProduct(id:number){
     return this.products.find(product=>
       product.id === id)
