@@ -8,10 +8,12 @@ using System.Linq;
 using AutoMapper;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Controllers
 {
-    public class ProductController : ControllerBase
+    [Authorize]
+    public class ProductController : BaseController
     {
         private readonly IUnitOfWork uow;
         private readonly IMapper mapper;
@@ -24,9 +26,9 @@ namespace WebAPI.Controllers
 
         //GET api/product
         [HttpGet("")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetProducts()
         {
-            throw new UnauthorizedAccessException();
             var products = await uow.ProductRepository.GetProductsAsync();
             var productsDto = mapper.Map<IEnumerable<ProductDto>>(products);
             
