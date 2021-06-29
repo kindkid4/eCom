@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using WebAPI.Dtos;
+using WebAPI.Errors;
+using WebAPI.Extensions;
 using WebAPI.Interfaces;
 using WebAPI.Models;
 
@@ -17,7 +19,8 @@ namespace WebAPI.Controllers
         private readonly IUnitOfWork uow;
         private readonly IConfiguration configuration;
 
-        public AccountController(IUnitOfWork uow,IConfiguration configuration ){
+        public AccountController(IUnitOfWork uow, IConfiguration configuration)
+        {
             this.uow = uow;
             this.configuration = configuration;
         }
@@ -25,11 +28,16 @@ namespace WebAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginReqDto loginReq)
         {
-            var user = await uow.UserRepository.Authenticate(loginReq.UserName,loginReq.Password);
+            var user = await uow.UserRepository.Authenticate(loginReq.UserName, loginReq.Password);
 
-            if(user == null)
+            ApiError apiError = new ApiError();
+
+            if (user == null)
             {
-                return Unauthorized();
+                apiError.ErrorCode = Unauthorized().StatusCode;
+                apiError.ErrorMessage = "Nume sau parola gresita!";
+                apiError.ErrorDetails = "Aceasta erroare apare cand userul si parola nu exista.";
+                return Unauthorized(apiError);
             }
             var loginRes = new LoginResponseDto();
             loginRes.UserName = user.Username;
@@ -37,16 +45,31 @@ namespace WebAPI.Controllers
             return Ok(loginRes);
         }
 
-         [HttpPost("register")]
+        [HttpPost("register")]
         public async Task<IActionResult> Register(LoginReqDto loginReq)
         {
-            if(await uow.UserRepository.UserAlreadyExist(loginReq.UserName))
-                return BadRequest("Username in use!");
-            uow.UserRepository.Register(loginReq.UserName,loginReq.Password);
+            
+            ApiError apiError = new ApiError();
+            if (loginReq.UserName.IsEmpty() || loginReq.UserName.IsEmpty())
+            {
+                apiError.ErrorCode = BadRequest().StatusCode;
+                apiError.ErrorMessage = "Numele sau parola nu pot fi lasate locuri libere";
+                return BadRequest(apiError);
+            }
+            if (await uow.UserRepository.UserAlreadyExist(loginReq.UserName))
+            {
+                apiError.ErrorCode = BadRequest().StatusCode;
+                apiError.ErrorMessage = "Utilizatorul exista deja,folositi alt nume";
+                return BadRequest(apiError);
+            }
+
+
+            uow.UserRepository.Register(loginReq.UserName, loginReq.Password);
             await uow.SaveAsync();
             return StatusCode(201);
         }
-        private string CreateJWT(User user){
+        private string CreateJWT(User user)
+        {
             var secretKey = configuration.GetSection("AppSettings:Key").Value;
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
             var claims = new Claim[]{
@@ -54,10 +77,11 @@ namespace WebAPI.Controllers
                 new Claim(ClaimTypes.NameIdentifier,user.Id.ToString())
             };
             var signingCredentials = new SigningCredentials(
-                key,SecurityAlgorithms.HmacSha256Signature
+                key, SecurityAlgorithms.HmacSha256Signature
             );
 
-            var tokenDescriptor = new SecurityTokenDescriptor{
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddDays(10),
                 SigningCredentials = signingCredentials

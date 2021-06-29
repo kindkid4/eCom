@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  categoryList:Array<any>=[
+  categoryList: Array<any> = [
     {
-      "id":1,
-      "category":'Televizor'
-    },{
-      "id":2,
-      "category":'Telefon'
+      "id": 1,
+      "category": 'Televizor'
+    }, {
+      "id": 2,
+      "category": 'Telefon'
     },
   ]
   constructor() { }

@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/User';
+import * as alertyfy from 'alertifyjs';
 import { UserServiceService } from 'src/app/services/user-service.service';
 @Component({
   selector: 'app-nav-bar',
@@ -19,10 +20,6 @@ export class NavBarComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-
-    this.user = this.userService.getUser(this.userService.loggedin());
-    this.url = this.userService.userToEdit.pfp;
-
   }
 
   reload() {
@@ -46,18 +43,25 @@ export class NavBarComponent implements OnInit {
 
 
   onLogin(loginForm: NgForm) {
-    if(this.userService.authUser(loginForm.value))
-      this.reload();
-    else
-      return
+    this.userService.authUser(loginForm.value).subscribe(
+      (response: any) => {
+        console.log(response);
+        const user = response;
+        localStorage.setItem('token',user.token);
+        localStorage.setItem('userName',user.userName);
+        alertyfy.success('Login Reusit!');
+        this.router.navigate(['/']);
+      }
+    );
   }
 
   loggedin() {
-    return this.loggedinUser = this.userService.loggedin();
+    this.loggedinUser = localStorage.getItem('userName')!;
+    return this.loggedinUser;
   }
   onLogout() {
     this.userService.onLogout();
-    this.reload();
+    // this.reload();
   }
   openNav() {
     document.getElementById("mySidenav")!.style.width = "280px";

@@ -12,7 +12,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
 import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { UserLoginComponent } from './components/user/user-login/user-login.component';
 import { UserRegisterComponent } from './components/user/user-register/user-register.component';
@@ -36,6 +36,7 @@ import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
 import {StepsModule} from 'primeng/steps';
 import {CardModule} from 'primeng/card';
+import { HttpErrorInterceptorService } from './services/httperor-interceptor.service';
 
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
@@ -95,7 +96,12 @@ const routes: Routes = [
 
   ],
   exports: [RouterModule],
-  providers: [UserServiceService],
+  providers: [UserServiceService,
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:HttpErrorInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

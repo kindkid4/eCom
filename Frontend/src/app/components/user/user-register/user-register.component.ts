@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserBase } from 'src/app/model/UserBase';
+import { UserForRegister } from 'src/app/model/UserBase';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import * as alertyfy from 'alertifyjs';
 import { User } from 'src/app/model/User';
@@ -12,7 +12,7 @@ import { User } from 'src/app/model/User';
 export class UserRegisterComponent implements OnInit {
   registerForm!: FormGroup;
   userDidRegister!: boolean;
-  user: User | undefined;
+  user: UserForRegister | undefined;
   constructor(
     private formB: FormBuilder,
     private userService: UserServiceService) { }
@@ -28,39 +28,34 @@ export class UserRegisterComponent implements OnInit {
       password: [null, [Validators.required, Validators.minLength(8)]],
       confirmPassword: [null, Validators.required],
       mobile: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      tara:[null],
-      judet:[null],
-      oras:[null],
-      strada:[null],
-      numarul:[null],
-      pfp:[null],
+      tara: [null],
+      judet: [null],
+      oras: [null],
+      strada: [null],
+      numarul: [null],
+      pfp: [null],
 
     }, { validators: [this.matchPassword, this.mobileisNumber] })
   }
   onSubmit() {
     this.userDidRegister = true;
     if (this.registerForm.valid) {
-      this.userService.addUser(this.userData());
-      this.registerForm.reset();
-      this.userDidRegister = false;
-      alertyfy.success('Ai fost inregistrat cu succes!');
+      this.userService.addUser(this.userData()).subscribe(() => {
+        this.registerForm.reset();
+        this.userDidRegister = false;
+      }
+      );
     }
-    else{
+    else {
       alertyfy.error('Nu ai introdus corect datele necesare!');
     }
   }
-  userData(): User {
+  userData(): UserForRegister {
     return this.user = {
       userName: this.userName.value,
       email: this.email.value,
       password: this.password.value,
       mobile: this.mobile.value,
-      tara:'',
-      judet:'',
-      oras:'',
-      strada:'',
-      numar:0,
-      pfp:''
 
     }
   }

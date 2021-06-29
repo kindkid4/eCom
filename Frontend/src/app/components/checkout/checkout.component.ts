@@ -18,7 +18,6 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.cart = this.cartservice.getCartData();
-    this.user = this.userService.getUser(this.userService.loggedin());
     this.sum = +this.cartservice.getSumOfCart();
   }
   procComanda(){
