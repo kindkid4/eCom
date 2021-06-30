@@ -51,7 +51,7 @@ namespace WebAPI.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            uow.ProductRepository.DeleteCity(id);
+            uow.ProductRepository.DeleteProduct(id);
             await uow.SaveAsync();
             return Ok(id);
         }

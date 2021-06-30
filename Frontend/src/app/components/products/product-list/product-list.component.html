@@ -5,8 +5,8 @@
       <i class="fas fa-arrow-left  "  style="color: white;" (click)="scrollLeft()"></i>
     </div>
     <div class="scrolling-wrapper-flexbox" #widgetsContent>
-      <div *ngFor="let product of products " class="col-xl-3 col-lg-4 col-md-5 col-sm-7 ">
-        <!-- <app-product-card [product]="product"></app-product-card> -->
+      <div *ngFor="let product of products | category : categoryType" class="col-xl-3 col-lg-4 col-md-5 col-sm-7 ">
+        <app-product-card [product]="product"></app-product-card>
           <br>
       </div>
     </div>

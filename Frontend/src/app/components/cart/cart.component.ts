@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Product } from 'src/app/model/product';
+import { Product } from 'src/app/model/Product';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.cart = this.cartService.getCartData();
     this.cart.forEach((exist: Product, index: any) => {
-      this.totalSum+= exist.price*exist.qty
+      this.totalSum+= exist.price*exist.qty;
     });
 
   }

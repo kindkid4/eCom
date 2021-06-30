@@ -1,9 +1,11 @@
-export interface Product {
-  id: number,
-  title: string,
-  qty: number,
-  price: number,
-  image: string,
-  category: string,
-  stock:number
+import { IProductBase } from "./ProductBase";
+
+export class Product implements IProductBase{
+  id!: number;
+  title!: string;
+  price!: number;
+  stock!:number;
+  categoryType!: string;
+  image!: string;
+  qty!:number;
 }

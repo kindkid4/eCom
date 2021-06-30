@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using WebAPI.Models;
 
 namespace WebAPI.Dtos
 {
@@ -8,8 +10,10 @@ namespace WebAPI.Dtos
         [Required(ErrorMessage = "Name is mandatory field.")]
         [StringLength(15,MinimumLength = 5)]
         [RegularExpression(".*[a-zA-Z]+.*",ErrorMessage ="Only Numerics are not allowed")]
-        public string Name { get; set; }
-        [Required]
-        public string Model { get; set; }
+        public string Title { get; set; }
+        public int Price { get; set; }
+        public int Stock { get; set; }
+        public string CategoryType { get; set; }
+
     }
 }

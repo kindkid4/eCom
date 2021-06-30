@@ -9,8 +9,7 @@ namespace WebAPI.Data
 
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users {get;set;}
-        public DbSet<CategoryType> CategoryType {get;set;}
-        public DbSet<Description> Descriptions {get;set;}
         
+        public DbSet<Order> Orders {get;set;}
     }
 }

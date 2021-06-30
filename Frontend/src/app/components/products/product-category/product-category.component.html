@@ -1,7 +1,7 @@
 
-  <h1 class="m-5">Produse din categoria {{category}} : </h1>
+  <h1 class="m-5">Produse din categoria {{categoryType}} : </h1>
   <div class="row">
-    <div *ngFor="let product of products | category :category" class="col-sm-3">
+    <div *ngFor="let product of products | category :categoryType" class="col-sm-3">
       <div class="mb-4">
         <app-product-card  [product]="product"></app-product-card>
       </div>

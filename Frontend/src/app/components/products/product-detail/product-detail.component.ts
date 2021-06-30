@@ -1,6 +1,4 @@
-import { rendererTypeName } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import {NgxGalleryOptions} from '@kolkov/ngx-gallery';
 import {NgxGalleryImage} from '@kolkov/ngx-gallery';
 import {NgxGalleryAnimation} from '@kolkov/ngx-gallery';

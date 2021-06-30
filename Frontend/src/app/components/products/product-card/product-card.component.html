@@ -1,7 +1,7 @@
 <div class="card ">
   <div class="card-img-wrapper">
-    <img *ngIf="product.category.includes('Televizor')" class="card-img-top " src="{{product.image}}">
-    <img *ngIf="product.category=='Telefon'" style="height: 168px;" class="card-img-top mt-3 mb-3" src="{{product.image}}">
+    <img *ngIf="product.categoryType.includes('Televizor')" class="card-img-top " src="{{product.image}}">
+    <img *ngIf="product.categoryType=='Telefon'" style="height: 168px;" class="card-img-top mt-3 mb-3" src="{{product.image}}">
   </div>
   <div class="card-body p-1">
     <div class="card-title text-center">

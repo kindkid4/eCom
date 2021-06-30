@@ -17,7 +17,7 @@ namespace WebAPI.Data.Repo
             dc.Products.AddAsync(product);
         }
 
-        public void DeleteCity(int ProductId)
+        public void DeleteProduct(int ProductId)
         {
             var product = dc.Products.Find(ProductId);
             dc.Products.Remove(product);

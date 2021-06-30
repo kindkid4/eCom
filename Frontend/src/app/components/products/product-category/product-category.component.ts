@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -14,11 +13,11 @@ export class ProductCategoryComponent implements OnInit {
     private route:ActivatedRoute,
     private productService : ProductService) { }
 
-  public category!: string;
+  public categoryType!: string;
   products!:Array<any>;
 
   ngOnInit() {
     this.products = this.productService.getProducts();
-    this.category = this.route.snapshot.params['category'];
+    this.categoryType = this.route.snapshot.params['category'];
   }
 }
