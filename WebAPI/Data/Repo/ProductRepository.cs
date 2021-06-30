@@ -23,7 +23,7 @@ namespace WebAPI.Data.Repo
             dc.Products.Remove(product);
         }
 
-        public async Task<Product> FindCity(int id)
+        public async Task<Product> FindProduct(int id)
         {
             return await dc.Products.FindAsync(id);
         }

@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
     private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe(data => this.products = data);
+    //this.productService.getAllProducts().subscribe(data => this.products = data);
   }
 
   @ViewChild('widgetsContent', { read: ElementRef })

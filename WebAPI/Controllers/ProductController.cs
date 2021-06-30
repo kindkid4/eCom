@@ -40,8 +40,8 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> AddProduct(ProductDto ProductDto)
         {
             var product = mapper.Map<Product>(ProductDto);
-            product.LastUpdatedBy = 1;
-            product.LastUpdateOn = DateTime.Now;
+            // product.LastUpdatedBy = 1;
+            // product.LastUpdateOn = DateTime.Now;
 
             uow.ProductRepository.AddProduct(product);
             await uow.SaveAsync();
@@ -62,13 +62,13 @@ namespace WebAPI.Controllers
             {
                 return BadRequest("Update not allowed");
             }
-            var productFromDb = await uow.ProductRepository.FindCity(id);
+            var productFromDb = await uow.ProductRepository.FindProduct(id);
             if (productFromDb == null)
             {
                 return BadRequest("Update not allowed");
             }
-            productFromDb.LastUpdatedBy = 1;
-            productFromDb.LastUpdateOn = DateTime.Now;
+            // productFromDb.LastUpdatedBy = 1;
+            // productFromDb.LastUpdateOn = DateTime.Now;
             mapper.Map(productDto, productFromDb);
 
 
@@ -82,9 +82,9 @@ namespace WebAPI.Controllers
         [HttpPut("updateProductName/{id}")]
         public async Task<IActionResult> UpdateProduct(int id, ProductUpdateDto productDto)
         {
-            var productFromDb = await uow.ProductRepository.FindCity(id);
-            productFromDb.LastUpdatedBy = 1;
-            productFromDb.LastUpdateOn = DateTime.Now;
+            var productFromDb = await uow.ProductRepository.FindProduct(id);
+            // productFromDb.LastUpdatedBy = 1;
+            // productFromDb.LastUpdateOn = DateTime.Now;
             mapper.Map(productDto, productFromDb);
             await uow.SaveAsync();
             return StatusCode(200);
@@ -94,9 +94,9 @@ namespace WebAPI.Controllers
         [HttpPatch("update/{id}")]
         public async Task<IActionResult> UpdateProductPatch(int id, JsonPatchDocument<Product> productToPatch)
         {
-            var productFromDb = await uow.ProductRepository.FindCity(id);
-            productFromDb.LastUpdatedBy = 1;
-            productFromDb.LastUpdateOn = DateTime.Now;
+            var productFromDb = await uow.ProductRepository.FindProduct(id);
+            // productFromDb.LastUpdatedBy = 1;
+            // productFromDb.LastUpdateOn = DateTime.Now;
 
             productToPatch.ApplyTo(productFromDb, ModelState);
 

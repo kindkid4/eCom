@@ -11,6 +11,6 @@ namespace WebAPI.Interfaces
          void AddProduct(Product product);
 
          void DeleteCity(int ProductId);
-        Task <Product> FindCity(int id);
+        Task <Product> FindProduct(int id);
     }
 }
