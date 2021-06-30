@@ -1,5 +1,4 @@
 .card {
-  min-height: 210px;
   max-width : 250px;
 }
 .card-body h1 {
@@ -33,15 +32,6 @@
   transition-timing-function: ease-out;
   max-height                : 260px;
 
-}
-
-.card-img-wrapper:hover .member-icons {
-  bottom : 0;
-  opacity: 1;
-}
-
-.animate {
-  transition: all 0.3s ease-in-out;
 }
 
 h6{

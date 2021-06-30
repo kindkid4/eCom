@@ -8,5 +8,5 @@ export class Product implements IProductBase{
   categoryType!: string;
   image!: string;
   description!:string;
-  qty!:number;
+  qty!: number;
 }

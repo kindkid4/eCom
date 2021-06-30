@@ -1,13 +1,13 @@
-<div class="card ">
+<div class="card mt-4 mb-4">
   <div class="card-img-wrapper">
     <img *ngIf="!product.image" class="card-img-top" src="../../../../assets/Images/products/placeholder.png" >
     <img *ngIf="product.categoryType.includes('Televizor')" class="card-img-top" src="{{product.image}}">
     <img *ngIf="product.categoryType=='Telefon'" style="height: 168px;" class="card-img-top mt-3 mb-3" src="{{product.image}}">
   </div>
-  <div class="card-body p-1">
+  <div class="card-body">
     <div class="card-title text-center">
-      <h6 type="button" style="max-height: 37px;overflow: hidden;" routerLink="/product-detail/{{product.id}}">
-        {{product.title}} {{Desc[1]}} {{Desc[2]}} {{Desc[3]}} {{Desc[4]}}
+      <h6 type="button" style="max-height: 37px;overflow: hidden;min-height: 37px;" routerLink="/product-detail/{{product.id}}">
+        {{product.title}} {{Desc[0]}} {{Desc[1]}} {{Desc[2]}} {{Desc[3]}} {{Desc[4]}}
       </h6>
 
     </div>
@@ -17,5 +17,6 @@
       <span *ngIf="product.stock<1" style="color: red;">In stock</span>
     </h6>
   </div>
-   <h6 (click)="addToCart(product)" class="btn btn-outline-dark" >Adauga in cos</h6>
+   <button (click)="addToCart(product)" *ngIf="product.stock>=1" class="btn btn-outline-dark m-4" >Adauga in cos</button>
+   <button (click)="addToCart(product)" [disabled]="true" *ngIf="product.stock==0" class="btn btn-outline-dark m-4" >Adauga in cos</button>
 </div>

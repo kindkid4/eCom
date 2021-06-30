@@ -3,8 +3,9 @@
   flex-wrap                 : nowrap;
   overflow-x                : auto;
   -webkit-overflow-scrolling: touch;
-  order:1;
-  z-index: 0;
+  order                     : 1;
+  z-index                   : 0;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -14,28 +15,20 @@
   }
 }
 
+.clToDepend {
+  position: relative;
+}
+
 .right {
-  margin-top : -170px !important;
-  font-size  : xx-large;
-  margin-left: 40px;
-  order:2;
+  position  : absolute;
+  margin-top: 202px !important;
+  font-size : xx-large;
+  z-index   : 1;
 }
 
 .left {
-  margin-top: 150px !important;
-  font-size   : xx-large;
-  margin-left : -10px;
-  margin-right: 10px;
-  order:2;
-
-}
-@media (max-width: 600.98px){
-  .left{
-    margin-top:9.3vh !important;
-    margin-right: 10px!important;
-
-  }
-  .right {
-    margin-top : -15vh !important;
-  }
+  position  : absolute;
+  margin-top: 195px !important;
+  font-size : xx-large;
+  z-index   : 5;
 }

@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../model/Product';
+import { tap } from 'rxjs/operators';
+import { pipe } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +31,7 @@ export class CartService {
     return +zum;
   }
   addItem(product: Product) {
+    product.qty = 1;
     const ls = this.getCartData();
     let exist: Product;
 
@@ -46,11 +49,13 @@ export class CartService {
         const newData = [...ls, product];
         this.setCartData(newData);
       };
-      this.placeholder.push(product)
+      console.log(product.qty);
+      this.placeholder.push(product);
       this.setCartData(this.placeholder);
     }
     this.placeholder = this.getCartData();
   }
+
   setCartData(data: any) {
     localStorage.setItem('cart', JSON.stringify(data));
     this.cartItems.next(this.getCartData());

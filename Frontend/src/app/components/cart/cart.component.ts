@@ -12,7 +12,7 @@ export class CartComponent implements OnInit {
   cart:Product[] = []
   totalSum:number = 0;
   loggedinUser!: string;
-
+  Desc!:string [];
   constructor(
     private cartService:CartService,
     private router: Router
@@ -23,8 +23,10 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/checkout']);
   }
   ngOnInit(): void {
+
     this.cart = this.cartService.getCartData();
-    this.cart.forEach((exist: Product, index: any) => {
+    this.cart.forEach((exist: Product) => {
+      this.Desc = exist.description.split(",");
       this.totalSum+= exist.price*exist.qty;
     });
 

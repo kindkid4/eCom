@@ -12,7 +12,6 @@ import * as alertyfy from 'alertifyjs';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product!:Product;
-  stock : number = 1;
   Desc!: string[];
   constructor(
     private productService:ProductService,
@@ -27,4 +26,5 @@ export class ProductCardComponent implements OnInit {
     this.cartService.addItem(product);
     alertyfy.success("Produs adaugat!");
   }
+
 }
