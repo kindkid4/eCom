@@ -17,7 +17,7 @@ export class ProductSearchComponent implements OnInit {
   products!: Array<Product>;
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    // this.products = this.productService.getProducts();
     this.title = this.route.snapshot.params['title'];
 
   }

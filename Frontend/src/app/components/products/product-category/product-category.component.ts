@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/model/Product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -14,10 +15,14 @@ export class ProductCategoryComponent implements OnInit {
     private productService : ProductService) { }
 
   public categoryType!: string;
-  products!:Array<any>;
+  products!:Product[];
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    this.productService.getAllProducts().subscribe(
+      data => {
+        this.products = data;
+      }
+    )
     this.categoryType = this.route.snapshot.params['category'];
   }
 }

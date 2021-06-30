@@ -1,12 +1,13 @@
 <div class="card ">
   <div class="card-img-wrapper">
-    <img *ngIf="product.categoryType.includes('Televizor')" class="card-img-top " src="{{product.image}}">
+    <img *ngIf="!product.image" class="card-img-top" src="../../../../assets/Images/products/placeholder.png" >
+    <img *ngIf="product.categoryType.includes('Televizor')" class="card-img-top" src="{{product.image}}">
     <img *ngIf="product.categoryType=='Telefon'" style="height: 168px;" class="card-img-top mt-3 mb-3" src="{{product.image}}">
   </div>
   <div class="card-body p-1">
     <div class="card-title text-center">
       <h6 type="button" style="max-height: 37px;overflow: hidden;" routerLink="/product-detail/{{product.id}}">
-        {{product.title}}
+        {{product.title}} {{Desc[1]}} {{Desc[2]}} {{Desc[3]}} {{Desc[4]}}
       </h6>
 
     </div>

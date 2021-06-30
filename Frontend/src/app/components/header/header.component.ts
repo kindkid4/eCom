@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    // this.products = this.productService.getProducts();
     this.cartService.cartItems.subscribe((d: string | any[]) => {
       this.itemInCart = d.length;
 

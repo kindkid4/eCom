@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/model/Product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -9,13 +10,16 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
   @Input() public categoryType!: string;
-  products!: Array<any> ;
+  products!:Product[];
   constructor(private route:ActivatedRoute,
     private productService: ProductService) { }
 
   ngOnInit(): void {
-    // this.productService.getAllProducts().subscribe(data => this.products = data);
-    this.products = this.productService.getProducts();
+    this.productService.getAllProducts().subscribe(
+      data => {
+        this.products = data;
+      }
+    )
   }
 
   @ViewChild('widgetsContent', { read: ElementRef })

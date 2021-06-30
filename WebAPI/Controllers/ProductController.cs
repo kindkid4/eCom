@@ -79,18 +79,6 @@ namespace WebAPI.Controllers
 
         }
 
-        [HttpPut("updateProductName/{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, ProductUpdateDto productDto)
-        {
-            var productFromDb = await uow.ProductRepository.FindProduct(id);
-            // productFromDb.LastUpdatedBy = 1;
-            // productFromDb.LastUpdateOn = DateTime.Now;
-            mapper.Map(productDto, productFromDb);
-            await uow.SaveAsync();
-            return StatusCode(200);
-        }
-
-
         [HttpPatch("update/{id}")]
         public async Task<IActionResult> UpdateProductPatch(int id, JsonPatchDocument<Product> productToPatch)
         {

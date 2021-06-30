@@ -5,4 +5,5 @@ export interface IProductBase {
   stock:number;
   categoryType: string;
   image: string;
+  description:string;
 }

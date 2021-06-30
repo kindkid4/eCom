@@ -12,13 +12,15 @@ import * as alertyfy from 'alertifyjs';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product!:Product;
-  stock :number = 1;
+  stock : number = 1;
+  Desc!: string[];
   constructor(
     private productService:ProductService,
     private route: ActivatedRoute,
     private cartService:CartService) { }
 
   ngOnInit(): void {
+    this.Desc = this.product.description.split(",");
   }
 
   addToCart(product: Product){
