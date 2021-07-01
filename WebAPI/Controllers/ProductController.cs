@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using WebAPI.Models;
 using WebAPI.Interfaces;
 using WebAPI.Dtos;
-using System;
-using System.Linq;
 using AutoMapper;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.JsonPatch;
@@ -31,8 +29,8 @@ namespace WebAPI.Controllers
         {
             var products = await uow.ProductRepository.GetProductsAsync();
             var productsDto = mapper.Map<IEnumerable<ProductDto>>(products);
-            
-            return Ok(productsDto);
+
+            return Ok(products);
         }
 
         //POST api/product
@@ -40,8 +38,6 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> AddProduct(ProductDto ProductDto)
         {
             var product = mapper.Map<Product>(ProductDto);
-            // product.LastUpdatedBy = 1;
-            // product.LastUpdateOn = DateTime.Now;
 
             uow.ProductRepository.AddProduct(product);
             await uow.SaveAsync();
@@ -67,8 +63,6 @@ namespace WebAPI.Controllers
             {
                 return BadRequest("Update not allowed");
             }
-            // productFromDb.LastUpdatedBy = 1;
-            // productFromDb.LastUpdateOn = DateTime.Now;
             mapper.Map(productDto, productFromDb);
 
 
@@ -83,9 +77,6 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> UpdateProductPatch(int id, JsonPatchDocument<Product> productToPatch)
         {
             var productFromDb = await uow.ProductRepository.FindProduct(id);
-            // productFromDb.LastUpdatedBy = 1;
-            // productFromDb.LastUpdateOn = DateTime.Now;
-
             productToPatch.ApplyTo(productFromDb, ModelState);
 
             await uow.SaveAsync();

@@ -15,6 +15,7 @@ namespace WebAPI.Dtos
         public int Stock { get; set; }
         public string CategoryType { get; set; }
         public string Description { get; set; }
+        public IEnumerable<Photo> Images { get; set; }
 
     }
 }

@@ -1,8 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {NgxGalleryOptions} from '@kolkov/ngx-gallery';
 import {NgxGalleryImage} from '@kolkov/ngx-gallery';
 import {NgxGalleryAnimation} from '@kolkov/ngx-gallery';
-
+import { Product } from 'src/app/model/Product';
+import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
+import * as alertyfy from 'alertifyjs';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -12,46 +16,33 @@ export class ProductDetailComponent implements OnInit {
 
   galleryOptions! : NgxGalleryOptions[];
   galleryImages! : NgxGalleryImage[];
-  @Input() product : any;
-  constructor() { }
+  public productId!: number;
+  product!:Product;
+  Desc!: string[];
+  constructor(private route: ActivatedRoute,private productService: ProductService,private cartService :CartService) { }
 
   ngOnInit(): void {
-    this.galleryOptions = [
-      {
-        width: '40%',
-        height: '500px',
-        thumbnailsColumns: 3,
-        previewZoom:true,
-        previewZoomMax:1.5,
-        previewZoomMin:1,
-        previewFullscreen:true,
-        previewInfinityMove:true,
-        imageAnimation:NgxGalleryAnimation.Fade,
-        previewZoomStep:1,
-        previewCloseOnEsc:true
+    this.productId = this.route.snapshot.params['id'];
+     this.productService.getProduct(this.productId
+      ).subscribe(
+      (data:any) => {
+        this.product = data;
+        this.Desc = this.product.description.split(",");
       }
+    )
 
+  }
 
-    ];
+  addToCart(product: Product){
+    this.cartService.addItem(product);
+    alertyfy.success("Produs adaugat!");
+  }
 
-    this.galleryImages = [
-      {
-        small: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_007_Dynamic3_Black.jpg',
-        medium: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_007_Dynamic3_Black.jpg',
-        big: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_007_Dynamic3_Black.jpg'
-      },
-      {
-        small: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_008_Dynamic-Back_Black.jpg',
-        medium: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_008_Dynamic-Back_Black.jpg',
-        big: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_008_Dynamic-Back_Black.jpg'
-      },
-      {
-        small: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_004_L-side_Black.jpg',
-        medium: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_004_L-side_Black.jpg',
-        big: 'https://lcdn.altex.ro/resize/media/catalog/product/U/A/2bd48d28d1c32adea0e55139a4e6434a/UA65AU8000WXZW_004_L-side_Black.jpg'
-      },
-
-    ];
+  checkStock(){
+    if(this.product?.stock>=1)
+      return true;
+    else
+      return false;
   }
 }
 

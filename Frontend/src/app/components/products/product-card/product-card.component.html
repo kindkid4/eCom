@@ -1,8 +1,8 @@
 <div class="card mt-4 mb-4">
   <div class="card-img-wrapper">
-    <img *ngIf="!product.image" class="card-img-top" src="../../../../assets/Images/products/placeholder.png" >
-    <img *ngIf="product.categoryType.includes('Televizor')" class="card-img-top" src="{{product.image}}">
-    <img *ngIf="product.categoryType=='Telefon'" style="height: 168px;" class="card-img-top mt-3 mb-3" src="{{product.image}}">
+    <img *ngIf="!product.images" class="card-img-top" src="../../../../assets/Images/products/placeholder.png" >
+    <img *ngIf="product.categoryType.includes('Televizor') && product.images" class="card-img-top" src="{{product.images}}">
+    <img  *ngIf="product.categoryType=='Telefon' && product.images" style="height: 168px;" class="card-img-top mt-3 mb-3" src="{{product.images}}">
   </div>
   <div class="card-body">
     <div class="card-title text-center">

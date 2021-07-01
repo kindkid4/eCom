@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace WebAPI.Models
 {
@@ -11,6 +13,6 @@ namespace WebAPI.Models
         public int Stock { get; set; }
         public string CategoryType { get; set; }
         public string Description { get; set; }
-        public ICollection<Photo> Images { get; set; }
+        public IEnumerable<Photo> Images { get; set; }
     }
 }

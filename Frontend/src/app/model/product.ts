@@ -6,7 +6,7 @@ export class Product implements IProductBase{
   price!: number;
   stock!:number;
   categoryType!: string;
-  image!: string;
+  images!: string[];
   description!:string;
   qty!: number;
 }

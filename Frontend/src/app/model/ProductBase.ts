@@ -4,6 +4,6 @@ export interface IProductBase {
   price: number;
   stock:number;
   categoryType: string;
-  image: string;
+  images: string[];
   description:string;
 }

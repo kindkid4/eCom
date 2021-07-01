@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Interfaces;
@@ -29,9 +31,19 @@ namespace WebAPI.Data.Repo
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync()
-        {
-            return await dc.Products.ToListAsync();
+        {   
+            var products = await dc.Products
+            .Include(p => p.Images)
+            .ToListAsync();
+
+            return products ;
         }
 
+        public async Task<Product> GetProduct(int ProductId)
+        {   
+            var product = await dc.Products
+            .FirstAsync();
+            return product;
+        }
     }
 }

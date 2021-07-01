@@ -8,8 +8,6 @@ namespace WebAPI.Helpers
     {
         public AutoMapperProfiles(){
             CreateMap<Product,ProductDto>().ReverseMap();
-
-            
         }
     }
 }

@@ -12,5 +12,7 @@ namespace WebAPI.Interfaces
 
          void DeleteProduct(int ProductId);
         Task <Product> FindProduct(int id);
+        Task<Product> GetProduct(int ProductId);
+
     }
 }
