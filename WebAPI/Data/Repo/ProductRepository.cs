@@ -32,9 +32,7 @@ namespace WebAPI.Data.Repo
 
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {   
-            var products = await dc.Products
-            .Include(p => p.Images)
-            .ToListAsync();
+            var products = await dc.Products.ToListAsync();
 
             return products ;
         }

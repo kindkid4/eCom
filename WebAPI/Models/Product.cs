@@ -14,5 +14,6 @@ namespace WebAPI.Models
         public string CategoryType { get; set; }
         public string Description { get; set; }
         public string Images { get; set; }
+        public string PrimaryImage { get; set; }
     }
 }

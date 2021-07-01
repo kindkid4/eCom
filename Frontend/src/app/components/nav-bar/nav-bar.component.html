@@ -13,7 +13,7 @@
   <a *ngIf="!loggedin()" (click)="closeNav()" (click)="reload()" class="dropdown-item" routerLink="user/login"
     routerLinkActive="active">Login</a>
 
-  <a *ngIf="loggedin()"    class="dropdown-item">
+  <a class="dropdown-item">
     <div class="btn-group" dropdown>
       <button id="button-basic" dropdownToggle type="button" class="btn-dark dropdown-toggle"
               aria-controls="dropdown-basic">
@@ -23,7 +23,6 @@
           role="menu" aria-labelledby="button-basic">
         <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Telefon">Telefoane</a></li>
         <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Televizor">Televizoare</a></li>
-        <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Componenta">Componente</a></li>
         <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Laptop">Laptopuri</a>
         </li>
       </ul>
@@ -105,16 +104,6 @@
                       routerLink="/product-category/Smart TV">Smart TV</span></li>
                 </ul>
               </li>
-              <li role="menuitem" dropdownToggle dropdown container="body" class="text-center categTitle">
-                <span class="dropdown-toggle " type="button">Componente PC</span>
-                <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-225px" role="menu">
-                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Procesoare</span></li>
-                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Placi Video</span></li>
-                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Placi de baza</span></li>
-                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">SSD</span></li>
-                </ul>
-              </li>
-
             </ul>
 
           </div>

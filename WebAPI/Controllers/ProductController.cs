@@ -29,7 +29,6 @@ namespace WebAPI.Controllers
         {
             var products = await uow.ProductRepository.GetProductsAsync();
             var productsDto = mapper.Map<IEnumerable<ProductDto>>(products);
-
             return Ok(products);
         }
 

@@ -49,7 +49,6 @@ export class CartService {
         const newData = [...ls, product];
         this.setCartData(newData);
       };
-      console.log(product.qty);
       this.placeholder.push(product);
       this.setCartData(this.placeholder);
     }

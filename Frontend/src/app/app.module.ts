@@ -26,7 +26,6 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import { ProductCategoryComponent } from './components/products/product-category/product-category.component';
 import { GalleriaModule } from 'primeng/galleria';
-import { CarouselModule } from 'primeng/carousel';
 import { CategoryPipe } from './pipes/category.pipe';
 import { ProductSearchComponent } from './components/products/product-search/product-search.component';
 import { OrderListModule } from 'primeng/orderlist';
@@ -37,7 +36,7 @@ import {AvatarGroupModule} from 'primeng/avatargroup';
 import {StepsModule} from 'primeng/steps';
 import {CardModule} from 'primeng/card';
 import { HttpErrorInterceptorService } from './services/httperor-interceptor.service';
-
+import { SwiperModule } from 'swiper/angular';
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
@@ -71,6 +70,7 @@ const routes: Routes = [
     CategoryPipe,
     ProductSearchComponent,
     UserProfileComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -86,13 +86,14 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     GalleriaModule,
-    CarouselModule,
     OrderListModule,
     BadgeModule,
     AvatarGroupModule,
     AvatarModule,
     StepsModule,
-    CardModule
+    CardModule,
+    SwiperModule,
+
 
   ],
   exports: [RouterModule],

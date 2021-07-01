@@ -12,7 +12,7 @@ export class CartComponent implements OnInit {
   cart:Product[] = []
   totalSum:number = 0;
   loggedinUser!: string;
-  Desc!:string [];
+  counter:number = 0;
   constructor(
     private cartService:CartService,
     private router: Router
@@ -23,13 +23,15 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/checkout']);
   }
   ngOnInit(): void {
-
+    //REDOOOOO
     this.cart = this.cartService.getCartData();
     this.cart.forEach((exist: Product) => {
-      this.Desc = exist.description.split(",");
       this.totalSum+= exist.price*exist.qty;
     });
-
+  }
+  toTitle(str : string){
+    var desc = str.split(",");
+    return desc[0]+' '+desc[1]+' '+desc[4]+' '+desc[2];
   }
   removeQuant(item:Product){
     this.cartService.deleteItem(item.id);
