@@ -14,9 +14,16 @@ export class SearchPipe implements PipeTransform {
       return items;
     }
     searchText = searchText.toLocaleLowerCase();
-
     return items.filter(it => {
-      return it.title.toLocaleLowerCase().includes(searchText);
+      var str =  it.description.split(",");
+      return it.title.toLocaleLowerCase().includes(searchText)
+      || str[0].toLocaleLowerCase().match(searchText)
+      || str[1].toLocaleLowerCase().match(searchText)
+      || str[2].toLocaleLowerCase().match(searchText)
+      || str[3].toLocaleLowerCase().match(searchText)
+      || str[4].toLocaleLowerCase().match(searchText)
+      || str[5].toLocaleLowerCase().match(searchText)
+      || str[6].toLocaleLowerCase().match(searchText);
     });
   }
 

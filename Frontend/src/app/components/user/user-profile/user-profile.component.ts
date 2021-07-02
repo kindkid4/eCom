@@ -15,6 +15,7 @@ export class UserProfileComponent implements OnInit {
   pagina: number = 1;
   passChange: number = 0;
   user='';
+  url='';
 
   constructor(private route: ActivatedRoute, private userService: UserServiceService, private formB: FormBuilder,) { }
 
@@ -30,7 +31,7 @@ export class UserProfileComponent implements OnInit {
   //     else {
   //       this.userService.userToEdit.password = this.password;
   //       alertyfy.success('Date salvate!');
-  //       this.userService.upUsers();
+  //       // this.userService.upUsers();
   //     }
 
   //   else {
@@ -66,15 +67,15 @@ export class UserProfileComponent implements OnInit {
 
   // }
 
-  // public delete() {
-  //   this.url = '';
-  // }
+  public delete() {
+    // this.url = '';
+  }
 
-  // passCheck() {
-  //   if (this.passChange === 1)
-  //     this.passChange = 0;
-  //   else
-  //     this.passChange = 1;
-  // }
+  passCheck() {
+    if (this.passChange === 1)
+      this.passChange = 0;
+    else
+      this.passChange = 1;
+  }
 
 }

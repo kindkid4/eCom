@@ -36,6 +36,13 @@
   /* Specify a stack order in case you're using a different order for other elements */
   cursor   : pointer;
   /* Add a pointer on hover */
+  overflow-y: scroll;
+  max-height: 300px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+
+  // Again, this is where the magic happens
+  -webkit-overflow-scrolling: touch;
 }
 
 .list-group-item {

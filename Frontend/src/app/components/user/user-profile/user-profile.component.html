@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <!-- side profile -->
-    <!-- <div class="col col-lg-3 align-items-center ">
+    <div class="col col-lg-3 align-items-center ">
       <div class="card p-1 shadow-lg">
 
         <label class="hoverable ml-5 mt-5" for="fileInput">
@@ -10,9 +10,9 @@
           <div class="background"></div>
         </label>
         <br />
-        <input id="fileInput" type='file' (change)="onSelectFile($event)">
+        <input id="fileInput" type='file' >
 
-        <span class="text-center" style="font-size:x-large;"> {{user.userName}} </span>
+        <span class="text-center" style="font-size:x-large;"> {{user}} </span>
         <hr>
         <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
           <input type="radio" class="btn-check" routerLink="/user/profile/1" (click)="reload()" (click)="passChange=0"
@@ -37,17 +37,19 @@
         </div>
       </div>
 
-    </div> -->
+    </div>
     <!-- Sumar cont -->
-    <!-- <div *ngIf="pagina==1" class="col col-lg-9 ">
+    <div *ngIf="pagina==1" class="col col-lg-9 ">
       <h2 class="m-4">Sumar cont</h2>
       <div class="card p-1 shadow-lg">
-        <span class="m-4 fs-3">Informatii de contact <i routerLink="/user/profile/2" (click)="reload()" type="button" class="ml-5 fas fa-edit"></i></span>
-        <span class="m-2">Email : {{user.email}}</span>
-        <span class="m-2">Telefon : {{user.mobile}}</span>
+        <span class="m-4 fs-3">Informatii de contact <i routerLink="/user/profile/2" (click)="reload()" type="button"
+            class="ml-5 fas fa-edit"></i></span>
+        <span class="m-2">Email : test</span>
+        <span class="m-2">Telefon : test</span>
         <hr class="m-2">
 
-        <span class="m-4 fs-3">Comenzi recente <i routerLink="/user/profile/4" (click)="reload()" class="ml-5 fas fa-list-alt"></i></span>
+        <span class="m-4 fs-3">Comenzi recente <i routerLink="/user/profile/4" (click)="reload()"
+            class="ml-5 fas fa-list-alt"></i></span>
         <div class="cmd" *ngFor="let item of [1,2,3]">
           <span class=" row">Comanada : #123123123</span>
           <span class=" row">Total comanda : 123 Ron</span>
@@ -55,50 +57,51 @@
           <button class="btn btn-outline-dark float-end">Vezi Comanda</button>
           <hr class="m-2">
         </div>
-        <span class="m-4 fs-3">Adresa de contact <i routerLink="/user/profile/3" (click)="reload()" type="button" class="ml-5 fas fa-map-marked-alt"></i></span>
+        <span class="m-4 fs-3">Adresa de contact <i routerLink="/user/profile/3" (click)="reload()" type="button"
+            class="ml-5 fas fa-map-marked-alt"></i></span>
         <div class="row">
           <div class="col-6 text-center">
             <span class="m-2 fs-4 text-center">Adresa mea</span>
             <hr>
-            <span class="m-3 row">Tara : {{user.tara}}</span>
-            <span class="m-3 row">Judet : {{user.judet}}</span>
-            <span class="m-3 row">Oras : {{user.oras}}</span>
-            <span class="m-3 row">Strada : {{user.strada}}</span>
-            <span class="m-3 row">numar : {{user.numar}}</span>
-            <span class="m-3 row">Telefon : {{user.mobile}}</span>
+            <span class="m-3 row">Tara : test</span>
+            <span class="m-3 row">Judet : test</span>
+            <span class="m-3 row">Oras : test</span>
+            <span class="m-3 row">Strada : test</span>
+            <span class="m-3 row">numar : test</span>
+            <span class="m-3 row">Telefon : test</span>
           </div>
 
           <div class="col-6 text-center">
             <span class="m-2 fs-4">Date facturare</span>
             <hr>
-            <span class="m-3 row">Tara : {{user.tara}}</span>
-            <span class="m-3 row">Judet : {{user.judet}}</span>
-            <span class="m-3 row">Oras : {{user.oras}}</span>
-            <span class="m-3 row">Strada : {{user.strada}}</span>
-            <span class="m-3 row">numar : {{user.numar}}</span>
-            <span class="m-3 row">Telefon : {{user.mobile}}</span>
+            <span class="m-3 row">Tara : test</span>
+            <span class="m-3 row">Judet : test</span>
+            <span class="m-3 row">Oras : test</span>
+            <span class="m-3 row">Strada : test</span>
+            <span class="m-3 row">numar : test</span>
+            <span class="m-3 row">Telefon : test</span>
           </div>
         </div>
 
 
       </div>
 
-    </div> -->
+    </div>
     <!-- Informatii cont -->
-    <!-- <div *ngIf="pagina==2" class="col col-lg-9">
+    <div *ngIf="pagina==2" class="col col-lg-9">
       <h2 class="m-4">Informatii cont</h2>
       <div class="card  card p-1 shadow-lg ">
         <div class="col-md-6 m-3">
           <label class="form-label">Nume</label>
-          <input value="{{user.userName}}" [(ngModel)]="user.userName" type="email" class="form-control" >
+          <input value="test"  type="email" class="form-control">
         </div>
         <div class="col-md-6 m-3">
           <label class="form-label">Email</label>
-          <input type="text" value="{{user.email}}" [(ngModel)]="user.email" class="form-control" >
+          <input type="text" value="test"  class="form-control">
         </div>
         <div class="col-md-6 m-3">
           <label class="form-label">Telefon</label>
-          <input type="text" value="{{user.mobile}}" [(ngModel)]="user.mobile" class="form-control">
+          <input type="text" value="test"  class="form-control">
         </div>
 
         <div class="col-12 m-3">
@@ -113,26 +116,26 @@
         <div *ngIf="passChange==1" style="margin-left: -12px;">
           <div class="col-md-6 m-3 ">
             <label class="form-label">Parola veche</label>
-            <input type="password" [(ngModel)]="passwordOld" class="form-control">
+            <input type="password" form-control>
           </div>
           <div class="col-md-6 m-3 ">
             <label class="form-label">Parola noua</label>
-            <input type="password" [(ngModel)]="password" class="form-control">
+            <input type="password" form-control>
           </div>
           <div class="col-md-6 m-3">
             <label class="form-label">Confirma parola noua</label>
-            <input type="password" [(ngModel)]="passwordConfirm" class="form-control">
+            <input type="password" form-control>
           </div>
         </div>
 
         <div class="col-12 m-3">
-          <button type="submit" (click)="changeProfile()" class="btn btn-outline-dark">Salveaza</button>
+          <button type="submit"  class="btn btn-outline-dark">Salveaza</button>
         </div>
 
       </div>
-    </div> -->
+    </div>
     <!-- Adrese -->
-    <!-- <div *ngIf="pagina==3" class="col col-lg-9">
+    <div *ngIf="pagina==3" class="col col-lg-9">
       <h2 class="m-4">Adrese</h2>
       <div class=" card shadow-lg p-1">
 
@@ -143,26 +146,27 @@
             <div>
               <div class="form-group col-md-12 ">
                 <label class="form-label">Tara</label>
-                <input type="text" value="{{user.tara}}" [(ngModel)]="user.tara" class="form-control">
+                <input type="text" value="test"  class="form-control">
               </div>
               <div class="form-group col-md-12 ">
                 <label class="form-label">Judet</label>
-                <input type="text" value="{{user.judet}}" [(ngModel)]="user.judet" class="form-control">
+                <input type="text" value="test"  class="form-control">
               </div>
               <div class="form-group col-md-12">
                 <label class="form-label">Oras</label>
-                <input type="text" value="{{user.oras}}" [(ngModel)]="user.oras" class="form-control">
+                <input type="text" value="test"  class="form-control">
               </div>
               <div class=" form-group col-md-12 ">
                 <label class="form-label">Strada</label>
-                <input type="text" value="{{user.strada}}" [(ngModel)]="user.strada" class="form-control">
+                <input type="text" value="test"  class="form-control">
               </div>
               <div class="form-group col-md-12">
                 <label for="numar" class="form-label">Numar</label>
-                <input type="text" value="{{user.numar}}" [(ngModel)]="user.numar" class="form-control">
+                <input type="text" value="test"  class="form-control">
               </div>
               <div class="form-group col-lg-12 text-center">
-                <button (click)="changeAdress()" (click)="reload()" class="btn btn-outline-dark col-8 m-3">Modifica adresa</button>
+                <button  (click)="reload()" class="btn btn-outline-dark col-8 m-3">Modifica
+                  adresa</button>
               </div>
             </div>
           </div>
@@ -171,18 +175,34 @@
             <span class="fs-4 ">Date facturare</span>
             <hr style="border:dotted">
             <div class="col fs-4 ">
-              <span>Tara : </span><span>{{user.tara}}</span>
+              <span>Tara : </span><span>
+                <!-- test -->
+
+              </span>
               <hr>
-              <span>Judet : </span><span class="">{{user.judet}}</span>
+              <span>Judet : </span><span class="">
+                <!-- test -->
+
+              </span>
               <hr>
-              <span>Oras : </span><span>{{user.oras}} </span>
+              <span>Oras : </span><span>
+                <!-- test  -->
+
+              </span>
 
               <hr>
-              <span>Strada : </span><span>{{user.strada}} </span>
+              <span>Strada : </span><span>
+                <!-- test  -->
+
+              </span>
               <hr>
-              <span>Numar :</span><span>{{user.numar}} </span>
+              <span>Numar :</span><span>
+                <!-- test -->
+                 </span>
               <hr>
-              <span>Telefon : </span><span> {{user.mobile}}</span>
+              <span>Telefon : </span><span>
+                <!-- test -->
+              </span>
               <hr>
             </div>
 

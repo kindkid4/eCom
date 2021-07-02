@@ -16,14 +16,18 @@
   <a class="dropdown-item">
     <div class="btn-group" dropdown>
       <button id="button-basic" dropdownToggle type="button" class="btn-dark dropdown-toggle"
-              aria-controls="dropdown-basic">
-       Produse <span class="caret"></span>
+        aria-controls="dropdown-basic">
+        Produse <span class="caret"></span>
       </button>
-      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-          role="menu" aria-labelledby="button-basic">
-        <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Telefon">Telefoane</a></li>
-        <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Televizor">Televizoare</a></li>
-        <li role="menuitem"><a class="dropdown-item" (click)="reload()" routerLink="/product-category/Laptop">Laptopuri</a>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <li role="menuitem"><a class="dropdown-item" (click)="reload()"
+            routerLink="/product-category/Telefon">Telefoane</a></li>
+
+        <li role="menuitem"><a class="dropdown-item" (click)="reload()"
+            routerLink="/product-category/Televizor">Televizoare</a></li>
+
+        <li role="menuitem"><a class="dropdown-item" (click)="reload()"
+            routerLink="/product-category/Laptop">Laptopuri</a>
         </li>
       </ul>
     </div>
@@ -72,36 +76,31 @@
                 <div class="dropdown-toggle" style="display: block;">
                   <span>Laptopuri</span>
                 </div>
-
-
                 <ul *dropdownMenu type="button" class="dropdown-menu ddNest" style="margin-top:-56px" role="menu">
-                  <li role="menuitem"><span class="dropdown-item" type="button"
+                  <li role="menuitem"><span class="dropdown-item" (click)="reload()" type="button"
                       routerLink="/product-category/Laptop">Laptopuri</span></li>
-                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Laptop gaming</span></li>
-                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Laptop multimedia</span>
-                  </li>
-                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Laptop office</span></li>
+                  <li role="menuitem"><span class="dropdown-item" (click)="reload()" type="button"
+                      routerLink="/product-category/Laptop Gaming">Laptop gaming</span></li>
+                  <li role="menuitem"><span class="dropdown-item" (click)="reload()" type="button"
+                      routerLink="/product-category/Laptop Multimedia">Laptop multimedia</span></li>
+                  <li role="menuitem"><span class="dropdown-item" (click)="reload()" type="button"
+                      routerLink="/product-category/Laptop Office">Laptop Office</span></li>
                 </ul>
               </li>
               <li role="menuitem" type="button" dropdownToggle dropdown container="body" class="text-center categTitle">
                 <span class=" dropdown-toggle  " type="button">Telefoane</span>
                 <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-112px" role="menu">
-                  <li role="menuitem"><span class="dropdown-item" type="button"
-                      routerLink="/product-category/Telefon">Telefoane</span></li>
-                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/">Tablete</span></li>
+                  <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/Telefon">Telefoane</span></li>
+                  <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/Tableta">Tablete</span></li>
                 </ul>
               </li>
               <li role="menuitem" type="button" dropdownToggle dropdown container="body" class="text-center categTitle">
                 <span class="dropdown-toggle " type="button">Televizoare</span>
                 <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-169px" role="menu">
-                  <li role="menuitem"><span class="dropdown-item" type="button"
-                      routerLink="/product-category/Televizor">Televizoare</span></li>
-                  <li role="menuitem"><span class="dropdown-item" type="button"
-                      routerLink="/product-category/Full HD & HD">Full HD & HD</span></li>
-                  <li role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/4K UHD">4K
-                      UHD</span></li>
-                  <li role="menuitem"><span class="dropdown-item" type="button"
-                      routerLink="/product-category/Smart TV">Smart TV</span></li>
+                  <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/Televizor">Televizoare</span></li>
+                  <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/Full HD & HD">Full HD & HD</span></li>
+                  <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/4K UHD">4K UHD</span></li>
+                  <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/Smart TV">Smart TV</span></li>
                 </ul>
               </li>
             </ul>

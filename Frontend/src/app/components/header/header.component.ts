@@ -19,14 +19,22 @@ export class HeaderComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    // this.products = this.productService.getProducts();
+    this.productService.getAllProducts().subscribe(
+      data => {
+        this.products = data;
+      }
+    )
     this.cartService.cartItems.subscribe((d: string | any[]) => {
       this.itemInCart = d.length;
-
     })
 
   }
 
+  toTitle(str: string) {
+    var desc = str.split(",");
+    // return desc[0] + ' ' + desc[1] + ' ' + desc[4] + ' ' + desc[2];
+    return desc[0] + ' ' + desc[1] + ' ' + desc[2] + ' ' + desc[3]+ ' ' + desc[4]+ ' ' + desc[5]+ ' ' + desc[6];
+  }
 
 
   @HostListener('click')
@@ -38,7 +46,7 @@ export class HeaderComponent implements OnInit {
 
   Search() {
     if (this.searchText == '')
-    this.router.navigate(['/'])
+      this.router.navigate(['/'])
     else {
       this.router.navigate(['/product-search/' + this.searchText]);
     }

@@ -11,14 +11,15 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductSearchComponent implements OnInit {
   public searchText!: string
   public title!: string;
+  products!:Product[];
   constructor(private route: ActivatedRoute,
     private productService : ProductService) { }
-
-  products!: Array<Product>;
-
   ngOnInit() {
-    // this.products = this.productService.getProducts();
     this.title = this.route.snapshot.params['title'];
-
+    this.productService.getAllProducts().subscribe(
+      data => {
+        this.products = data;
+      }
+    )
   }
 }

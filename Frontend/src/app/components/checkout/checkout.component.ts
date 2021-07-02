@@ -33,4 +33,8 @@ export class CheckoutComponent implements OnInit {
 
 
   }
+  toTitle(str : string){
+    var desc = str.split(",");
+    return desc[0]+' '+desc[1]+' '+desc[4]+' '+desc[2];
+  }
 }

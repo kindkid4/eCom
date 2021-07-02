@@ -7,11 +7,10 @@
       <input type="text" class=" input text-center " [(ngModel)]="searchText" placeholder="Introduce textul pentru cautare!">
       <i type="button" *ngIf="searchText" (click)="searchText=''" class="xSearch fas fa-times"></i>
 
-      <ul class="list-group  UL input alig text-center" *ngIf="searchText">
-        <li class="list-group-item" (click)="searchText=''" (click)="reload()" routerLinkActive
-          routerLink="/product-detail/{{product.id}}" type="button"
+      <ul class="list-group  UL input alig text-center wrapper" *ngIf="searchText">
+        <li class="list-group-item" (click)="searchText=''" (click)="reload()" routerLinkActive routerLink="/product-detail/{{product.id}}" type="button"
           *ngFor="let product of products | search: searchText">
-          {{product.title}}
+          {{product.title}} {{toTitle(product.description)}}
         </li>
       </ul>
       <!-- search filter attempt -->

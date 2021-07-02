@@ -4,22 +4,22 @@
       <h1>Adresa de facturare</h1>
     </div>
     <div class="row ml-5">
-      <h5>Tara : {{user.tara}}</h5>
+      <!-- <h5>Tara : {{user.tara}}</h5>
       <h5>Judet: {{user.judet}}</h5>
       <h5>Oras: {{user.oras}}</h5>
       <h5>Strada: {{user.strada}}</h5>
-      <h5>Numar: {{user.numar}}</h5>
+      <h5>Numar: {{user.numar}}</h5> -->
     </div>
     <button class="btn btn-outline-dark col-4 ml-5" routerLink="/user/profile/3">Schimba adresa</button>
     <div class="row text-center m-3">
       <h1>Adresa livrare</h1>
     </div>
     <div class="row ml-5">
-      <h5>Tara : {{user.tara}}</h5>
+      <!-- <h5>Tara : {{user.tara}}</h5>
       <h5>Judet: {{user.judet}}</h5>
       <h5>Oras: {{user.oras}}</h5>
       <h5>Strada: {{user.strada}}</h5>
-      <h5>Numar: {{user.numar}}</h5>
+      <h5>Numar: {{user.numar}}</h5> -->
     </div>
     <div class="row text-center m-3">
       <h1>Detalii plata</h1>
@@ -46,10 +46,10 @@
       <ng-template let-item pTemplate="item">
         <div class="product-item">
           <div class="image-container">
-            <img src="{{item.images}}" [alt]="item.title" class="product-image" />
+            <img src="{{item.primaryImage}}" [alt]="item.title" class="product-image" />
           </div>
           <div class="product-list-detail">
-            <h5 class="p-mb-2">{{item.title}}</h5>
+            <h5 class="p-mb-2">{{item.categoryType}} {{item.title}} {{toTitle(item.description)}}</h5>
             <i class="pi pi-tag product-category-icon"></i>
             <span class="product-category">{{item.category}}</span><br>
             <span class="product-category">Numar de produse : {{item.qty}}</span>

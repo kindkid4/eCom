@@ -14,7 +14,7 @@ export class CategoryPipe implements PipeTransform {
     }
     searchText = searchText.toLocaleLowerCase();
     return items.filter(it => {
-      return it.categoryType.toLocaleLowerCase().includes(searchText);
+      return it.categoryType.toLocaleLowerCase().includes(searchText) || it.description.toLocaleLowerCase().includes(searchText);
     });
   }
 

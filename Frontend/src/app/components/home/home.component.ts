@@ -9,7 +9,15 @@ export class HomeComponent implements OnInit {
   categoryList: Array<any> = [
     {
       "id": 1,
-      "categoryType": 'Televizor'
+      "categoryType": 'Smart TV'
+    },
+    {
+      "id": 2,
+      "categoryType": 'Laptop Gaming'
+    },
+    {
+      "id": 3,
+      "categoryType": 'Tableta'
     },
   ]
   constructor() { }
