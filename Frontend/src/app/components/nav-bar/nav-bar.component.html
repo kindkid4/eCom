@@ -1,7 +1,7 @@
 <!-- SideNav -->
 <div id="mySidenav" class="sidenav">
   <label class="m-5">
-    <img *ngIf="loggedin()" class="pfp" [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
+    <img *ngIf="loggedin()" class="pfp" [src]="getPFP() ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
   </label>
   <br />
   <h1 (click)="false" class="m-3 text-center" style="color:white">Bun venit <h1 *ngIf="loggedin()">{{user.userName}}</h1>

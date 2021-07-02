@@ -15,7 +15,7 @@
         <span class="text-center" style="font-size:x-large;"> {{user.userName}} </span>
         <hr>
         <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
-          <input type="radio" class="btn-check" routerLink="/user/profile/1" (click)="reload()" (click)="passChange=0"
+          <input type="radio" class="btn-check" routerLink="/user/profile/1" (click)="reload()" (click)="passChange=false"
             name="vbtn-radio" id="vbtn-radio1" autocomplete="off">
           <label class="btn btn-outline-dark" for="vbtn-radio1">Contul meu</label>
 
@@ -23,15 +23,15 @@
             id="vbtn-radio2" autocomplete="off">
           <label class="btn btn-outline-dark" for="vbtn-radio2">Informatii cont</label>
 
-          <input type="radio" class="btn-check" routerLink="/user/profile/3" (click)="reload()" (click)="passChange=0"
+          <input type="radio" class="btn-check" routerLink="/user/profile/3" (click)="reload()" (click)="passChange=false"
             name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
           <label class="btn btn-outline-dark" for="vbtn-radio3">Adrese</label>
 
-          <input type="radio" class="btn-check" routerLink="/user/profile/4" (click)="reload()" (click)="passChange=0"
+          <input type="radio" class="btn-check" routerLink="/user/profile/4" (click)="reload()" (click)="passChange=false"
             name="vbtn-radio" id="vbtn-radio4" autocomplete="off">
           <label class="btn btn-outline-dark" for="vbtn-radio4">Comenzi</label>
 
-          <input type="radio" class="btn-check" routerLink="/user/profile/5" (click)="reload()" (click)="passChange=0"
+          <input type="radio" class="btn-check" routerLink="/user/profile/5" (click)="reload()" (click)="passChange=false"
             name="vbtn-radio" id="vbtn-radio5" autocomplete="off">
           <label class="btn btn-outline-dark" for="vbtn-radio5">Retur produse</label>
         </div>
@@ -92,16 +92,12 @@
       <h2 class="m-4">Informatii cont</h2>
       <div class="card  card p-1 shadow-lg ">
         <div class="col-md-6 m-3">
-          <label class="form-label">Nume</label>
-          <input value="{{user.userName}}"  type="email" class="form-control">
-        </div>
-        <div class="col-md-6 m-3">
           <label class="form-label">Email</label>
-          <input type="text" value="{{user.email}}"  class="form-control">
+          <input type="email" value="{{user.email}}"[(ngModel)]="user.email"  class="form-control">
         </div>
         <div class="col-md-6 m-3">
           <label class="form-label">Telefon</label>
-          <input type="text" value="{{user.mobile}}"  class="form-control">
+          <input type="text" value="{{user.mobile}}" [(ngModel)]="user.mobile" class="form-control">
         </div>
 
         <div class="col-12 m-3">
@@ -113,23 +109,20 @@
           </div>
         </div>
 
-        <div *ngIf="passChange==1" style="margin-left: -12px;">
-          <div class="col-md-6 m-3 ">
-            <label class="form-label">Parola veche</label>
-            <input type="password" class="form-control" form-control>
-          </div>
+        <div *ngIf="passChange" style="margin-left: -12px;">
           <div class="col-md-6 m-3 ">
             <label class="form-label">Parola noua</label>
-            <input type="password" class="form-control" form-control>
+            <input type="password" [(ngModel)]="password" class="form-control" form-control>
           </div>
           <div class="col-md-6 m-3">
             <label class="form-label" >Confirma parola noua</label>
-            <input type="password" class="form-control" form-control>
+            <input type="password" [(ngModel)]="passwordConfirm" class="form-control" form-control>
           </div>
         </div>
 
         <div class="col-12 m-3">
-          <button type="submit"  class="btn btn-outline-dark">Salveaza</button>
+          <button *ngIf="passChange" type="submit" (click)="changePassword()" class="btn btn-outline-dark">Salveaza parola</button>
+          <button *ngIf="!passChange" type="submit" (click)="changeProfile()" class="btn btn-outline-dark">Salveaza</button>
         </div>
 
       </div>
@@ -146,26 +139,26 @@
             <div>
               <div class="form-group col-md-12 ">
                 <label class="form-label">Tara</label>
-                <input type="text" value="{{user.tara}}"  class="form-control">
+                <input type="text" [(ngModel)]="user.tara" value="{{user.tara}}"  class="form-control">
               </div>
               <div class="form-group col-md-12 ">
                 <label class="form-label">Judet</label>
-                <input type="text" value="{{user.judet}}"  class="form-control">
+                <input type="text" [(ngModel)]="user.judet" value="{{user.judet}}"  class="form-control">
               </div>
               <div class="form-group col-md-12">
                 <label class="form-label">Oras</label>
-                <input type="text" value="{{user.oras}}"  class="form-control">
+                <input type="text" [(ngModel)]="user.oras" value="{{user.oras}}"  class="form-control">
               </div>
               <div class=" form-group col-md-12 ">
                 <label class="form-label">Strada</label>
-                <input type="text" value="{{user.strada}}"  class="form-control">
+                <input type="text" [(ngModel)]="user.strada" value="{{user.strada}}"  class="form-control">
               </div>
               <div class="form-group col-md-12">
                 <label for="numar" class="form-label">Numar</label>
-                <input type="text" value="{{user.numar}}"  class="form-control">
+                <input type="text" [(ngModel)]="user.numar" value="{{user.numar}}"  class="form-control">
               </div>
               <div class="form-group col-lg-12 text-center">
-                <button  (click)="reload()" class="btn btn-outline-dark col-8 m-3">Modifica
+                <button  (click)="changeProfile()" class="btn btn-outline-dark col-8 m-3">Modifica
                   adresa</button>
               </div>
             </div>

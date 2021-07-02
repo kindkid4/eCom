@@ -1,4 +1,4 @@
-import { UserForLogin, UserForRegister } from "./UserBase";
+import { UserForLogin } from "./UserBase";
 
 export interface User extends UserForLogin{
   tara?:string,

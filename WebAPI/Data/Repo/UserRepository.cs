@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -42,7 +43,7 @@ namespace WebAPI.Data.Repo
             return true;
         }
 
-        public void Register(string userName, string password,string Email,int Mobile)
+        public void Register(string userName, string password, string Email, int Mobile)
         {
             byte[] passwordHash, passwordKey;
             //GENERATE THE HASH CODE
@@ -58,7 +59,7 @@ namespace WebAPI.Data.Repo
             user.Email = Email;
             user.Tara = "";
             user.Judet = "";
-            user.Oras ="";
+            user.Oras = "";
             user.Numar = 0;
             user.Pfp = "";
             user.Password = passwordHash;
@@ -69,6 +70,16 @@ namespace WebAPI.Data.Repo
         public async Task<bool> UserAlreadyExist(string userName)
         {
             return await dc.Users.AnyAsync(x => x.Username == userName);
+        }
+        public async Task<User> GetUser(string userName)
+        {
+            var users = await dc.Users.ToListAsync();
+            foreach (User user in users)
+            {
+                if (user.Username == userName)
+                    return user;
+            }
+            return null;
         }
     }
 }

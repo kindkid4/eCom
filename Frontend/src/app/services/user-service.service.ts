@@ -3,8 +3,9 @@ import { UserForRegister, UserForLogin } from '../model/UserBase';
 import * as alertyfy from 'alertifyjs';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Observable, UnsubscriptionError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,15 +14,21 @@ export class UserServiceService {
   userToEdit!: User;
   Users = [];
   baseUrl = environment.baseUrl;
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private httpClient: HttpClient) { }
 
   addUser(user: UserForRegister) {
-    return this.http.post(this.baseUrl +'/account/register',user)
+    return this.http.post(this.baseUrl + '/account/register', user)
   }
 
   authUser(user: UserForLogin) {
-    return this.http.post(this.baseUrl + '/account/login',user);
+    return this.http.post(this.baseUrl + '/account/login', user);
   }
+  upUserPassword(user: User, passToChange: string): Observable<User> {
+   return this.http.put<User>(this.baseUrl + '/account/update/' + passToChange,user);
+  }
+  upUser(user: User): Observable<User> {
+    return this.http.put<User>(this.baseUrl + '/account/update', user);
+   }
 
   reload() {
     setTimeout(() => {
@@ -32,5 +39,6 @@ export class UserServiceService {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     alertyfy.success("Logout successfuly!");
+    this.router.navigate(['/']);
   }
 }

@@ -1,8 +1,10 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -13,7 +15,7 @@ using WebAPI.Interfaces;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
-{
+{   
     public class AccountController : BaseController
     {
         private readonly IUnitOfWork uow;
@@ -23,6 +25,53 @@ namespace WebAPI.Controllers
         {
             this.uow = uow;
             this.configuration = configuration;
+        }
+        //API/ACCOUNT/UPDATE/"parola"
+        [AllowAnonymous]
+        [HttpPut("update/{passToChange}")]
+        public async Task<IActionResult> UpdateUserPassword(string passToChange,LoginResponseDto loginDto)
+        {   
+            
+            var userFromDb = await uow.UserRepository.GetUser(loginDto.UserName);
+            if (userFromDb == null)
+            {
+                return BadRequest("Update not allowed");
+            }
+            if (passToChange!="")
+            {
+                byte[] passwordHash, passwordKey;
+                using (var hmac = new HMACSHA512())
+                {
+                    passwordKey = hmac.Key;
+                    passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(passToChange));
+                    userFromDb.Password = passwordHash;
+                    userFromDb.PasswordKey = passwordKey;
+                }
+            }
+            await uow.SaveAsync();
+            return Ok(userFromDb);
+        }
+        //API/ACCOUNT/UPDATE
+        [AllowAnonymous]
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateUser(LoginResponseDto loginDto)
+        {   
+            
+            var userFromDb = await uow.UserRepository.GetUser(loginDto.UserName);
+            if (userFromDb == null)
+            {
+                return BadRequest("Update not allowed");
+            }
+            userFromDb.Email = loginDto.Email;
+            userFromDb.Mobile = loginDto.Mobile;
+            userFromDb.Tara = loginDto.Tara;
+            userFromDb.Judet = loginDto.Judet;
+            userFromDb.Oras = loginDto.Oras;
+            userFromDb.Strada = loginDto.Strada;
+            userFromDb.Numar = loginDto.Numar;
+            userFromDb.Pfp = loginDto.Pfp;
+            await uow.SaveAsync();
+            return Ok(userFromDb);
         }
         //API/ACCOUNT/LOGIN
         [HttpPost("login")]
@@ -52,11 +101,11 @@ namespace WebAPI.Controllers
             loginRes.Pfp = user.Pfp;
             return Ok(loginRes);
         }
-
+        //API/ACCOUNT/REGISTER
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterReqDto registerReq)
         {
-            
+
             ApiError apiError = new ApiError();
             if (registerReq.UserName.IsEmpty() || registerReq.UserName.IsEmpty())
             {
@@ -72,7 +121,7 @@ namespace WebAPI.Controllers
             }
 
 
-            uow.UserRepository.Register(registerReq.UserName, registerReq.Password,registerReq.Email,registerReq.Mobile);
+            uow.UserRepository.Register(registerReq.UserName, registerReq.Password, registerReq.Email, registerReq.Mobile);
             await uow.SaveAsync();
             return StatusCode(201);
         }

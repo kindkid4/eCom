@@ -1,7 +1,7 @@
 import { ResourceLoader, ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import * as alertyfy from 'alertifyjs';
@@ -13,13 +13,20 @@ import { UpperCasePipe } from '@angular/common';
 })
 export class UserProfileComponent implements OnInit {
   pagina: number = 1;
-  passChange: number = 0;
+  passChange: boolean = false;
   user!: User;
   url = '';
   password = "";
   passwordConfirm = "";
+  email = "";
+  mobil = 0;
+  tara = "";
+  judet = "";
+  oras = "";
+  strada = ""
+  numar = 0;
 
-  constructor(private route: ActivatedRoute, private userService: UserServiceService, private formB: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private userService: UserServiceService, private formB: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.pagina = this.route.snapshot.params['page'];
@@ -27,15 +34,24 @@ export class UserProfileComponent implements OnInit {
     this.url = this.user.pfp!;
   }
 
-  changeProfile() {
-    if (this.passChange === 1)
+  changePassword() {
+    if (this.passChange)
       if (this.password != this.passwordConfirm)
         alertyfy.error('Detalii introduse incorect!');
       else {
-        this.userService.userToEdit.password = this.password;
-        alertyfy.success('Date salvate!');
-        // this.userService.upUsers();
+        this.userService.upUserPassword(this.user, this.password).subscribe();
+        alertyfy.success('Parola salvata!');
       }
+  }
+  changeProfile() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.userService.upUser(this.user).subscribe();
+    alertyfy.success('Date salvate!');
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000);
+    this.router.navigate(['/']);
   }
 
   reload() {
@@ -66,10 +82,10 @@ export class UserProfileComponent implements OnInit {
   }
 
   passCheck() {
-    if (this.passChange === 1)
-      this.passChange = 0;
+    if (this.passChange)
+      this.passChange = false;
     else
-      this.passChange = 1;
+      this.passChange = true;
   }
 
 }

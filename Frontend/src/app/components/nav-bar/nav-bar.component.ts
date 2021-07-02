@@ -53,11 +53,12 @@ export class NavBarComponent implements OnInit {
       }
     );
   }
-
+  getPFP(){
+    return this.url = this.user.pfp?.toString()!;
+  }
   loggedin() {
     this.loggedinUser = localStorage.getItem('token')!;
     this.user = JSON.parse(localStorage.getItem('user')!);
-    this.url = this.user.pfp!;
     return this.loggedinUser;
   }
   onLogout() {
