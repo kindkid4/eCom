@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as alertyfy from 'alertifyjs';
+import { User } from 'src/app/model/User';
 import { UserServiceService } from 'src/app/services/user-service.service';
 @Component({
   selector: 'app-user-login',
@@ -30,7 +31,7 @@ export class UserLoginComponent implements OnInit {
       (response: any) => {
         const user = response;
         localStorage.setItem('token',user.token);
-        localStorage.setItem('userName',user.userName);
+        localStorage.setItem('user',JSON.stringify(user));
         alertyfy.success('Login Reusit!');
         this.router.navigate(['/']);
       }

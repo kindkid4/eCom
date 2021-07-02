@@ -45,10 +45,9 @@ export class NavBarComponent implements OnInit {
   onLogin(loginForm: NgForm) {
     this.userService.authUser(loginForm.value).subscribe(
       (response: any) => {
-        console.log(response);
         const user = response;
         localStorage.setItem('token',user.token);
-        localStorage.setItem('userName',user.userName);
+        localStorage.setItem('user',JSON.stringify(user));
         alertyfy.success('Login Reusit!');
         this.router.navigate(['/']);
       }
@@ -56,12 +55,13 @@ export class NavBarComponent implements OnInit {
   }
 
   loggedin() {
-    this.loggedinUser = localStorage.getItem('userName')!;
+    this.loggedinUser = localStorage.getItem('token')!;
+    this.user = JSON.parse(localStorage.getItem('user')!);
+    this.url = this.user.pfp!;
     return this.loggedinUser;
   }
   onLogout() {
     this.userService.onLogout();
-    // this.reload();
   }
   openNav() {
     document.getElementById("mySidenav")!.style.width = "280px";

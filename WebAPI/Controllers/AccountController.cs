@@ -42,21 +42,29 @@ namespace WebAPI.Controllers
             var loginRes = new LoginResponseDto();
             loginRes.UserName = user.Username;
             loginRes.Token = CreateJWT(user);
+            loginRes.Mobile = user.Mobile;
+            loginRes.Email = user.Email;
+            loginRes.Tara = user.Tara;
+            loginRes.Judet = user.Judet;
+            loginRes.Oras = user.Oras;
+            loginRes.Strada = user.Strada;
+            loginRes.Numar = user.Numar;
+            loginRes.Pfp = user.Pfp;
             return Ok(loginRes);
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(LoginReqDto loginReq)
+        public async Task<IActionResult> Register(RegisterReqDto registerReq)
         {
             
             ApiError apiError = new ApiError();
-            if (loginReq.UserName.IsEmpty() || loginReq.UserName.IsEmpty())
+            if (registerReq.UserName.IsEmpty() || registerReq.UserName.IsEmpty())
             {
                 apiError.ErrorCode = BadRequest().StatusCode;
                 apiError.ErrorMessage = "Numele sau parola nu pot fi lasate locuri libere";
                 return BadRequest(apiError);
             }
-            if (await uow.UserRepository.UserAlreadyExist(loginReq.UserName))
+            if (await uow.UserRepository.UserAlreadyExist(registerReq.UserName))
             {
                 apiError.ErrorCode = BadRequest().StatusCode;
                 apiError.ErrorMessage = "Utilizatorul exista deja,folositi alt nume";
@@ -64,7 +72,7 @@ namespace WebAPI.Controllers
             }
 
 
-            uow.UserRepository.Register(loginReq.UserName, loginReq.Password);
+            uow.UserRepository.Register(registerReq.UserName, registerReq.Password,registerReq.Email,registerReq.Mobile);
             await uow.SaveAsync();
             return StatusCode(201);
         }

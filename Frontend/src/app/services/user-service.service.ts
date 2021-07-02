@@ -30,7 +30,7 @@ export class UserServiceService {
   }
   onLogout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('userName');
+    localStorage.removeItem('user');
     alertyfy.success("Logout successfuly!");
   }
 }

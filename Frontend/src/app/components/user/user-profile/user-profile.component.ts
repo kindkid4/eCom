@@ -1,4 +1,4 @@
-import { ResourceLoader } from '@angular/compiler';
+import { ResourceLoader, ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -14,58 +14,52 @@ import { UpperCasePipe } from '@angular/common';
 export class UserProfileComponent implements OnInit {
   pagina: number = 1;
   passChange: number = 0;
-  user='';
-  url='';
+  user!: User;
+  url = '';
+  password = "";
+  passwordConfirm = "";
 
-  constructor(private route: ActivatedRoute, private userService: UserServiceService, private formB: FormBuilder,) { }
+  constructor(private route: ActivatedRoute, private userService: UserServiceService, private formB: FormBuilder) { }
 
   ngOnInit(): void {
     this.pagina = this.route.snapshot.params['page'];
-    this.user = localStorage.getItem('userName')!;
+    this.user = JSON.parse(localStorage.getItem('user')!);
+    this.url = this.user.pfp!;
   }
 
-  // changeProfile() {
-  //   if (this.passChange === 1)
-  //     if (this.password != this.passwordConfirm || this.passwordOld != this.user.password)
-  //       alertyfy.error('Detalii introduse incorect!');
-  //     else {
-  //       this.userService.userToEdit.password = this.password;
-  //       alertyfy.success('Date salvate!');
-  //       // this.userService.upUsers();
-  //     }
-
-  //   else {
-  //     // this.userService.userToEdit.userName = this.user.userName;
-  //     // this.userService.userToEdit.email = this.user.email;
-  //     // this.userService.userToEdit.mobile = this.user.mobile;
-  //     alertyfy.success('Date salvate!');
-  //     this.userService.upUsers();
-  //   }
-
-  // }
+  changeProfile() {
+    if (this.passChange === 1)
+      if (this.password != this.passwordConfirm)
+        alertyfy.error('Detalii introduse incorect!');
+      else {
+        this.userService.userToEdit.password = this.password;
+        alertyfy.success('Date salvate!');
+        // this.userService.upUsers();
+      }
+  }
 
   reload() {
     setTimeout(() => {
       window.location.reload();
     }, 100);
   }
-  // onSelectFile(event) {
-  //   if (event.target!.files && event.target!.files[0]) {
-  //     var reader = new FileReader();
+  onSelectFile(event: { target: any; }) {
+    if (event.target!.files && event.target!.files[0]) {
+      var reader = new FileReader();
 
-  //     reader.readAsDataURL(event.target!.files[0]); // read file as data url
+      reader.readAsDataURL(event.target!.files[0]); // read file as data url
 
-  //     reader.onload = (event) => { // called once readAsDataURL is completed
-  //       this.url = event.target!.result as string;
-  //       console.log(this.url);
-  //       this.userService.userToEdit.pfp = this.url;
-  //       this.userService.upUsers();
-  //       this.reload();
-  //     }
-  //   }
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.url = event.target!.result as string;
+        console.log(this.url);
+        // this.userService.userToEdit.pfp = this.url;
+        // this.userService.upUsers();
+        this.reload();
+      }
+    }
 
 
-  // }
+  }
 
   public delete() {
     // this.url = '';

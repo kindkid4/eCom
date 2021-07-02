@@ -1,10 +1,12 @@
-import { UserForRegister } from "./UserBase";
+import { UserForLogin, UserForRegister } from "./UserBase";
 
-export interface User extends UserForRegister{
+export interface User extends UserForLogin{
   tara?:string,
   judet?:string,
   oras?:string,
   strada?:string,
   numar?:number,
   pfp?:string,
+  email?:string;
+  mobile?:number;
 }

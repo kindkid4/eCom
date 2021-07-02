@@ -42,7 +42,7 @@ namespace WebAPI.Data.Repo
             return true;
         }
 
-        public void Register(string userName, string password)
+        public void Register(string userName, string password,string Email,int Mobile)
         {
             byte[] passwordHash, passwordKey;
             //GENERATE THE HASH CODE
@@ -54,6 +54,13 @@ namespace WebAPI.Data.Repo
 
             User user = new User();
             user.Username = userName;
+            user.Mobile = Mobile;
+            user.Email = Email;
+            user.Tara = "";
+            user.Judet = "";
+            user.Oras ="";
+            user.Numar = 0;
+            user.Pfp = "";
             user.Password = passwordHash;
             user.PasswordKey = passwordKey;
             dc.Users.Add(user);

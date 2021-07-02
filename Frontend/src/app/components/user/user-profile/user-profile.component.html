@@ -12,7 +12,7 @@
         <br />
         <input id="fileInput" type='file' >
 
-        <span class="text-center" style="font-size:x-large;"> {{user}} </span>
+        <span class="text-center" style="font-size:x-large;"> {{user.userName}} </span>
         <hr>
         <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
           <input type="radio" class="btn-check" routerLink="/user/profile/1" (click)="reload()" (click)="passChange=0"
@@ -44,8 +44,8 @@
       <div class="card p-1 shadow-lg">
         <span class="m-4 fs-3">Informatii de contact <i routerLink="/user/profile/2" (click)="reload()" type="button"
             class="ml-5 fas fa-edit"></i></span>
-        <span class="m-2">Email : test</span>
-        <span class="m-2">Telefon : test</span>
+        <span class="m-2">Email : {{user.email}}</span>
+        <span class="m-2">Telefon : {{user.mobile}}</span>
         <hr class="m-2">
 
         <span class="m-4 fs-3">Comenzi recente <i routerLink="/user/profile/4" (click)="reload()"
@@ -63,23 +63,23 @@
           <div class="col-6 text-center">
             <span class="m-2 fs-4 text-center">Adresa mea</span>
             <hr>
-            <span class="m-3 row">Tara : test</span>
-            <span class="m-3 row">Judet : test</span>
-            <span class="m-3 row">Oras : test</span>
-            <span class="m-3 row">Strada : test</span>
-            <span class="m-3 row">numar : test</span>
-            <span class="m-3 row">Telefon : test</span>
+            <span class="m-3 row">Tara : {{user.tara}}</span>
+            <span class="m-3 row">Judet : {{user.judet}}</span>
+            <span class="m-3 row">Oras : {{user.oras}}</span>
+            <span class="m-3 row">Strada : {{user.strada}}</span>
+            <span class="m-3 row">numar : {{user.numar}}</span>
+            <span class="m-3 row">Telefon : {{user.mobile}}</span>
           </div>
 
           <div class="col-6 text-center">
             <span class="m-2 fs-4">Date facturare</span>
             <hr>
-            <span class="m-3 row">Tara : test</span>
-            <span class="m-3 row">Judet : test</span>
-            <span class="m-3 row">Oras : test</span>
-            <span class="m-3 row">Strada : test</span>
-            <span class="m-3 row">numar : test</span>
-            <span class="m-3 row">Telefon : test</span>
+            <span class="m-3 row">Tara : {{user.tara}}</span>
+            <span class="m-3 row">Judet : {{user.judet}}</span>
+            <span class="m-3 row">Oras : {{user.oras}}</span>
+            <span class="m-3 row">Strada : {{user.strada}}</span>
+            <span class="m-3 row">numar : {{user.numar}}</span>
+            <span class="m-3 row">Telefon : {{user.mobile}}</span>
           </div>
         </div>
 
@@ -93,15 +93,15 @@
       <div class="card  card p-1 shadow-lg ">
         <div class="col-md-6 m-3">
           <label class="form-label">Nume</label>
-          <input value="test"  type="email" class="form-control">
+          <input value="{{user.userName}}"  type="email" class="form-control">
         </div>
         <div class="col-md-6 m-3">
           <label class="form-label">Email</label>
-          <input type="text" value="test"  class="form-control">
+          <input type="text" value="{{user.email}}"  class="form-control">
         </div>
         <div class="col-md-6 m-3">
           <label class="form-label">Telefon</label>
-          <input type="text" value="test"  class="form-control">
+          <input type="text" value="{{user.mobile}}"  class="form-control">
         </div>
 
         <div class="col-12 m-3">
@@ -116,15 +116,15 @@
         <div *ngIf="passChange==1" style="margin-left: -12px;">
           <div class="col-md-6 m-3 ">
             <label class="form-label">Parola veche</label>
-            <input type="password" form-control>
+            <input type="password" class="form-control" form-control>
           </div>
           <div class="col-md-6 m-3 ">
             <label class="form-label">Parola noua</label>
-            <input type="password" form-control>
+            <input type="password" class="form-control" form-control>
           </div>
           <div class="col-md-6 m-3">
-            <label class="form-label">Confirma parola noua</label>
-            <input type="password" form-control>
+            <label class="form-label" >Confirma parola noua</label>
+            <input type="password" class="form-control" form-control>
           </div>
         </div>
 
@@ -146,23 +146,23 @@
             <div>
               <div class="form-group col-md-12 ">
                 <label class="form-label">Tara</label>
-                <input type="text" value="test"  class="form-control">
+                <input type="text" value="{{user.tara}}"  class="form-control">
               </div>
               <div class="form-group col-md-12 ">
                 <label class="form-label">Judet</label>
-                <input type="text" value="test"  class="form-control">
+                <input type="text" value="{{user.judet}}"  class="form-control">
               </div>
               <div class="form-group col-md-12">
                 <label class="form-label">Oras</label>
-                <input type="text" value="test"  class="form-control">
+                <input type="text" value="{{user.oras}}"  class="form-control">
               </div>
               <div class=" form-group col-md-12 ">
                 <label class="form-label">Strada</label>
-                <input type="text" value="test"  class="form-control">
+                <input type="text" value="{{user.strada}}"  class="form-control">
               </div>
               <div class="form-group col-md-12">
                 <label for="numar" class="form-label">Numar</label>
-                <input type="text" value="test"  class="form-control">
+                <input type="text" value="{{user.numar}}"  class="form-control">
               </div>
               <div class="form-group col-lg-12 text-center">
                 <button  (click)="reload()" class="btn btn-outline-dark col-8 m-3">Modifica
@@ -176,32 +176,32 @@
             <hr style="border:dotted">
             <div class="col fs-4 ">
               <span>Tara : </span><span>
-                <!-- test -->
+                {{user.tara}}
 
               </span>
               <hr>
               <span>Judet : </span><span class="">
-                <!-- test -->
+                {{user.judet}}
 
               </span>
               <hr>
               <span>Oras : </span><span>
-                <!-- test  -->
+                {{user.oras}}
 
               </span>
 
               <hr>
               <span>Strada : </span><span>
-                <!-- test  -->
+                {{user.strada}}
 
               </span>
               <hr>
               <span>Numar :</span><span>
-                <!-- test -->
+                {{user.numar}}
                  </span>
               <hr>
               <span>Telefon : </span><span>
-                <!-- test -->
+                {{user.mobile}}
               </span>
               <hr>
             </div>
@@ -212,7 +212,7 @@
 
       </div>
 
-    </div> -->
+    </div>
     <!-- Comenzi -->
     <div *ngIf="pagina==4" class=" col col-lg-9 ">
       <h2 class="m-4">Comenzi </h2>
