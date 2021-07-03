@@ -20,8 +20,8 @@ import SwiperCore, {
 export class ProductDetailComponent implements OnInit {
   public productId!: number;
   product!: Product;
-  Desc!: string[];
-  prImg!: string[];
+  Desc: string[]=[];
+  prImg?: string[];
 
 
   constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService) { }
@@ -34,7 +34,7 @@ export class ProductDetailComponent implements OnInit {
     ).subscribe(
       (data: any) => {
         this.product = data;
-        this.Desc = this.product.description.split(",");
+        this.Desc = this.product?.description?.split(",");
         this.prImg = this.product.images.split(" ");
       }
     )

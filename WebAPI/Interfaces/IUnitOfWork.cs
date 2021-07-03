@@ -6,6 +6,7 @@ namespace WebAPI.Interfaces
     {
          IProductRepository ProductRepository {get;}
          IUserRepository UserRepository{get;}
+         IOrderRepository orderRepository{get;}
 
          Task<bool> SaveAsync();
     }

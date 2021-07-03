@@ -1,7 +1,7 @@
 <!-- SideNav -->
 <div id="mySidenav" class="sidenav">
   <label class="m-5">
-    <img *ngIf="loggedin()" class="pfp" [src]="getPFP() ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
+    <img *ngIf="loggedin()" class="pfp" src="{{user?.pfp}}">
   </label>
   <br />
   <h1 (click)="false" class="m-3 text-center" style="color:white">Bun venit <h1 *ngIf="loggedin()">{{userName}}</h1>
@@ -155,9 +155,9 @@
 
         <a class="dropdown-toggle text-light row text-center" type="button" dropdownToggle (click)="false">
 
-          <img class="pfp-nav" src="{{user.pfp}}">
+          <img class="pfp-nav" src="{{user?.pfp}}">
 
-          <span class="col mt-2">Bun venit {{user.userName}}</span>
+          <span class="col mt-2">Bun venit {{user?.userName}}</span>
         </a>
         <div class="dropdown-menu " style="margin-left: 105px;" *dropdownMenu>
 

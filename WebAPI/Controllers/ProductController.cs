@@ -28,6 +28,10 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetProducts()
         {
             var products = await uow.ProductRepository.GetProductsAsync();
+            if (products == null)
+            {
+                return BadRequest("Update not allowed");
+            }
             var productsDto = mapper.Map<IEnumerable<ProductDto>>(products);
             return Ok(products);
         }

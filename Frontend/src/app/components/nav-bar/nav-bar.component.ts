@@ -14,7 +14,7 @@ export class NavBarComponent implements OnInit {
   public loggedinUser!: string;
   public wasInside = true;
   userName!: string;
-  user!: User;
+  user?: User ;
   public text!: String;
   ok!: boolean;
   url = '';
@@ -29,7 +29,6 @@ export class NavBarComponent implements OnInit {
           this.user = us;
         }
       );
-      this.url = this.user.pfp!;
     }
   }
 
@@ -68,9 +67,6 @@ export class NavBarComponent implements OnInit {
         this.router.navigate(['/']);
       }
     );
-  }
-  getPFP() {
-    return this.url = this.user.pfp?.toString()!;
   }
   loggedin() {
     this.loggedinUser = localStorage.getItem('token')!;

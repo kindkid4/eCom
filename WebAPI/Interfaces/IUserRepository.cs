@@ -6,7 +6,7 @@ namespace WebAPI.Interfaces
     public interface IUserRepository
     {
         Task<User> Authenticate(string userName, string password);
-        void Register(string userName, string password,string Email,int Mobile);
+        void Register(string userName, string password,string Email,string Mobile);
 
         Task<bool> UserAlreadyExist(string userName);
         Task<User> GetUser(string userName);

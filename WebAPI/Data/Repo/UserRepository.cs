@@ -43,7 +43,7 @@ namespace WebAPI.Data.Repo
             return true;
         }
 
-        public void Register(string userName, string password, string Email, int Mobile)
+        public void Register(string userName, string password, string Email, string Mobile)
         {
             byte[] passwordHash, passwordKey;
             //GENERATE THE HASH CODE

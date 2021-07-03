@@ -6,13 +6,12 @@ import { User } from '../model/User';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable, UnsubscriptionError } from 'rxjs';
+import { Order } from '../model/Orders';
+import { Product } from '../model/Product';
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
-  loggedinUser!: string;
-  userToEdit!: User;
-  Users = [];
   baseUrl = environment.baseUrl;
   constructor(private router: Router, private http: HttpClient, private httpClient: HttpClient) { }
 
@@ -24,14 +23,27 @@ export class UserServiceService {
     return this.http.post(this.baseUrl + '/account/login', user);
   }
   upUserPassword(user: User, passToChange: string): Observable<User> {
-   return this.http.put<User>(this.baseUrl + '/account/update/password/' + passToChange,user);
+    return this.http.put<User>(this.baseUrl + '/account/update/password/' + passToChange, user);
   }
   upUser(user: User): Observable<User> {
     return this.http.put<User>(this.baseUrl + '/account/update/profile', user);
-   }
-  getUser(userName:string):Observable<User>{
-    return this.http.get<User>(this.baseUrl + '/account/get/'+ userName);
   }
+  getUser(userName: string): Observable<User> {
+    return this.http.get<User>(this.baseUrl + '/account/get/' + userName);
+  }
+
+  getOrders(userName: string) {
+    return this.http.get<Order[]>(this.baseUrl + '/order/retrive/' + userName);
+  }
+  delOrder(orderId:number) {
+    return this.http.delete(this.baseUrl + '/order/remove/'+ orderId);
+  }
+  addOrder(product:Product,userName:string,qty:number){
+    alertyfy.success(qty);
+    return this.http.post<Product>(this.baseUrl+'/order/add/'+userName+'/'+qty,product);
+  }
+
+
   reload() {
     setTimeout(() => {
       window.location.reload();

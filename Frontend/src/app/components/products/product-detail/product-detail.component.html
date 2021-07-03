@@ -1,4 +1,4 @@
-<h2>{{product?.categoryType}} {{product?.title}} {{Desc[0]}} {{Desc[4]}} {{Desc[3]}}</h2>
+<h2 ngInit="desc=[]">{{product?.categoryType}} {{product?.title}} {{Desc[0]}} {{Desc[4]}} {{Desc[3]}}</h2>
 <hr>
 <div class="row">
   <div class="col-8">
@@ -48,7 +48,7 @@
 <h3>Specificatii produs</h3>
 <hr>
 <!-- TELEVIZOR -->
-<div class="row" *ngIf="product.categoryType.includes('Televizor')">
+<div class="row" *ngIf="product?.categoryType?.includes('Televizor')">
   <div class="col-6">
     <h5>Video</h5>
     <table class="table text-center table-light table-striped table-bordered">
@@ -123,7 +123,7 @@
 
   </div>
 </div>
-<div class="row" *ngIf="product.categoryType.includes('Telefon')">
+<div class="row" *ngIf="product?.categoryType?.includes('Telefon')">
   <div class="col-6">
     <h5>Caracteristici generale</h5>
     <table class="table text-center table-light table-striped table-bordered">
@@ -211,7 +211,7 @@
 
   </div>
 </div>
-<div class="row" *ngIf="product.categoryType.includes('Laptop')">
+<div class="row" *ngIf="product?.categoryType?.includes('Laptop')">
   <div class="col-6">
     <h5>Ecran</h5>
     <table class="table text-center table-light table-striped table-bordered">

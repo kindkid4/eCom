@@ -5,6 +5,7 @@ import { User } from 'src/app/model/User';
 import { CartService } from 'src/app/services/cart.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import * as alertyfy from 'alertifyjs';
+import { AngularFireModule } from '@angular/fire';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -12,9 +13,9 @@ import * as alertyfy from 'alertifyjs';
 })
 export class CheckoutComponent implements OnInit {
   user!: User;
-  cart:Product [] =[]
+  cart: Product[] = []
   sum: number = 0;
-  constructor(private userService: UserServiceService, private cartservice: CartService,private router: Router) { }
+  constructor(private userService: UserServiceService, private cartservice: CartService, private router: Router) { }
 
   ngOnInit(): void {
     this.cart = this.cartservice.getCartData();
@@ -25,21 +26,32 @@ export class CheckoutComponent implements OnInit {
       }
     );
   }
-  procComanda(){
-    if(this.user.oras==='' || this.user.judet==='' || this.user.tara==='' || this.user.strada==='' || this.user.numar===0){
+  procComanda() {
+    if (this.user.oras === '' || this.user.judet === '' || this.user.tara === '' || this.user.strada === '' || this.user.numar === 0) {
       alertyfy.error('Adaugati o adresa pentru a plasa comanda');
     }
-    else
-    {
-    alertyfy.success('Comanda procesata!');
-    this.router.navigate(['/']);
-    this.cartservice.deleteCart();
+    else {
+      this.cart.forEach((element: Product) => {
+
+        this.userService.addOrder(element, this.user.userName,element.qty).subscribe();
+
+      });
+      alertyfy.success('Comanda procesata!');
+      this.reload();
+      this.router.navigate(['/']);
+
+      this.cartservice.deleteCart();
     }
 
 
   }
-  toTitle(str : string){
+  toTitle(str: string) {
     var desc = str.split(",");
-    return desc[0]+' '+desc[1]+' '+desc[4]+' '+desc[2];
+    return desc[0] + ' ' + desc[1] + ' ' + desc[4] + ' ' + desc[2];
+  }
+  reload() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   }
 }

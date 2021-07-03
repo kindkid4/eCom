@@ -17,6 +17,9 @@ namespace WebAPI.Data
         public IUserRepository UserRepository =>
             new UserRepository(dc);
 
+        public IOrderRepository orderRepository =>
+            new OrderRepository(dc);
+
         public async Task<bool> SaveAsync()
         {
             return await dc.SaveChangesAsync() > 0;

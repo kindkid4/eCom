@@ -24,7 +24,6 @@ export class ProductCardComponent implements OnInit {
 
   addToCart(product: Product){
     this.cartService.addItem(product);
-    alertyfy.success("Produs adaugat!");
   }
 
 }

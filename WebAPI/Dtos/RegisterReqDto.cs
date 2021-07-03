@@ -7,7 +7,7 @@ namespace WebAPI.Dtos
         public string Password { get; set; }
         public string PasswordKey { get; set; }
         public string Email { get; set; }
-        public int Mobile { get; set; }
+        public string Mobile { get; set; }
         public string Tara { get; set; }
         public string Judet { get; set; }
         public string Oras { get; set; }

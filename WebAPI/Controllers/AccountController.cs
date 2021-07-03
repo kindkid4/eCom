@@ -58,6 +58,10 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetUser(string userName)
         {   
             var userFromDb = await uow.UserRepository.GetUser(userName);
+            if (userFromDb == null)
+            {
+                return BadRequest("User doesn't exist!");
+            }
             GetUserResponse user = new GetUserResponse();
             user.UserName = userFromDb.Username;
             user.Email = userFromDb.Email;
