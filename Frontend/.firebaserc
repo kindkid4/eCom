@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "ecom-w"
+  },
+  "targets": {
+    "ecom-w": {
+      "hosting": {
+        "ecommerce": [
+          "ecom-w"
+        ]
+      }
+    }
   }
 }

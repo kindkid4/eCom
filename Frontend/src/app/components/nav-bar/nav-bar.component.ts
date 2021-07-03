@@ -13,21 +13,24 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 export class NavBarComponent implements OnInit {
   public loggedinUser!: string;
   public wasInside = true;
-  userName! : string;
-  user!:User;
+  userName!: string;
+  user!: User;
   public text!: String;
-  ok! :boolean;
+  ok!: boolean;
   url = '';
   constructor(public userService: UserServiceService,
     private router: Router) { }
 
   ngOnInit() {
-    this.userService.getUser(localStorage.getItem('user')!).subscribe(
-      (us:any)=>{
-        this.user = us;
-      }
-    );
-    this.url = this.user.pfp!;
+    if (localStorage.getItem('token') != null) {
+
+      this.userService.getUser(localStorage.getItem('user')!).subscribe(
+        (us: any) => {
+          this.user = us;
+        }
+      );
+      this.url = this.user.pfp!;
+    }
   }
 
   reload() {
@@ -53,11 +56,11 @@ export class NavBarComponent implements OnInit {
   onLogin(loginForm: NgForm) {
     this.userService.authUser(loginForm.value).subscribe(
       (response: any) => {
-        localStorage.setItem('token',response.token);
-        localStorage.setItem('user',response.userName);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('user', response.userName);
         this.userName = response.userName;
         this.userService.getUser(response.userName).subscribe(
-          (us:any)=>{
+          (us: any) => {
             this.user = us;
           }
         );
@@ -66,12 +69,12 @@ export class NavBarComponent implements OnInit {
       }
     );
   }
-  getPFP(){
+  getPFP() {
     return this.url = this.user.pfp?.toString()!;
   }
   loggedin() {
     this.loggedinUser = localStorage.getItem('token')!;
-    this.userName =localStorage.getItem('user')!;
+    this.userName = localStorage.getItem('user')!;
     return this.loggedinUser;
   }
   onLogout() {

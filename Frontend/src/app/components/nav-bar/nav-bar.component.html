@@ -97,8 +97,8 @@
                 <span class="dropdown-toggle " type="button">Televizoare</span>
                 <ul *dropdownMenu class="dropdown-menu ddNest" style="margin-top:-169px" role="menu">
                   <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/Televizor">Televizoare</span></li>
-                  <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/Full HD & HD">Full HD & HD</span></li>
-                  <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/4K UHD">4K UHD</span></li>
+                  <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/FHD">Full HD & HD</span></li>
+                  <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/4K">4K UHD</span></li>
                   <li (click)="reload()" role="menuitem"><span class="dropdown-item" type="button" routerLink="/product-category/Smart TV">Smart TV</span></li>
                 </ul>
               </li>
@@ -155,7 +155,7 @@
 
         <a class="dropdown-toggle text-light row text-center" type="button" dropdownToggle (click)="false">
 
-          <img class="pfp-nav" [src]="user.pfp ? url: 'https://www.w3schools.com/howto/img_avatar.png'">
+          <img class="pfp-nav" src="{{user.pfp}}">
 
           <span class="col mt-2">Bun venit {{user.userName}}</span>
         </a>

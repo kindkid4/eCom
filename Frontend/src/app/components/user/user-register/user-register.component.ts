@@ -4,6 +4,7 @@ import { UserForRegister } from 'src/app/model/UserBase';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import * as alertyfy from 'alertifyjs';
 import { User } from 'src/app/model/User';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
@@ -15,7 +16,7 @@ export class UserRegisterComponent implements OnInit {
   user: UserForRegister | undefined;
   constructor(
     private formB: FormBuilder,
-    private userService: UserServiceService) { }
+    private userService: UserServiceService,private router: Router) { }
 
   ngOnInit(): void {
     this.createRegistrationForm();
@@ -43,6 +44,10 @@ export class UserRegisterComponent implements OnInit {
       this.userService.addUser(this.userData()).subscribe(() => {
         this.registerForm.reset();
         this.userDidRegister = false;
+        alertyfy.success("Inregistrare cu success");
+        setTimeout(() => {
+          this.router.navigate(['user/login']);
+        }, 1500);
       }
       );
     }

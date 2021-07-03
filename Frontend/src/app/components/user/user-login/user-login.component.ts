@@ -34,6 +34,7 @@ export class UserLoginComponent implements OnInit {
         localStorage.setItem('user',user.userName);
         alertyfy.success('Login Reusit!');
         this.router.navigate(['/']);
+        this.reload();
       }
     );
   }

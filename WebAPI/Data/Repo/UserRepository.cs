@@ -61,7 +61,7 @@ namespace WebAPI.Data.Repo
             user.Judet = "";
             user.Oras = "";
             user.Numar = 0;
-            user.Pfp = "";
+            user.Pfp = "https://www.w3schools.com/howto/img_avatar.png";
             user.Password = passwordHash;
             user.PasswordKey = passwordKey;
             dc.Users.Add(user);

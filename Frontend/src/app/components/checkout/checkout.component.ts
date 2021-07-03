@@ -19,6 +19,11 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.cart = this.cartservice.getCartData();
     this.sum = +this.cartservice.getSumOfCart();
+    this.userService.getUser(localStorage.getItem('user')!).subscribe(
+      (us: any) => {
+        this.user = us;
+      }
+    );
   }
   procComanda(){
     if(this.user.oras==='' || this.user.judet==='' || this.user.tara==='' || this.user.strada==='' || this.user.numar===0){
