@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/model/User';
 import * as alertyfy from 'alertifyjs';
 import { UserServiceService } from 'src/app/services/user-service.service';
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -12,7 +13,8 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 export class NavBarComponent implements OnInit {
   public loggedinUser!: string;
   public wasInside = true;
-  user! : User;
+  userName! : string;
+  user!:User;
   public text!: String;
   ok! :boolean;
   url = '';
@@ -20,6 +22,12 @@ export class NavBarComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    this.userService.getUser(localStorage.getItem('user')!).subscribe(
+      (us:any)=>{
+        this.user = us;
+      }
+    );
+    this.url = this.user.pfp!;
   }
 
   reload() {
@@ -45,9 +53,14 @@ export class NavBarComponent implements OnInit {
   onLogin(loginForm: NgForm) {
     this.userService.authUser(loginForm.value).subscribe(
       (response: any) => {
-        const user = response;
-        localStorage.setItem('token',user.token);
-        localStorage.setItem('user',JSON.stringify(user));
+        localStorage.setItem('token',response.token);
+        localStorage.setItem('user',response.userName);
+        this.userName = response.userName;
+        this.userService.getUser(response.userName).subscribe(
+          (us:any)=>{
+            this.user = us;
+          }
+        );
         alertyfy.success('Login Reusit!');
         this.router.navigate(['/']);
       }
@@ -58,7 +71,7 @@ export class NavBarComponent implements OnInit {
   }
   loggedin() {
     this.loggedinUser = localStorage.getItem('token')!;
-    this.user = JSON.parse(localStorage.getItem('user')!);
+    this.userName =localStorage.getItem('user')!;
     return this.loggedinUser;
   }
   onLogout() {

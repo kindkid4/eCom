@@ -1,5 +1,7 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -27,8 +29,7 @@ namespace WebAPI.Controllers
             this.configuration = configuration;
         }
         //API/ACCOUNT/UPDATE/"parola"
-        [AllowAnonymous]
-        [HttpPut("update/{passToChange}")]
+        [HttpPut("update/password/{passToChange}")]
         public async Task<IActionResult> UpdateUserPassword(string passToChange,LoginResponseDto loginDto)
         {   
             
@@ -49,12 +50,54 @@ namespace WebAPI.Controllers
                 }
             }
             await uow.SaveAsync();
-            return Ok(userFromDb);
+            return Ok(200);
         }
+
+        //API/ACCOUNT/get
+        [HttpGet("get/{userName}")]
+        public async Task<IActionResult> GetUser(string userName)
+        {   
+            var userFromDb = await uow.UserRepository.GetUser(userName);
+            GetUserResponse user = new GetUserResponse();
+            user.UserName = userFromDb.Username;
+            user.Email = userFromDb.Email;
+            user.Mobile = userFromDb.Mobile;
+            user.Tara = userFromDb.Tara;
+            user.Judet = userFromDb.Judet;
+            user.Oras = userFromDb.Oras;
+            user.Strada = userFromDb.Strada;
+            user.Numar = userFromDb.Numar;
+            user.Pfp = userFromDb.Pfp;
+            await uow.SaveAsync();
+            return Ok(user);
+        }
+       
+        //API/ACOUNT/IMAGE
+        // [HttpPut("update/image")]
+        // [DisableRequestSizeLimit]
+        // public IActionResult Upload(){
+        //     var file = Request.Form.Files[0];
+        //     var folderName = Path.Combine("Resources","Images");
+        //     var pathToSave = Path.Combine(Directory.GetCurrentDirectory(),folderName);
+        //     if(file.Length > 0)
+        //     {
+        //         var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+        //         var fullPath = Path.Combine(pathToSave,fileName);
+        //         var dbPath = Path.Combine(folderName,fileName);
+        //         using (var stream = new FileStream(fullPath,FileMode.Create)){
+        //             file.CopyTo(stream);
+        //         }
+        //         return Ok(new{dbPath});
+        //     }
+        //     else
+        //     {
+        //         return BadRequest();
+        //     }
+        // }
+
         //API/ACCOUNT/UPDATE
-        [AllowAnonymous]
-        [HttpPut("update")]
-        public async Task<IActionResult> UpdateUser(LoginResponseDto loginDto)
+        [HttpPut("update/profile")]
+        public async Task<IActionResult> UpdateUser(GetUserResponse loginDto)
         {   
             
             var userFromDb = await uow.UserRepository.GetUser(loginDto.UserName);
@@ -69,12 +112,13 @@ namespace WebAPI.Controllers
             userFromDb.Oras = loginDto.Oras;
             userFromDb.Strada = loginDto.Strada;
             userFromDb.Numar = loginDto.Numar;
-            userFromDb.Pfp = loginDto.Pfp;
             await uow.SaveAsync();
             return Ok(userFromDb);
         }
+       
         //API/ACCOUNT/LOGIN
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginReqDto loginReq)
         {
             var user = await uow.UserRepository.Authenticate(loginReq.UserName, loginReq.Password);
@@ -91,18 +135,12 @@ namespace WebAPI.Controllers
             var loginRes = new LoginResponseDto();
             loginRes.UserName = user.Username;
             loginRes.Token = CreateJWT(user);
-            loginRes.Mobile = user.Mobile;
-            loginRes.Email = user.Email;
-            loginRes.Tara = user.Tara;
-            loginRes.Judet = user.Judet;
-            loginRes.Oras = user.Oras;
-            loginRes.Strada = user.Strada;
-            loginRes.Numar = user.Numar;
-            loginRes.Pfp = user.Pfp;
             return Ok(loginRes);
         }
+       
         //API/ACCOUNT/REGISTER
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterReqDto registerReq)
         {
 

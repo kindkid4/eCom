@@ -4,7 +4,7 @@
     <img *ngIf="loggedin()" class="pfp" [src]="getPFP() ? url : 'https://www.w3schools.com/howto/img_avatar.png'">
   </label>
   <br />
-  <h1 (click)="false" class="m-3 text-center" style="color:white">Bun venit <h1 *ngIf="loggedin()">{{user.userName}}</h1>
+  <h1 (click)="false" class="m-3 text-center" style="color:white">Bun venit <h1 *ngIf="loggedin()">{{userName}}</h1>
   </h1>
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
   <a *ngIf="!loggedin()" (click)="closeNav()" (click)="reload()" class="dropdown-item" routerLink="user/register"
@@ -155,7 +155,7 @@
 
         <a class="dropdown-toggle text-light row text-center" type="button" dropdownToggle (click)="false">
 
-          <img class="pfp-nav" [src]="url ? url: 'https://www.w3schools.com/howto/img_avatar.png'">
+          <img class="pfp-nav" [src]="user.pfp ? url: 'https://www.w3schools.com/howto/img_avatar.png'">
 
           <span class="col mt-2">Bun venit {{user.userName}}</span>
         </a>

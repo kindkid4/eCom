@@ -24,12 +24,14 @@ export class UserServiceService {
     return this.http.post(this.baseUrl + '/account/login', user);
   }
   upUserPassword(user: User, passToChange: string): Observable<User> {
-   return this.http.put<User>(this.baseUrl + '/account/update/' + passToChange,user);
+   return this.http.put<User>(this.baseUrl + '/account/update/password/' + passToChange,user);
   }
   upUser(user: User): Observable<User> {
-    return this.http.put<User>(this.baseUrl + '/account/update', user);
+    return this.http.put<User>(this.baseUrl + '/account/update/profile', user);
    }
-
+  getUser(userName:string):Observable<User>{
+    return this.http.get<User>(this.baseUrl + '/account/get/'+ userName);
+  }
   reload() {
     setTimeout(() => {
       window.location.reload();

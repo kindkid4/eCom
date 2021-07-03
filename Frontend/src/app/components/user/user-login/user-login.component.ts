@@ -31,7 +31,7 @@ export class UserLoginComponent implements OnInit {
       (response: any) => {
         const user = response;
         localStorage.setItem('token',user.token);
-        localStorage.setItem('user',JSON.stringify(user));
+        localStorage.setItem('user',user.userName);
         alertyfy.success('Login Reusit!');
         this.router.navigate(['/']);
       }
