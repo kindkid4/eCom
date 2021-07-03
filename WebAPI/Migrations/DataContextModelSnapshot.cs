@@ -26,11 +26,8 @@ namespace WebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("LastUpdatedOn")
+                    b.Property<DateTime>("BoughtOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("LastUpdatedby")
-                        .HasColumnType("int");
 
                     b.Property<int>("OrderPrice")
                         .HasColumnType("int");

@@ -48,7 +48,7 @@
 <h3>Specificatii produs</h3>
 <hr>
 <!-- TELEVIZOR -->
-<div class="row" *ngIf="product.categoryType=='Televizor'">
+<div class="row" *ngIf="product.categoryType.includes('Televizor')">
   <div class="col-6">
     <h5>Video</h5>
     <table class="table text-center table-light table-striped table-bordered">
@@ -123,7 +123,7 @@
 
   </div>
 </div>
-<div class="row" *ngIf="product.categoryType=='Telefon'">
+<div class="row" *ngIf="product.categoryType.includes('Telefon')">
   <div class="col-6">
     <h5>Caracteristici generale</h5>
     <table class="table text-center table-light table-striped table-bordered">
@@ -211,7 +211,7 @@
 
   </div>
 </div>
-<div class="row" *ngIf="product.categoryType=='Laptop'">
+<div class="row" *ngIf="product.categoryType.includes('Laptop')">
   <div class="col-6">
     <h5>Ecran</h5>
     <table class="table text-center table-light table-striped table-bordered">

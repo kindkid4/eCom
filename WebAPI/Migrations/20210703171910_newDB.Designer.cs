@@ -10,8 +10,8 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210630141828_UpdatedProduct")]
-    partial class UpdatedProduct
+    [Migration("20210703171910_newDB")]
+    partial class newDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,11 +28,8 @@ namespace WebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("LastUpdatedOn")
+                    b.Property<DateTime>("BoughtOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("LastUpdatedby")
-                        .HasColumnType("int");
 
                     b.Property<int>("OrderPrice")
                         .HasColumnType("int");
@@ -52,36 +49,6 @@ namespace WebAPI.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("WebAPI.Models.Photo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsPrimary")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("LastUpdatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("LastUpdatedby")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Photos");
-                });
-
             modelBuilder.Entity("WebAPI.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -95,8 +62,14 @@ namespace WebAPI.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Images")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
+
+                    b.Property<string>("PrimaryImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Stock")
                         .HasColumnType("int");
@@ -116,12 +89,36 @@ namespace WebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Judet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Mobile")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Numar")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Oras")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<byte[]>("Password")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<byte[]>("PasswordKey")
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Pfp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Strada")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tara")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -142,15 +139,6 @@ namespace WebAPI.Migrations
 
                     b.HasOne("WebAPI.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("WebAPI.Models.Photo", b =>
-                {
-                    b.HasOne("WebAPI.Models.Product", "Product")
-                        .WithMany("Images")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
