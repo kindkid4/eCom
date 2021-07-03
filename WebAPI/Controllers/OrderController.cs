@@ -39,6 +39,7 @@ namespace WebAPI.Controllers
             ord.OrderdBy = user.Id;
             ord.OrderPrice = product.Price*qty;
             ord.ProductId = product.Id;
+            ord.Quantity = qty;
             uow.orderRepository.AddOrder(ord);
             await uow.SaveAsync();
             return StatusCode(201);

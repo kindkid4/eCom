@@ -11,5 +11,6 @@ namespace WebAPI.Dtos
 
         public int ProductId { get; set; }
         public int OrderPrice { get; set; }
+        public int Quantity { get; set; }
     }
 }

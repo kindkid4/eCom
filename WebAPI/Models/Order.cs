@@ -10,5 +10,6 @@ namespace WebAPI.Models
         public string BoughtOn { get; set; }
         public int ProductId { get; set; }
         public int OrderPrice { get; set; }
+        public int Quantity { get; set; }
     }
 }
