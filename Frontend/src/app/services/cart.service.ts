@@ -39,7 +39,7 @@ export class CartService {
         return item.id === product.id;
       });
 
-    if (exist) {
+    if (exist!) {
       if ((exist.stock - exist.qty) <= 0) {
         alertyfy.error("A-ti atins numarul maxim pe stock!");
         return;
@@ -77,7 +77,7 @@ export class CartService {
         return item.id === id;
       });
 
-    if (exist)
+    if (exist!)
       if (exist.qty <= 1) {
         exist.qty--;
         ls.forEach((exist: Product, index: any) => {

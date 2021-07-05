@@ -25,7 +25,14 @@
   margin-bottom             : -27px;
 
 }
-
+.telef{
+    transform                 : scale(0.9, 1);
+    transition-duration       : 500ms;
+    transition-timing-function: ease-out;
+    max-height                : 290px;
+    margin-top                : -22px;
+    margin-bottom             : -27px;
+}
 .card:hover img {
   transform                 : scale(0.95, 1.1);
   transition-duration       : 500ms;

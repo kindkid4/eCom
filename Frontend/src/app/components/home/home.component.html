@@ -1,4 +1,4 @@
 <div  *ngFor="let category of categoryList" class="mb-3" >
-  <h1 class="m-3"  routerLink="/product-category/{{category.categoryType}}">{{category.categoryType}}</h1>
+  <h1 class="m-3"><span  type="button" routerLink="/product-category/{{category.categoryType}}">{{category.categoryType}}</span></h1>
   <app-product-list style="background-color: #01003d; border-radius: 15px;padding: 0.1rem!important;" [categoryType]="category.categoryType" class="row "></app-product-list>
 </div>

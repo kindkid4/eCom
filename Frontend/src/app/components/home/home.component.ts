@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     },
     {
       "id": 2,
-      "categoryType": 'Laptop Gaming'
+      "categoryType": 'Laptop'
     },
     {
       "id": 3,

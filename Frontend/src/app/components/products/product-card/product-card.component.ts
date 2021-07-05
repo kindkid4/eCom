@@ -12,7 +12,7 @@ import * as alertyfy from 'alertifyjs';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product!:Product;
-  Desc!: string[];
+  Desc: string[]=[];
   constructor(
     private productService:ProductService,
     private route: ActivatedRoute,

@@ -19,9 +19,10 @@ import SwiperCore, {
 })
 export class ProductDetailComponent implements OnInit {
   public productId!: number;
-  product!: Product;
+  product: Product=new Product();
   Desc: string[]=[];
   prImg?: string[];
+  categ:string[]=[];
 
 
   constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService) { }
@@ -34,6 +35,7 @@ export class ProductDetailComponent implements OnInit {
     ).subscribe(
       (data: any) => {
         this.product = data;
+        this.categ = this.product?.categoryType.split(",");
         this.Desc = this.product?.description?.split(",");
         this.prImg = this.product.images.split(" ");
       }
@@ -41,7 +43,6 @@ export class ProductDetailComponent implements OnInit {
   }
   addToCart(product: Product) {
     this.cartService.addItem(product);
-    alertyfy.success("Produs adaugat!");
   }
 
   checkStock() {

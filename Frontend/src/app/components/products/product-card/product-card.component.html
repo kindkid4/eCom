@@ -1,9 +1,11 @@
-<div class="card mt-4 mb-4">
+<div class="card shadow-lg mt-4 mb-4">
   <div class="card-img-wrapper">
     <img *ngIf="!product.images" class="card-img-top" src="../../../../assets/Images/products/placeholder.png" >
     <img *ngIf="product.categoryType.includes('Televizor') && product.images" class="card-img-top" src="{{product.primaryImage}}">
     <img *ngIf="product.categoryType.includes('Laptop') && product.images" class="card-img-top" src="{{product.primaryImage}}">
-    <img  *ngIf="product.categoryType.includes('Telefon' || 'Tableta') && product.images" style="height: 168px;" class="card-img-top mt-3 mb-3" src="{{product.primaryImage}}">
+    <img  *ngIf="product.categoryType.includes(' Tableta') && product.images" style="height: 168px;" class="card-img-top mt-3 mb-3" src="{{product.primaryImage}}">
+    <img  *ngIf="product.categoryType.includes('Telefon') && product.images" style="height: 200px;" class="card-img-top telef mt-3 mb-3" src="{{product.primaryImage}}">
+
   </div>
   <div class="card-body">
     <div class="card-title text-center">
