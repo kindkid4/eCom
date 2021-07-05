@@ -4,7 +4,7 @@
 
       <img src="../../../assets/Images/logo.png" routerLink="/" type="button" class="logo">
       <!-- search filter attempt -->
-      <input type="text" class=" input text-center " [(ngModel)]="searchText" placeholder="Introduce textul pentru cautare!">
+      <input type="text" class=" input text-center " [(ngModel)]="searchText" placeholder="Introdu textul pentru cautare!">
       <i type="button" *ngIf="searchText" (click)="searchText=''" class="xSearch fas fa-times"></i>
 
       <ul class="list-group  UL input alig text-center wrapper" *ngIf="searchText">
